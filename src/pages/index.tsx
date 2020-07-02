@@ -13,7 +13,12 @@ import {
   RangeValidatorProps,
 } from "../components/validators"
 
-import { Title, TitleProps } from "../components/recepies"
+import {
+  Title,
+  TitleProps,
+  PostCodeProps,
+  PostCode,
+} from "../components/recepies"
 
 const Index = () => {
   const formProps: FormProps = {
@@ -55,6 +60,14 @@ const Index = () => {
     min: 5,
   }
 
+  const postCodeProps: PostCodeProps = {
+    id: "postcode",
+    name: "postcode",
+    label: "PostCode:",
+    validationMessage: "Invalid post code",
+    placeholder:"Provide valid Postcode"
+  }
+
   return (
     <>
       <Form formProps={formProps}>
@@ -65,6 +78,7 @@ const Index = () => {
         <RangeValidator rangeValidatorProps={ageRangeValidation}>
           <NumberBox numberProps={ageProps} />
         </RangeValidator>
+        <PostCode postCodeProps={postCodeProps} />
         <div>
           <input type="submit" value="Submit" />
         </div>
