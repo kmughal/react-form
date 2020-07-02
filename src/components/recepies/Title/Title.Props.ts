@@ -1,0 +1,15 @@
+
+export default interface TitleProps {
+  name: string,
+  id: string,
+  label: string,
+  placeholder: string,
+  validationMessage: string,
+
+  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement>;
+  valid?: boolean,
+  formDataSetters?: Record<string, ((formData: FormData) => void)>;
+  validators?: Record<string, () => boolean>,
+  errorMessages?: Record<string, string>
+}
+
