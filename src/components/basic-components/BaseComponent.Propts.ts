@@ -5,7 +5,7 @@ export default interface BaseComponentProps {
   label: string;
   value?: string;
   placeholder?: string;
-  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement>
+  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   valid?: boolean;
   validationMessage?: string;
   formDataSetters?: Record<string, ((formData: FormData) => void)>;

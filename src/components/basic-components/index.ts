@@ -1,4 +1,5 @@
 export * from "./TextBox"
+export * from "./MultilineTextBox"
 export * from "./Password"
 export * from "./NumberBox"
 export * from "./CheckBox"
