@@ -11,5 +11,4 @@ export default interface PostcodeProps {
   valid?: boolean,
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
   validators?: Record<string, () => []>,
-  errorMessages?: Record<string, string>
 }

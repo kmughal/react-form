@@ -30,7 +30,6 @@ const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
     validators: props.titleProps.validators,
     eleRef: props.titleProps.eleRef,
     formDataSetters: props.titleProps.formDataSetters,
-    errorMessages: props.titleProps.errorMessages,
     valid: props.titleProps.valid,
   }
 

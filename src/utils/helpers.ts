@@ -26,12 +26,7 @@ function overrideProperty(
 const addFormDataSetterCallbackAndValidationMessage = (
   props: BaseComponentProps
 ) => {
-
   props.formDataSetters[props.name] = (formData) => formData.append(props.name, props.eleRef.current.value)
-
-  if (props.valid) return;
-  props.errorMessages[props.name] = props.validationMessage ?? "Something went wrong!"
-
 }
 
 const extractTheValidationMessageForSummary = children => {

@@ -17,8 +17,6 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
   let _formData = null
   formProps.validators = {}
   formProps.formDataSetters = {}
-  formProps.errorMessages = {}
-
   const [validationSummary, setValidationSummary] = React.useState([])
 
   React.useEffect(() => {
@@ -70,7 +68,6 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
           overrideProperty(_props, "eleRef", React.useRef(null))
           overrideProperty(_props, "validators", formProps.validators)
           overrideProperty(_props, "formDataSetters", formProps.formDataSetters)
-          overrideProperty(_props, "errorMessages", formProps.errorMessages)
 
           return React.cloneElement(child, { ..._props })
         })}

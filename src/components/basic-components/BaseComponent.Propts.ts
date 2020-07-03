@@ -9,5 +9,4 @@ export default interface BaseComponentProps {
   valid?: boolean;
   validationMessage?: string;
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
-  errorMessages?: Record<string, string>
 }

@@ -10,6 +10,5 @@ export default interface TitleProps {
   valid?: boolean,
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
   validators?: Record<string, () => []>,
-  errorMessages?: Record<string, string>
 }
 
