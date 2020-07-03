@@ -1,6 +1,6 @@
 import * as React from "react"
 import SingleFileUploadProps from "./SingleFileUpload.Props"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const SingleFileUpload: React.FC<{
@@ -10,7 +10,7 @@ const SingleFileUpload: React.FC<{
   singleFileUploadProps.eleRef =
     singleFileUploadProps.eleRef ?? React.useRef(null)
   
-  addFormDataSetterCallbackAndValidationMessage(singleFileUploadProps)
+  addFormDataSetterCallback(singleFileUploadProps)
 
   const refAsInputElement = singleFileUploadProps.eleRef as React.MutableRefObject<
     HTMLInputElement

@@ -1,7 +1,7 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
 import ValidationError from "../ValidationError"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
@@ -13,7 +13,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   >
   textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null)
   textBoxProps.valid = textBoxProps.valid ?? true
-  addFormDataSetterCallbackAndValidationMessage(textBoxProps)
+  addFormDataSetterCallback(textBoxProps)
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
@@ -11,7 +11,7 @@ const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
   >
   passwordProps.eleRef = passwordProps.eleRef ?? React.useRef(null)
   passwordProps.valid = passwordProps.valid ?? true
-  addFormDataSetterCallbackAndValidationMessage(passwordProps)
+  addFormDataSetterCallback(passwordProps)
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import * as React from "react"
 import SelectBoxProps from "./SelectBox.Props"
 import SelectBoxOption from "./SelectBoxOption"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
@@ -9,7 +9,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
 }) => {
   
   selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallbackAndValidationMessage(selectBoxProps)
+  addFormDataSetterCallback(selectBoxProps)
 
   const selectOptions = selectBoxProps.options.map(
     (option: SelectBoxOption, index: number) => (

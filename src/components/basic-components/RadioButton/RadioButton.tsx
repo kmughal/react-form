@@ -4,7 +4,7 @@ import RadioButtonProps from "./RadioButton.Props"
 import { RadioButtonOption } from "./RadioButtonOption"
 import ValidationError from "../ValidationError"
 import RadioButtonList from "./RadioButtonList"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 
 const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   children,
@@ -12,7 +12,7 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
 }) => {
 
   radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallbackAndValidationMessage(radioButtonProps)
+  addFormDataSetterCallback(radioButtonProps)
   
   const readioButtonList = RadioButtonList(
     radioButtonProps.name,

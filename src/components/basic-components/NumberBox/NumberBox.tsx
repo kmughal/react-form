@@ -1,6 +1,6 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
@@ -10,7 +10,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
     HTMLInputElement
   >
   numberProps.eleRef = numberProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallbackAndValidationMessage(numberProps)
+  addFormDataSetterCallback(numberProps)
 
   return (
     <div>

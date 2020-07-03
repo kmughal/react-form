@@ -23,7 +23,7 @@ function overrideProperty(
 }
 
 
-const addFormDataSetterCallbackAndValidationMessage = (
+const addFormDataSetterCallback = (
   props: BaseComponentProps
 ) => {
   props.formDataSetters[props.name] = (formData) => formData.append(props.name, props.eleRef.current.value)
@@ -46,4 +46,4 @@ const curry = (callback: curryCallback, args: Record<string, any>) => {
   return () => callback(args)
 }
 
-export { overrideProperty, addFormDataSetterCallbackAndValidationMessage, curry }
+export { overrideProperty, addFormDataSetterCallback, curry }

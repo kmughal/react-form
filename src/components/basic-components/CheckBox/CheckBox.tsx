@@ -1,13 +1,13 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
 import ValidationError from "../ValidationError"
-import { addFormDataSetterCallbackAndValidationMessage } from "../../../utils/helpers"
+import { addFormDataSetterCallback } from "../../../utils/helpers"
 
 const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
   checkBoxProps,
 }) => {
   checkBoxProps.eleRef = checkBoxProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallbackAndValidationMessage(checkBoxProps)
+  addFormDataSetterCallback(checkBoxProps)
 
   return (
     <div>
