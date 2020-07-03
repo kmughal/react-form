@@ -9,7 +9,7 @@ export default interface TitleProps {
   eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement>;
   valid?: boolean,
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
-  validators?: Record<string, () => boolean>,
+  validators?: Record<string, () => []>,
   errorMessages?: Record<string, string>
 }
 

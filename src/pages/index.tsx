@@ -26,6 +26,7 @@ const Index = () => {
     submitForm: (formData) => {
       console.log("submit form")
     },
+    showValidationSummary: true,
   }
 
   const textBoxProps: BaseComponentProps = {
@@ -65,7 +66,7 @@ const Index = () => {
     name: "postcode",
     label: "PostCode:",
     validationMessage: "Invalid post code",
-    placeholder:"Provide valid Postcode"
+    placeholder: "Provide valid Postcode",
   }
 
   return (

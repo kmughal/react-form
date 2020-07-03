@@ -33,7 +33,22 @@ const addFormDataSetterCallbackAndValidationMessage = (
   props.errorMessages[props.name] = props.validationMessage ?? "Something went wrong!"
 
 }
-type curryCallback = (args: Record<string, any>) => boolean
-const curry = (callback: curryCallback, args: Record<string, any>) => () => callback(args)
+
+const extractTheValidationMessageForSummary = children => {
+  const props = children.props
+  for (let prop in props) {
+    let item = props[prop]
+    if (item.validationMessage) return [item.label, item.validationMessage ?? "Something went wrong"]
+  }
+  return [null, null]
+}
+
+type curryCallback = (args: Record<string, any>) => Array<boolean | string>
+const curry = (callback: curryCallback, args: Record<string, any>) => {
+  const [fieldName, validationMessage] = extractTheValidationMessageForSummary(args._children)
+  args._fieldName = fieldName
+  args._validationMessage = validationMessage
+  return () => callback(args)
+}
 
 export { overrideProperty, addFormDataSetterCallbackAndValidationMessage, curry }

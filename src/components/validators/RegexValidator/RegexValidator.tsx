@@ -9,20 +9,27 @@ const RegexValidator: React.FC<{ regexValidatorProps: RegexValidatorProps }> = (
 ) => {
   const [valid, setValidator] = React.useState(true)
 
-  var callback = (args: Record<string, any>): boolean => {
-    const { _target, _regExp, _setValidator } = args
+  var callback = (args: Record<string, any>): Array<boolean | string> => {
+    const {
+      _target,
+      _regExp,
+      _setValidator,
+      _fieldName,
+      _validationMessage,
+    } = args
     let _isValid = false
     const _ele = _target.current
     const _toInt = +_ele.value
     _isValid = _regExp.test(_ele.value)
     _setValidator(_isValid)
-    return _isValid
+    return [_isValid, _fieldName, _validationMessage]
   }
 
   const args = {
-    _target: props.regexValidatorProps.eleRef,
     _setValidator: setValidator,
     _regExp: props.regexValidatorProps.regExp,
+    _target: props.regexValidatorProps.eleRef,
+    _children: props.children,
   }
 
   props.regexValidatorProps.validators[props.regexValidatorProps.name] = curry(

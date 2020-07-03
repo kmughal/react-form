@@ -25,8 +25,8 @@ const LoginPage = () => {
   }
 
   const formProps: FormProps = {
+    showValidationSummary: true,
     submitForm: (formData) => {
-      debugger
       console.log("login")
     },
   }

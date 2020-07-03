@@ -5,7 +5,7 @@ interface FormProps {
   name?: string;
   id?: string;
   submitForm: (formData: FormData) => void;
-  validators?: Record<string, () => boolean>,
+  validators?: Record<string, () => Array<string|boolean>>,
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
   errorMessages?: Record<string, string>
 }

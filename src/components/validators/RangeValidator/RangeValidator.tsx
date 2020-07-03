@@ -13,14 +13,25 @@ const RangeValidator: React.FC<{
 }> = (props) => {
   const [valid, setValidator] = React.useState(true)
 
-  var callback = (args: Record<string, any>): boolean => {
-    const { _setValidator, _target, _max, _min } = args
+  var callback = (args: Record<string, any>): Array<boolean | string> => {
+    const {
+      _setValidator,
+      _target,
+      _max,
+      _min,
+      _fieldName,
+      _validationMessage,
+    } = args
     let _isValid = false
     const _ele = _target.current
     const _toInt = +_ele.value
     _isValid = _max >= _toInt && _toInt >= _min
     _setValidator(_isValid)
-    return _isValid
+    return [
+      _isValid as boolean,
+      _fieldName as string,
+      _validationMessage as string,
+    ]
   }
 
   props.rangeValidatorProps.validators[props.rangeValidatorProps.name] = curry(
@@ -28,8 +39,9 @@ const RangeValidator: React.FC<{
     {
       _max: props.rangeValidatorProps.max,
       _min: props.rangeValidatorProps.min,
-      _target: props.rangeValidatorProps.eleRef,
       _setValidator: setValidator,
+      _target: props.rangeValidatorProps.eleRef,
+      _children: props.children,
     }
   )
   props.rangeValidatorProps.valid = valid
