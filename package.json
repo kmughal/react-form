@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "next"
+    "start": "next",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/react": "^10.4.3",
+    "@types/jest": "^26.0.3",
+    "jest": "^26.1.0",
     "next": "^9.4.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "ts-jest": "^26.1.1"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
