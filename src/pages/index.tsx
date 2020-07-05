@@ -4,6 +4,9 @@ import {
   FormProps,
   TextBox,
   NumberBox,
+  SelectBoxProps,
+  SelectBoxOption,
+  SelectBox,
 } from "../components/basic-components"
 
 import {
@@ -20,7 +23,10 @@ import {
   PostCode,
   Gender,
   GenderProps,
+  Address,
+  AddressProps,
 } from "../components/recepies"
+import Navigation from "./components/Navigation"
 
 const Index = () => {
   const formProps: FormProps = {
@@ -63,6 +69,20 @@ const Index = () => {
     min: 5,
   }
 
+  const genderProps: GenderProps = {
+    name: "gender",
+    id: "rd_gender",
+    label: "Select gender ",
+    validationMessage: "Please select gender as it is required!",
+  }
+
+  const streetTextBoxProps: BaseComponentProps = {
+    id: "street",
+    name: "street",
+    label: "Street / House number",
+    placeholder: "Street address",
+  }
+
   const postCodeProps: PostCodeProps = {
     id: "postcode",
     name: "postcode",
@@ -71,14 +91,27 @@ const Index = () => {
     placeholder: "Provide valid Postcode",
   }
 
-  const genderProps: GenderProps = {
-    name: "gender",
-    id: "rd_gender",
-    label: "Select gender ",
-    validationMessage : "Please select gender as it is required!"
+  const countriesSelectBoxProps: SelectBoxProps = {
+    id: "ddl_countires",
+    name: "countries",
+    label: "Country :",
+    placeholder: "Select Country",
+    options: [
+      new SelectBoxOption(".....", ""),
+      new SelectBoxOption("UK", "uk"),
+      new SelectBoxOption("USA", "usa"),
+      new SelectBoxOption("Pakistan", "pakistan"),
+    ],
+    validationMessage: "Country is a required field!",
   }
+
+  const countryRequiredValidatorProps: BaseValidatorProps = {
+    name: "required_countries",
+  }
+
   return (
     <>
+      <Navigation />
       <Form formProps={formProps}>
         <Title titleProps={titleProps} />
         <RequiredValidator requiredValidatorProps={requiredValidator}>
@@ -88,7 +121,13 @@ const Index = () => {
         <RangeValidator rangeValidatorProps={ageRangeValidation}>
           <NumberBox numberProps={ageProps} />
         </RangeValidator>
+        <TextBox textBoxProps={streetTextBoxProps} />
         <PostCode postCodeProps={postCodeProps} />
+        <RequiredValidator
+          requiredValidatorProps={countryRequiredValidatorProps}
+        >
+          <SelectBox selectBoxProps={countriesSelectBoxProps} />
+        </RequiredValidator>
         <div>
           <input type="submit" value="Submit" />
         </div>

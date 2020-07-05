@@ -6,6 +6,7 @@ import {
   Password,
 } from "../components/basic-components"
 import { BaseValidatorProps, RequiredValidator } from "../components/validators"
+import Navigation from "./components/Navigation"
 
 const LoginPage = () => {
   const textBoxProps: BaseComponentProps = {
@@ -34,17 +35,21 @@ const LoginPage = () => {
   const requiredValidator2: BaseValidatorProps = { name: "password_required" }
 
   return (
-    <Form formProps={formProps}>
-      <RequiredValidator requiredValidatorProps={requiredValidator1}>
-        <TextBox textBoxProps={textBoxProps} />
-      </RequiredValidator>
-      <RequiredValidator requiredValidatorProps={requiredValidator2}>
-        <Password passwordProps={passwordProps} />
-      </RequiredValidator>
-      <div>
-        <input type="submit" value="Sign-in" />
-      </div>
-    </Form>
+    <>
+      <Navigation />
+
+      <Form formProps={formProps}>
+        <RequiredValidator requiredValidatorProps={requiredValidator1}>
+          <TextBox textBoxProps={textBoxProps} />
+        </RequiredValidator>
+        <RequiredValidator requiredValidatorProps={requiredValidator2}>
+          <Password passwordProps={passwordProps} />
+        </RequiredValidator>
+        <div>
+          <input type="submit" value="Sign-in" />
+        </div>
+      </Form>
+    </>
   )
 }
 
