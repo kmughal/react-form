@@ -18,7 +18,10 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
       <input
         type="text"
         ref={refAsInputElement}
+        id={numberProps.id}
+        name={numberProps.name}
         placeholder={numberProps.placeholder}
+        aria-describedby={numberProps.id + "_error"}
       />
       <ValidationError
         valid={numberProps.valid}

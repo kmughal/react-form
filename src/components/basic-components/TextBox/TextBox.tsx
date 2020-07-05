@@ -7,7 +7,6 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
-  
   const refAsInputElement = textBoxProps.eleRef as React.MutableRefObject<
     HTMLInputElement
   >
@@ -17,14 +16,14 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
 
   return (
     <div>
-      <label
-        htmlFor={textBoxProps.name}>{textBoxProps.label}</label>
+      <label htmlFor={textBoxProps.name}>{textBoxProps.label}</label>
       <input
         id={textBoxProps.id}
         name={textBoxProps.name}
         type="text"
         ref={refAsInputElement}
         placeholder={textBoxProps.placeholder}
+        aria-describedby={textBoxProps.id + "_error"}
       />
       <ValidationError
         valid={textBoxProps.valid}

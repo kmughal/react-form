@@ -31,19 +31,42 @@ const addFormDataSetterCallback = (
 }
 
 const extractTheValidationMessageForSummary = children => {
+  // const props = children.props
+  // for (let prop in props) {
+  //   let item = props[prop]
+  //   if (item.validationMessage) return [item.label, item.validationMessage ?? "Something went wrong"]
+  // }
+  // return [null, null]
+
+  const label = getPropertyValueFromReactComponentProps(children,"label")
+  const validationMessage = getPropertyValueFromReactComponentProps(children, "validationMessage")
+  return [label,validationMessage]
+}
+
+const extractTheIdOfFailedField = children => {
+  const result = getPropertyValueFromReactComponentProps(children, "id")
+  return result
+}
+
+function getPropertyValueFromReactComponentProps(
+  children: any,
+  propertyName: string) {
+
   const props = children.props
   for (let prop in props) {
     let item = props[prop]
-    if (item.validationMessage) return [item.label, item.validationMessage ?? "Something went wrong"]
+    if (item[propertyName]) return item[propertyName]
   }
-  return [null, null]
+  return null
 }
 
 type curryCallback = (args: Record<string, any>) => Array<boolean | string>
 const curry = (callback: curryCallback, args: Record<string, any>) => {
   const [fieldName, validationMessage] = extractTheValidationMessageForSummary(args._children)
+  const fieldId = extractTheIdOfFailedField(args._children)
   args._fieldName = fieldName
-  args._validationMessage = validationMessage
+  args._validationMessage = validationMessage,
+  args._fieldId = fieldId
   return () => callback(args)
 }
 

@@ -18,6 +18,8 @@ import {
   TitleProps,
   PostCodeProps,
   PostCode,
+  Gender,
+  GenderProps,
 } from "../components/recepies"
 
 const Index = () => {
@@ -69,6 +71,12 @@ const Index = () => {
     placeholder: "Provide valid Postcode",
   }
 
+  const genderProps: GenderProps = {
+    name: "gender",
+    id: "rd_gender",
+    label: "Select gender ",
+    validationMessage : "Please select gender as it is required!"
+  }
   return (
     <>
       <Form formProps={formProps}>
@@ -76,6 +84,7 @@ const Index = () => {
         <RequiredValidator requiredValidatorProps={requiredValidator}>
           <TextBox textBoxProps={textBoxProps} />
         </RequiredValidator>
+        <Gender genderProps={genderProps} />
         <RangeValidator rangeValidatorProps={ageRangeValidation}>
           <NumberBox numberProps={ageProps} />
         </RangeValidator>

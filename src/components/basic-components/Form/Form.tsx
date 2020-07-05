@@ -8,9 +8,23 @@ const ValidationSummary = ({ messages }) => {
   let key = 0
   for (let message of messages) {
     let [fieldName, errorMessage] = Object.entries(message)[0]
-    markup.push(<li key={key++}>{fieldName + "   " + errorMessage}</li>)
+    let [_, fieldId] = Object.entries(message)[1]
+
+    markup.push(
+      <li key={key++}>
+        <a href={`${`#${fieldId}`}`} id={fieldId + "_error"}>
+          {fieldName + "   " + errorMessage}
+        </a>
+      </li>
+    )
   }
-  return <ol>{markup}</ol>
+  return (
+    <div role="alert">
+      <h4>There are {markup.length} errors in this form</h4>
+
+      <ul>{markup}</ul>
+    </div>
+  )
 }
 
 const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
@@ -36,7 +50,10 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       const vResult = validator()
       if (!vResult[0]) {
         validatorResult.push(false)
-        validationSummaryResult.push({ [vResult[1] as string]: vResult[2] })
+        validationSummaryResult.push({
+          [vResult[1] as string]: vResult[2],
+          fieldId: vResult[3],
+        })
       }
     }
 

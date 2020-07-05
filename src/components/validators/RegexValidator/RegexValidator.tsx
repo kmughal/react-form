@@ -16,13 +16,14 @@ const RegexValidator: React.FC<{ regexValidatorProps: RegexValidatorProps }> = (
       _setValidator,
       _fieldName,
       _validationMessage,
+      _fieldId
     } = args
     let _isValid = false
     const _ele = _target.current
     const _toInt = +_ele.value
     _isValid = _regExp.test(_ele.value)
     _setValidator(_isValid)
-    return [_isValid, _fieldName, _validationMessage]
+    return [_isValid, _fieldName, _validationMessage,_fieldId]
   }
 
   const args = {

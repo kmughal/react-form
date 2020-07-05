@@ -20,6 +20,7 @@ const RadioButtonList = (
           name={name}
           value={rd.value}
           onClick={markSelection}
+          aria-describedby={name + "_error"}
         />
         <label htmlFor={_id}>{rd.text}</label>
       </div>

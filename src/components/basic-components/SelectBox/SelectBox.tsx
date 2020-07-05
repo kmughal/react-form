@@ -29,6 +29,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         ref={selectBoxProps.eleRef as React.MutableRefObject<HTMLSelectElement>}
         name={selectBoxProps.name}
         id={selectBoxProps.id}
+        aria-describedby={selectBoxProps.id + "_error"}
       >
         {selectOptions}
       </select>

@@ -21,6 +21,7 @@ const RangeValidator: React.FC<{
       _min,
       _fieldName,
       _validationMessage,
+      _fieldId
     } = args
     let _isValid = false
     const _ele = _target.current
@@ -31,6 +32,7 @@ const RangeValidator: React.FC<{
       _isValid as boolean,
       _fieldName as string,
       _validationMessage as string,
+      _fieldId as string
     ]
   }
 

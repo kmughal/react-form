@@ -18,6 +18,7 @@ const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
         ref={checkBoxProps.eleRef as React.MutableRefObject<HTMLInputElement>}
         name={checkBoxProps.name}
         value={checkBoxProps.value}
+        aria-describedby={checkBoxProps.id + "_error"}
       />
       <ValidationError
         valid={checkBoxProps.valid}
