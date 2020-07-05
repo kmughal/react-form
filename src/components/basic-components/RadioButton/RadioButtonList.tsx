@@ -3,6 +3,7 @@ import { RadioButtonOption } from "./RadioButtonOption"
 
 const RadioButtonList = (
   name: string,
+  legend: string,
   radioButtonList: Array<RadioButtonOption>,
   eleRef: React.MutableRefObject<HTMLInputElement>
 ) => {
@@ -10,21 +11,27 @@ const RadioButtonList = (
     (eleRef.current.value = (event.target as HTMLInputElement).value)
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
+    const _id = `${name.replace(" ", "_")}_${index}`
     return (
       <div key={index}>
         <input
           type="radio"
-          id={`${name}_{index}`}
+          id={_id}
           name={name}
           value={rd.value}
           onClick={markSelection}
         />
-        {"  " + rd.text}
+        <label htmlFor={_id}>{rd.text}</label>
       </div>
     )
   })
 
-  return <>{result}</>
+  return (
+    <fieldset>
+      <legend>{legend}</legend>
+      {result}
+    </fieldset>
+  )
 }
 
 export default RadioButtonList

@@ -16,6 +16,7 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   
   const readioButtonList = RadioButtonList(
     radioButtonProps.name,
+    radioButtonProps.legend,
     radioButtonProps.radioButtonOptions,
     radioButtonProps.eleRef as React.MutableRefObject<HTMLInputElement>
   )
