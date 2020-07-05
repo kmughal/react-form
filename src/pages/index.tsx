@@ -24,8 +24,6 @@ import {
   PostCode,
   Gender,
   GenderProps,
-  Address,
-  AddressProps,
 } from "../components/recepies"
 import Navigation from "./components/Navigation"
 import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
