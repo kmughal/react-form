@@ -7,6 +7,7 @@ import {
   SelectBoxProps,
   SelectBoxOption,
   SelectBox,
+  SingleFileUpload,
 } from "../components/basic-components"
 
 import {
@@ -27,6 +28,7 @@ import {
   AddressProps,
 } from "../components/recepies"
 import Navigation from "./components/Navigation"
+import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
 
 const Index = () => {
   const formProps: FormProps = {
@@ -109,6 +111,18 @@ const Index = () => {
     name: "required_countries",
   }
 
+  const requiredFileProps: BaseValidatorProps = {
+    name: "file_required",
+  }
+  const singleFileProps: SingleFileUploadProps = {
+    id: "user_doc",
+    name: "user_doc",
+    accept: ".jpeg",
+    label: "Provide a document",
+    placeholder: "Document",
+    validationMessage: "A document is required!",
+  }
+
   return (
     <>
       <Navigation />
@@ -127,6 +141,9 @@ const Index = () => {
           requiredValidatorProps={countryRequiredValidatorProps}
         >
           <SelectBox selectBoxProps={countriesSelectBoxProps} />
+        </RequiredValidator>
+        <RequiredValidator requiredValidatorProps={requiredFileProps}>
+          <SingleFileUpload singleFileUploadProps={singleFileProps} />
         </RequiredValidator>
         <div>
           <input type="submit" value="Submit" />
