@@ -23,6 +23,10 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
         type="text"
         ref={refAsInputElement}
         placeholder={textBoxProps.placeholder}
+        value={textBoxProps.value ?? ""}
+        onChange={(e) => {
+          console.log("change_event")
+        }}
         aria-describedby={textBoxProps.id + "_error"}
       />
       <ValidationError

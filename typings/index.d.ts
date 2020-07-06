@@ -4,6 +4,7 @@ declare global {
     interface Matchers<R> {
       mustHaveAnAttribute(actual: string): R;
       attributeValueMustBeSame(attributeName: string, attributeValue: string): R;
+      valueMustBeEqual(value: string): R;
     }
   }
 }
