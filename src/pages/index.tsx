@@ -27,12 +27,21 @@ import {
 } from "../components/recepies"
 import Navigation from "./components/Navigation"
 import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
+import React from "react"
 
 const Index = () => {
+  const [payload, setPayload] = React.useState(null)
+
   const formProps: FormProps = {
     name: "test-form",
     submitForm: (formData) => {
-      console.log("submit form")
+      fetch("/api/fake", {
+        body: formData,
+        method: "POST",
+      })
+        .then((response) => response.json())
+        .then(setPayload)
+        .catch(console.log)
     },
     showValidationSummary: true,
   }
@@ -147,6 +156,12 @@ const Index = () => {
           <input type="submit" value="Submit" />
         </div>
       </Form>
+      {payload && (
+        <>
+          <h1>Pay load from server :</h1>
+          <pre>{JSON.stringify(payload, null, 2)}</pre>
+        </>
+      )}
     </>
   )
 }

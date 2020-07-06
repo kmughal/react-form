@@ -7,8 +7,10 @@ import {
 } from "../components/basic-components"
 import { BaseValidatorProps, RequiredValidator } from "../components/validators"
 import Navigation from "./components/Navigation"
+import React from "react"
 
 const LoginPage = () => {
+  const [payload, setPayload] = React.useState(null)
   const textBoxProps: BaseComponentProps = {
     label: "Username",
     name: "user-name",
@@ -28,6 +30,13 @@ const LoginPage = () => {
   const formProps: FormProps = {
     showValidationSummary: true,
     submitForm: (formData) => {
+      fetch("/api/fake", {
+        body: formData,
+        method: "POST",
+      })
+        .then((response) => response.json())
+        .then(setPayload)
+        .catch(console.log)
       console.log("login")
     },
   }
@@ -49,6 +58,12 @@ const LoginPage = () => {
           <input type="submit" value="Sign-in" />
         </div>
       </Form>
+      {payload && (
+        <>
+          <h1>Pay load from server :</h1>
+          <pre>{JSON.stringify(payload, null, 2)}</pre>
+        </>
+      )}
     </>
   )
 }
