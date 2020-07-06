@@ -6,11 +6,21 @@ import ValidationError from "../ValidationError"
 const SingleFileUpload: React.FC<{
   singleFileUploadProps: SingleFileUploadProps
 }> = ({ singleFileUploadProps }) => {
-
   singleFileUploadProps.eleRef =
     singleFileUploadProps.eleRef ?? React.useRef(null)
-  
-  addFormDataSetterCallback(singleFileUploadProps)
+
+  singleFileUploadProps.formDataSetters[singleFileUploadProps.name] = (
+    formData
+  ) => {
+    const fileControl = singleFileUploadProps.eleRef.current as HTMLInputElement
+    const file = fileControl.files[0]
+
+    formData.append(
+      "single_file",
+      file,
+      singleFileUploadProps.eleRef.current.value
+    )
+  }
 
   const refAsInputElement = singleFileUploadProps.eleRef as React.MutableRefObject<
     HTMLInputElement
