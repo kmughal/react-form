@@ -25,7 +25,9 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
         placeholder={textBoxProps.placeholder}
         value={textBoxProps.value ?? ""}
         onChange={(e) => {
-          console.log("change_event")
+          if (textBoxProps.onChange) {
+            textBoxProps.onChange(e.target)
+          }
         }}
         aria-describedby={textBoxProps.id + "_error"}
       />
