@@ -1,5 +1,6 @@
 import BaseComponentProps from "../components/basic-components/BaseComponent.Propts"
 import { stringify } from "querystring"
+import React from "react"
 
 function overrideProperty(
   props: any,
@@ -27,7 +28,9 @@ const addFormDataSetterCallback = (
   props: BaseComponentProps
 ) => {
   if (props.formDataSetters)
-    props.formDataSetters[props.name] = (formData) => formData.append(props.name, props.eleRef.current.value)
+    props.formDataSetters[props.name] = (formData) => {
+      formData.append(props.name, props.eleRef.current.value)
+    }
 }
 
 const extractTheValidationMessageForSummary = children => {
@@ -38,9 +41,9 @@ const extractTheValidationMessageForSummary = children => {
   // }
   // return [null, null]
 
-  const label = getPropertyValueFromReactComponentProps(children,"label")
+  const label = getPropertyValueFromReactComponentProps(children, "label")
   const validationMessage = getPropertyValueFromReactComponentProps(children, "validationMessage")
-  return [label,validationMessage]
+  return [label, validationMessage]
 }
 
 const extractTheIdOfFailedField = children => {
@@ -66,8 +69,33 @@ const curry = (callback: curryCallback, args: Record<string, any>) => {
   const fieldId = extractTheIdOfFailedField(args._children)
   args._fieldName = fieldName
   args._validationMessage = validationMessage,
-  args._fieldId = fieldId
+    args._fieldId = fieldId
   return () => callback(args)
 }
 
-export { overrideProperty, addFormDataSetterCallback, curry }
+
+const setupShowIfPresent = props => {
+  if (props.showIfValue) {
+    if (props.showIfCallback) {
+      const showIfResult = props.showIfCallback(props.showIfValue)
+      if (!showIfResult) {
+        if (props.formDataSetters[props.name]) {
+          delete props.formDataSetters[props.name]
+        }
+        return true
+      }
+    }
+  }
+}
+
+const cloneChildrenForShowIf = (children, props) => {
+  return React.Children.map(children as any, (child, _) => {
+    let _props = child.props
+    overrideProperty(_props, "pubsub", props.pubsub)
+    overrideProperty(_props, "eventName", props.name)
+    overrideProperty(_props, "formDataSetters", props.formDataSetters)
+    return React.cloneElement(child, { ..._props })
+  })
+}
+
+export { overrideProperty, addFormDataSetterCallback, curry, setupShowIfPresent, cloneChildrenForShowIf }

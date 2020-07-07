@@ -1,11 +1,15 @@
 import * as React from "react"
 import SingleFileUploadProps from "./SingleFileUpload.Props"
-import { addFormDataSetterCallback } from "../../../utils/helpers"
+import { addFormDataSetterCallback, setupShowIfPresent, cloneChildrenForShowIf } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const SingleFileUpload: React.FC<{
   singleFileUploadProps: SingleFileUploadProps
-}> = ({ singleFileUploadProps }) => {
+}> = ({ singleFileUploadProps, children }) => {
+
+  const isSetupShowIfPresent = setupShowIfPresent(singleFileUploadProps)
+  if (isSetupShowIfPresent) return null
+
   singleFileUploadProps.eleRef =
     singleFileUploadProps.eleRef ?? React.useRef(null)
 
@@ -40,6 +44,7 @@ const SingleFileUpload: React.FC<{
         valid={singleFileUploadProps.valid}
         message={singleFileUploadProps.validationMessage}
       />
+      {cloneChildrenForShowIf(children, singleFileUploadProps)}
     </div>
   )
 }

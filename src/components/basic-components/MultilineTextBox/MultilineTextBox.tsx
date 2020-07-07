@@ -20,8 +20,8 @@ const MultilineTextBox: React.FC<{ multilineTextBoxProps: MultilineTextBoxProps 
     <div>
       <label htmlFor={multilineTextBoxProps.name}>{multilineTextBoxProps.label}</label>
       <textarea
-        rows={1}
-        cols={2}
+        rows={multilineTextBoxProps.rows}
+        cols={multilineTextBoxProps.columns}
         ref={refAsInputElement}
         placeholder={multilineTextBoxProps.placeholder}
       />

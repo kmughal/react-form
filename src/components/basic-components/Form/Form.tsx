@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import FormProps from "./Form.Props"
+import FormProps, { PubSub } from "./Form.Props"
 import { overrideProperty } from "../../../utils/helpers"
 
 const ValidationSummary = ({ messages }) => {
@@ -31,6 +31,8 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
   let _formData = null
   formProps.validators = {}
   formProps.formDataSetters = {}
+  formProps.pubsub = new PubSub()
+
   const [validationSummary, setValidationSummary] = React.useState([])
 
   React.useEffect(() => {
@@ -70,11 +72,13 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       formProps.submitForm(_formData)
     }
     e.preventDefault()
+    debugger
     _formData = new FormData()
   }
 
   return (
     <>
+      {formProps.heading && <h1>{formProps.heading}</h1>}
       <form onSubmit={submitHandler} name={formProps.name} id={formProps.id}>
         {formProps.showValidationSummary && validationSummary.length > 0 && (
           <ValidationSummary messages={validationSummary} />
@@ -85,6 +89,7 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
           overrideProperty(_props, "eleRef", React.useRef(null))
           overrideProperty(_props, "validators", formProps.validators)
           overrideProperty(_props, "formDataSetters", formProps.formDataSetters)
+          overrideProperty(_props, "pubsub", formProps.pubsub)
 
           return React.cloneElement(child, { ..._props })
         })}

@@ -1,11 +1,13 @@
 import * as React from "react"
 import { RadioButtonOption } from "./RadioButtonOption"
+import { PubSub } from "../Form/Form.Props"
 
 const RadioButtonList = (
   name: string,
   legend: string,
   radioButtonList: Array<RadioButtonOption>,
-  eleRef: React.MutableRefObject<HTMLInputElement>
+  eleRef: React.MutableRefObject<HTMLInputElement>,
+  pubsub: PubSub
 ) => {
   const markSelection = (event: React.MouseEvent<HTMLInputElement>) =>
     (eleRef.current.value = (event.target as HTMLInputElement).value)
@@ -21,6 +23,9 @@ const RadioButtonList = (
           value={rd.value}
           onClick={markSelection}
           aria-describedby={name + "_error"}
+          onChange={e => {
+            if (pubsub) pubsub.publish(name, { data: e.target.value })
+          }}
         />
         <label htmlFor={_id}>{rd.text}</label>
       </div>
@@ -36,3 +41,5 @@ const RadioButtonList = (
 }
 
 export default RadioButtonList
+
+ 

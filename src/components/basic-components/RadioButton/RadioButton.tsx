@@ -1,15 +1,16 @@
 import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
 import RadioButtonProps from "./RadioButton.Props"
-import { RadioButtonOption } from "./RadioButtonOption"
 import ValidationError from "../ValidationError"
 import RadioButtonList from "./RadioButtonList"
-import { addFormDataSetterCallback } from "../../../utils/helpers"
+import { addFormDataSetterCallback, cloneChildrenForShowIf, setupShowIfPresent } from "../../../utils/helpers"
 
 const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   children,
   radioButtonProps,
 }) => {
+
+  const isSetupShowIfPresent = setupShowIfPresent(radioButtonProps)
+  if (isSetupShowIfPresent) return null
 
   radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null)
   addFormDataSetterCallback(radioButtonProps)
@@ -18,7 +19,8 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
     radioButtonProps.name,
     radioButtonProps.legend,
     radioButtonProps.radioButtonOptions,
-    radioButtonProps.eleRef as React.MutableRefObject<HTMLInputElement>
+    radioButtonProps.eleRef as React.MutableRefObject<HTMLInputElement>,
+    radioButtonProps.pubsub
   )
 
   return (
@@ -39,6 +41,7 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
         valid={radioButtonProps.valid}
         message={radioButtonProps.validationMessage}
       />
+      {cloneChildrenForShowIf(children, radioButtonProps)}
     </div>
   )
 }

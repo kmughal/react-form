@@ -1,3 +1,5 @@
+import { PubSub } from "./Form/Form.Props";
+
 export default interface BaseComponentProps {
 
   id: string;
@@ -9,5 +11,8 @@ export default interface BaseComponentProps {
   valid?: boolean;
   validationMessage?: string;
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
-  onChange?: (event: HTMLElement) => void
+  onChange?: (event: HTMLElement) => void,
+  showIfCallback?: (value: any) => boolean,
+  showIfValue?: any,
+  pubsub?: PubSub
 }

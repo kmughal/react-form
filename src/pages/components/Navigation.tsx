@@ -11,6 +11,9 @@ export default () => {
         <li>
           <a href="/login">Simple Login example</a>
         </li>
+        <li>
+          <a href="/complex-form">Complex Form</a>
+        </li>
       </ul>
     </nav>
   )

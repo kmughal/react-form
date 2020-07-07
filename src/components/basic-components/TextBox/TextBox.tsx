@@ -1,16 +1,22 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
 import ValidationError from "../ValidationError"
-import { addFormDataSetterCallback } from "../../../utils/helpers"
+import { addFormDataSetterCallback, setupShowIfPresent, cloneChildrenForShowIf } from "../../../utils/helpers"
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
+  
+  
+  const isSetupShowIfPresent = setupShowIfPresent(textBoxProps)
+  if (isSetupShowIfPresent) return null
+
+  textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null)
   const refAsInputElement = textBoxProps.eleRef as React.MutableRefObject<
     HTMLInputElement
   >
-  textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null)
+
   textBoxProps.valid = textBoxProps.valid ?? true
   addFormDataSetterCallback(textBoxProps)
 
@@ -28,6 +34,9 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
           if (textBoxProps.onChange) {
             textBoxProps.onChange(e.target)
           }
+          console.log(e.target.value)
+          //if (textBoxProps.eleRef && textBoxProps.eleRef.current)
+          textBoxProps.eleRef.current.value += e.target.value
         }}
         aria-describedby={textBoxProps.id + "_error"}
       />
@@ -35,6 +44,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
         valid={textBoxProps.valid}
         message={textBoxProps.validationMessage}
       />
+       {cloneChildrenForShowIf(children, textBoxProps)}
     </div>
   )
 }

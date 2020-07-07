@@ -1,13 +1,21 @@
 import * as React from "react"
 import SelectBoxProps from "./SelectBox.Props"
 import SelectBoxOption from "./SelectBoxOption"
-import { addFormDataSetterCallback } from "../../../utils/helpers"
+import {
+  addFormDataSetterCallback,
+  overrideProperty,
+  cloneChildrenForShowIf,
+  setupShowIfPresent,
+} from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
+  children,
   selectBoxProps,
 }) => {
-  
+  const isSetupShowIfPresent = setupShowIfPresent(selectBoxProps)
+  if (isSetupShowIfPresent) return null
+
   selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null)
   addFormDataSetterCallback(selectBoxProps)
 
@@ -30,6 +38,13 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         name={selectBoxProps.name}
         id={selectBoxProps.id}
         aria-describedby={selectBoxProps.id + "_error"}
+        onChange={(e) => {
+          if (selectBoxProps.pubsub) {
+            selectBoxProps.pubsub.publish(selectBoxProps.name, {
+              data: e.target.value,
+            })
+          }
+        }}
       >
         {selectOptions}
       </select>
@@ -37,6 +52,15 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         valid={selectBoxProps.valid}
         message={selectBoxProps.validationMessage}
       />
+
+      {cloneChildrenForShowIf(children, selectBoxProps)}
+      {/* {React.Children.map(children as any, (child, _) => {
+        let _props = child.props
+        overrideProperty(_props, "pubsub", selectBoxProps.pubsub)
+        overrideProperty(_props, "eventName", selectBoxProps.name)
+        overrideProperty(_props, "formDataSetters", selectBoxProps.formDataSetters)
+        return React.cloneElement(child, { ..._props })
+      })} */}
     </div>
   )
 }
