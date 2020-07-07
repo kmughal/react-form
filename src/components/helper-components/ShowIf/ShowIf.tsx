@@ -18,8 +18,10 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
       {React.Children.map(props.children, (child: any, index) => {
         let _props = child.props
         overrideProperty(_props, "showIfValue", showIfValue)
+        overrideProperty(_props, "eleRef", props.showIfProps.eleRef)
         overrideProperty(_props, "validators", props.showIfProps.validators)
         overrideProperty(_props, "formDataSetters", props.showIfProps.formDataSetters)
+        overrideProperty(_props, "pubsub", props.showIfProps.pubsub)
        
         return React.cloneElement(child, { ..._props })
       })}

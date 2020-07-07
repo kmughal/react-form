@@ -6,4 +6,5 @@ export default interface ShowIfProps {
   eventName?: string;
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
   validators?: Record<string, () => Array<string | boolean>>,
+  eleRef: any
 }

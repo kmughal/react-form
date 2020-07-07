@@ -94,6 +94,11 @@ const cloneChildrenForShowIf = (children, props) => {
     overrideProperty(_props, "pubsub", props.pubsub)
     overrideProperty(_props, "eventName", props.name)
     overrideProperty(_props, "formDataSetters", props.formDataSetters)
+    overrideProperty(_props, "showIfCallback", props.showIfCallback)
+    overrideProperty(_props, "showIfValue", props.showIfValue)
+    overrideProperty(_props, "validators", props.validators)
+    overrideProperty(_props, "eleRef", props.eleRef)
+
     return React.cloneElement(child, { ..._props })
   })
 }

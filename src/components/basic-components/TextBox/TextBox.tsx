@@ -11,6 +11,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
+  
   const isSetupShowIfPresent = setupShowIfPresent(textBoxProps)
   if (isSetupShowIfPresent) return null
 

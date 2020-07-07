@@ -97,14 +97,7 @@ const Index = () => {
     name: "street",
     label: "Street / House number",
     placeholder: "Street address",
-  }
-
-  const postCodeProps: PostCodeProps = {
-    id: "postcode",
-    name: "postcode",
-    label: "PostCode:",
-    validationMessage: "Invalid post code",
-    placeholder: "Provide valid Postcode",
+    showIfCallback: ({ data }) => data === "give_details",
   }
 
   const countriesSelectBoxProps: SelectBoxProps = {
@@ -146,6 +139,15 @@ const Index = () => {
     label: "Name :",
     placeholder: "Provide name ....",
     name: "name",
+    showIfCallback: ({ data }) => data === "give_details",
+  }
+
+  const postCodeProps: PostCodeProps = {
+    id: "postcode",
+    name: "postcode",
+    label: "PostCode:",
+    validationMessage: "Invalid post code",
+    placeholder: "Provide valid Postcode",
     showIfCallback: ({ data }) => data === "give_details",
   }
 
@@ -194,7 +196,10 @@ const Index = () => {
 
         <RadioButton radioButtonProps={radioButtonProps}>
           <ShowIf showIfProps={showDetailsInputBox}>
-            <TextBox textBoxProps={nameTextBoxProps} />
+            <RequiredValidator requiredValidatorProps={requiredValidator}>
+              <TextBox textBoxProps={nameTextBoxProps} />
+            </RequiredValidator>
+            <TextBox textBoxProps={streetTextBoxProps} />
           </ShowIf>
         </RadioButton>
 
