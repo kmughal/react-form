@@ -27,6 +27,12 @@ const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
         name={checkBoxProps.name}
         value={checkBoxProps.value}
         aria-describedby={checkBoxProps.id + "_error"}
+        onChange={(e) => {
+          if (checkBoxProps.pubsub)
+            checkBoxProps.pubsub.publish(checkBoxProps.name, {
+              data: e.target.value,
+            })
+        }}
       />
       <ValidationError
         valid={checkBoxProps.valid}

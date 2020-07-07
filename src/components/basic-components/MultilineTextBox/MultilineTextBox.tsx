@@ -24,6 +24,12 @@ const MultilineTextBox: React.FC<{ multilineTextBoxProps: MultilineTextBoxProps 
         cols={multilineTextBoxProps.columns}
         ref={refAsInputElement}
         placeholder={multilineTextBoxProps.placeholder}
+        onChange={e => {
+          if (multilineTextBoxProps.pubsub)
+          multilineTextBoxProps.pubsub.publish(multilineTextBoxProps.name, {
+            data: e.target.value,
+          })
+        }}
       />
       <ValidationError
         valid={multilineTextBoxProps.valid}

@@ -39,6 +39,12 @@ const SingleFileUpload: React.FC<{
         id={singleFileUploadProps.id}
         name={singleFileUploadProps.name}
         accept={singleFileUploadProps.accept}
+        onChange={e => {
+          if (singleFileUploadProps.pubsub)
+          singleFileUploadProps.pubsub.publish(singleFileUploadProps.name, {
+            data: e.target.value,
+          })
+        }}
       />
       <ValidationError
         valid={singleFileUploadProps.valid}
