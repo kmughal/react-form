@@ -24,5 +24,8 @@ describe("TextBox tests", () => {
     expect(label).attributeValueMustBeSame("for", "name")
   })
 
-  it("when onChange handler is passed as textBox property then it should be called on change event", () => {})
+  it("when onChange handler is passed as textBox property then it should be called on change event", () => {
+
+    
+  })
 })

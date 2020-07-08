@@ -17,7 +17,12 @@ import { TitleProps, PostCodeProps, GenderProps } from "../components/recepies"
 import Navigation from "./components/Navigation"
 import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
 import React from "react"
-import { ShowIf, ShowIfProps } from "../components/helper-components"
+import {
+  ShowIf,
+  ShowIfProps,
+  PlainMarkup,
+  PlainMarkupProps,
+} from "../components/helper-components"
 import MultilineTextBoxProps from "../components/basic-components/MultilineTextBox/MultilineTextBox.Props"
 import RadioButtonProps from "../components/basic-components/RadioButton/RadioButton.Props"
 import { RadioButtonOption } from "../components/basic-components/RadioButton/RadioButtonOption"
@@ -41,7 +46,9 @@ const Index = () => {
   }
 
   const requiredValidator: BaseValidatorProps = { name: "name_required" }
-  const commentsRequiredValidator: BaseValidatorProps = { name: "comments_required" }
+  const commentsRequiredValidator: BaseValidatorProps = {
+    name: "comments_required",
+  }
 
   const streetTextBoxProps: BaseComponentProps = {
     id: "street",
@@ -82,7 +89,17 @@ const Index = () => {
       new RadioButtonOption("No I dont want to give my details", "no_details"),
     ],
     label: "choice_deetail",
-    id: "choice_detail"
+    id: "choice_detail",
+  }
+
+  const plainMarkupProps: PlainMarkupProps = {
+    id: "plain_markup_prop",
+    parentElementValue: (data) => { 
+      if (data) {
+        const value = data.data 
+        return <p>You have entered : {value} / Characters : {value.length}</p>
+      }
+    },
   }
 
   return (
@@ -91,7 +108,9 @@ const Index = () => {
 
       <Form formProps={formProps}>
         <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
-        <MultilineTextBox multilineTextBoxProps={multilineTextBoxProps} />
+          <MultilineTextBox multilineTextBoxProps={multilineTextBoxProps}>
+            <PlainMarkup plainMarkupProps={plainMarkupProps} />
+          </MultilineTextBox>
         </RequiredValidator>
 
         <RadioButton radioButtonProps={radioButtonProps}>
