@@ -15,7 +15,8 @@ const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
         overrideProperty(_props, "eventName", props.baseValidator.eventName)
         overrideProperty(_props, "showIfValue", props.baseValidator.showIfValue)
         overrideProperty(_props, "validators", props.baseValidator.validators)
-        
+        overrideProperty(_props, "validatorName", props.baseValidator.name)
+
         overrideProperty(
           _props,
           "formDataSetters",

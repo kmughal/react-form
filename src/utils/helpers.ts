@@ -1,5 +1,4 @@
 import BaseComponentProps from "../components/basic-components/BaseComponent.Propts"
-import { stringify } from "querystring"
 import React from "react"
 
 function overrideProperty(
@@ -34,13 +33,6 @@ const addFormDataSetterCallback = (
 }
 
 const extractTheValidationMessageForSummary = children => {
-  // const props = children.props
-  // for (let prop in props) {
-  //   let item = props[prop]
-  //   if (item.validationMessage) return [item.label, item.validationMessage ?? "Something went wrong"]
-  // }
-  // return [null, null]
-
   const label = getPropertyValueFromReactComponentProps(children, "label")
   const validationMessage = getPropertyValueFromReactComponentProps(children, "validationMessage")
   return [label, validationMessage]
@@ -79,9 +71,11 @@ const setupShowIfPresent = props => {
     if (props.showIfCallback) {
       const showIfResult = props.showIfCallback(props.showIfValue)
       if (!showIfResult) {
-        if (props.formDataSetters[props.name]) {
+        if (props.formDataSetters[props.name])
           delete props.formDataSetters[props.name]
-        }
+        if (props.validators[props.validatorName])
+          delete props.validators[props.validatorName]
+
         return true
       }
     }

@@ -7,12 +7,13 @@ export default interface BaseComponentProps {
   label: string;
   value?: string;
   placeholder?: string;
-  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLTextAreaElement>
   valid?: boolean;
   validationMessage?: string;
   formDataSetters?: Record<string, ((formData: FormData) => void)>;
   onChange?: (event: HTMLElement) => void,
   showIfCallback?: (value: any) => boolean,
   showIfValue?: any,
-  pubsub?: PubSub
+  pubsub?: PubSub,
+  validatorName?: string,
 }

@@ -72,7 +72,6 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       formProps.submitForm(_formData)
     }
     e.preventDefault()
-    debugger
     _formData = new FormData()
   }
 

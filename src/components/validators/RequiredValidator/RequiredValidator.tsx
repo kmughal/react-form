@@ -12,7 +12,6 @@ const RequiredValidator: React.FC<{
   requiredValidatorProps: BaseValidatorProps
 }> = (props) => {
   const [valid, setValidator] = React.useState(true)
-
   var callback = (args: Record<string, any>): Array<boolean | string> => {
     const { _target, _setValidator, _fieldName, _validationMessage, _fieldId } = args
     let _isValid = false

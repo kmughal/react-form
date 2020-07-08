@@ -3,11 +3,6 @@ import {
   Form,
   FormProps,
   TextBox,
-  NumberBox,
-  SelectBoxProps,
-  SelectBoxOption,
-  SelectBox,
-  SingleFileUpload,
   MultilineTextBox,
   RadioButton,
 } from "../components/basic-components"
@@ -15,18 +10,10 @@ import {
 import {
   RequiredValidator,
   BaseValidatorProps,
-  RangeValidator,
   RangeValidatorProps,
 } from "../components/validators"
 
-import {
-  Title,
-  TitleProps,
-  PostCodeProps,
-  PostCode,
-  Gender,
-  GenderProps,
-} from "../components/recepies"
+import { TitleProps, PostCodeProps, GenderProps } from "../components/recepies"
 import Navigation from "./components/Navigation"
 import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
 import React from "react"
@@ -53,44 +40,8 @@ const Index = () => {
     showValidationSummary: true,
   }
 
-  const textBoxProps: BaseComponentProps = {
-    id: "name",
-    name: "name",
-    label: "Name :",
-    validationMessage: "Please provide the name.",
-    placeholder: "enter name",
-  }
-
   const requiredValidator: BaseValidatorProps = { name: "name_required" }
-
-  const titleProps: TitleProps = {
-    name: "title",
-    id: "title",
-    label: "Title :",
-    placeholder: "Please select title",
-    validationMessage: "Title is required!",
-  }
-
-  const ageProps: BaseComponentProps = {
-    id: "age",
-    name: "age",
-    label: "Age :",
-    placeholder: "Provide age",
-    validationMessage: "Age must be between 5 - 15",
-  }
-
-  const ageRangeValidation: RangeValidatorProps = {
-    name: "age_range_validation",
-    max: 15,
-    min: 5,
-  }
-
-  const genderProps: GenderProps = {
-    name: "gender",
-    id: "rd_gender",
-    label: "Select gender ",
-    validationMessage: "Please select gender as it is required!",
-  }
+  const commentsRequiredValidator: BaseValidatorProps = { name: "comments_required" }
 
   const streetTextBoxProps: BaseComponentProps = {
     id: "street",
@@ -98,36 +49,6 @@ const Index = () => {
     label: "Street / House number",
     placeholder: "Street address",
     showIfCallback: ({ data }) => data === "give_details",
-  }
-
-  const countriesSelectBoxProps: SelectBoxProps = {
-    id: "ddl_countires",
-    name: "countries",
-    label: "Country :",
-    placeholder: "Select Country",
-    options: [
-      new SelectBoxOption(".....", ""),
-      new SelectBoxOption("UK", "uk"),
-      new SelectBoxOption("USA", "usa"),
-      new SelectBoxOption("Pakistan", "pakistan"),
-    ],
-    validationMessage: "Country is a required field!",
-  }
-
-  const countryRequiredValidatorProps: BaseValidatorProps = {
-    name: "required_countries",
-  }
-
-  const requiredFileProps: BaseValidatorProps = {
-    name: "file_required",
-  }
-  const singleFileProps: SingleFileUploadProps = {
-    id: "user_doc",
-    name: "user_doc",
-    accept: ".jpeg",
-    label: "Provide a document",
-    placeholder: "Document",
-    validationMessage: "A document is required!",
   }
 
   const showDetailsInputBox: ShowIfProps = {
@@ -138,26 +59,10 @@ const Index = () => {
     id: "name",
     label: "Name :",
     placeholder: "Provide name ....",
+    validationMessage: "Please provide the name",
     name: "name",
     showIfCallback: ({ data }) => data === "give_details",
   }
-
-  const postCodeProps: PostCodeProps = {
-    id: "postcode",
-    name: "postcode",
-    label: "PostCode:",
-    validationMessage: "Invalid post code",
-    placeholder: "Provide valid Postcode",
-    showIfCallback: ({ data }) => data === "give_details",
-  }
-
-  // const textBoxCondition2: BaseComponentProps = {
-  //   id: "txt_condition_2",
-  //   label: "Enter your second_name",
-  //   placeholder: "Secondname",
-  //   name: "second_name",
-  //   showIfCallback: ({ data }) => data === "usa",
-  // }
 
   const multilineTextBoxProps: MultilineTextBoxProps = {
     id: "comments",
@@ -166,6 +71,7 @@ const Index = () => {
     placeholder: "Enter comments",
     rows: 10,
     columns: 20,
+    validationMessage: "Please provide the comments",
   }
 
   const radioButtonProps: RadioButtonProps = {
@@ -176,6 +82,7 @@ const Index = () => {
       new RadioButtonOption("No I dont want to give my details", "no_details"),
     ],
     label: "choice_deetail",
+    id: "choice_detail"
   }
 
   return (
@@ -183,16 +90,9 @@ const Index = () => {
       <Navigation />
 
       <Form formProps={formProps}>
+        <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
         <MultilineTextBox multilineTextBoxProps={multilineTextBoxProps} />
-
-        {/* <SelectBox selectBoxProps={countriesSelectBoxProps}>
-          <ShowIf showIfProps={showIfProps1}>
-            <TextBox textBoxProps={textBoxCondition1} />
-          </ShowIf>
-          <ShowIf showIfProps={showIfProps2}>
-            <TextBox textBoxProps={textBoxCondition2} />
-          </ShowIf>
-        </SelectBox> */}
+        </RequiredValidator>
 
         <RadioButton radioButtonProps={radioButtonProps}>
           <ShowIf showIfProps={showDetailsInputBox}>
