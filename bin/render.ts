@@ -12,7 +12,18 @@ export default (component, window = null) => {
   document.body.appendChild(container)
   render(component, document.getElementById("root"))
 
+  const triggerEvent = (eventName, element) => {
+    if ("createEvent" in document) {
+      const evt = document.createEvent("HTMLEvents");
+      evt.initEvent(eventName, false, true);
+      element.dispatchEvent(evt);
+    }
+    else
+      element.fireEvent(`on${eventName}`);
+  }
+
   return {
+    window,
     document,
     getById: id => document.getElementById(id),
     getTextById: id => document.getElementById(id).textContent,
@@ -22,8 +33,7 @@ export default (component, window = null) => {
     check: id => document.getElementById(id).checked = true,
     unCheck: id => document.getElementById(id).checked = false,
     getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName),
-    typeText: (id, text) => document.getElementById(id).value = text,
-    typeElementText : (el,text) => el.value = text
-  }
+    typeElementText: (el, value) => el.value = value,
 
+  }
 }

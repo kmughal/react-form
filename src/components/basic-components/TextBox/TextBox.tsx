@@ -11,7 +11,6 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
-  
   const isSetupShowIfPresent = setupShowIfPresent(textBoxProps)
   if (isSetupShowIfPresent) return null
 
@@ -33,9 +32,6 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
         ref={refAsInputElement}
         placeholder={textBoxProps.placeholder}
         onChange={(e) => {
-          if (textBoxProps.onChange) {
-            textBoxProps.onChange(e.target)
-          }
           if (textBoxProps.pubsub)
             textBoxProps.pubsub.publish(textBoxProps.name, {
               data: e.target.value,
