@@ -21,7 +21,9 @@ export default (component, window = null) => {
     click: id => document.getElementById(id).click(),
     check: id => document.getElementById(id).checked = true,
     unCheck: id => document.getElementById(id).checked = false,
-    getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName)
+    getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName),
+    typeText: (id, text) => document.getElementById(id).value = text,
+    typeElementText : (el,text) => el.value = text
   }
 
 }
