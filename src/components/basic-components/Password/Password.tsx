@@ -20,6 +20,8 @@ const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
         type="password"
         ref={refAsInputElement}
         placeholder={passwordProps.placeholder}
+        name={passwordProps.name}
+        id={passwordProps.id}
       />
       <ValidationError
         valid={passwordProps.valid}
