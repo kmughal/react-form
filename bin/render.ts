@@ -1,6 +1,6 @@
 import Window from "window"
 import { render } from "react-dom"
-
+import EventTypes from "./eventtypes"
 let _window = null
 
 export default (component, window = null) => {
@@ -13,13 +13,10 @@ export default (component, window = null) => {
   render(component, document.getElementById("root"))
 
   const triggerEvent = (eventName, element) => {
-    if ("createEvent" in document) {
-      const evt = document.createEvent("HTMLEvents");
-      evt.initEvent(eventName, false, true);
-      element.dispatchEvent(evt);
-    }
-    else
-      element.fireEvent(`on${eventName}`);
+    const metaData = EventTypes[eventName]
+    const evt = document.createEvent(metaData.EventType);
+    evt.initEvent(eventName, metaData.defaultInit.bubbles, metaData.defaultInit.cancelable);
+    element.dispatchEvent(evt);
   }
 
   return {
@@ -28,12 +25,18 @@ export default (component, window = null) => {
     getById: id => document.getElementById(id),
     getTextById: id => document.getElementById(id).textContent,
     getByTagName: tagName => (document.getElementsByTagName(tagName)[0] || null),
+    getAllByTagName: tagName => {
+      const inputs = ["radio", "checkbox", "text", "password", "number"]
+      if (inputs.includes(tagName)) return document.querySelectorAll(`input[type="${tagName}"]`)
+      return document.getElementsByTagName(tagName)
+    },
     setValueOfTextBox: (id, value) => document.getElementById(id).value = value,
     click: id => document.getElementById(id).click(),
     check: id => document.getElementById(id).checked = true,
     unCheck: id => document.getElementById(id).checked = false,
     getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName),
     typeElementText: (el, value) => el.value = value,
+    triggerEvent
 
   }
 }

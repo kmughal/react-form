@@ -9,8 +9,9 @@ const RadioButtonList = (
   eleRef: React.MutableRefObject<HTMLInputElement>,
   pubsub: PubSub
 ) => {
-  const markSelection = (event: React.MouseEvent<HTMLInputElement>) =>
-    (eleRef.current.value = (event.target as HTMLInputElement).value)
+  const markSelection = (event: React.MouseEvent<HTMLInputElement>) => {
+    eleRef.current.value = (event.target as HTMLInputElement).value
+  }
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
     const _id = `${name.replace(" ", "_")}_${index}`
@@ -23,7 +24,7 @@ const RadioButtonList = (
           value={rd.value}
           onClick={markSelection}
           aria-describedby={name + "_error"}
-          onChange={e => {
+          onChange={(e) => {
             if (pubsub) pubsub.publish(name, { data: e.target.value })
           }}
         />
@@ -41,5 +42,3 @@ const RadioButtonList = (
 }
 
 export default RadioButtonList
-
- 

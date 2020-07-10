@@ -2,7 +2,7 @@ const attributeValueMustBeSame = (ele, attributeName: string, actualValue: strin
   if (!ele) return {
     message: () => "ele is null check selector!", pass: false
   }
-
+  
   let pass = !!ele.getAttribute(attributeName)
   if (pass) {
 
