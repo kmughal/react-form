@@ -28,5 +28,6 @@ describe("RadioButton tests", () => {
     expect(opt1.checked).toBeTruthy()
     expect(opt1).attributeValueMustBeSame("name", "opt_types")
     expect(opt1).attributeValueMustBeSame("id", "opt_types_0")
+    expect(props.eleRef.current.value).toEqual("option_1")
   })
 })
