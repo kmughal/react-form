@@ -19,7 +19,7 @@ const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
 
   return (
     <div>
-      {checkBoxProps.label + " "}
+      <label htmlFor={checkBoxProps.name}>{checkBoxProps.label + " "}</label>
       <input
         type="checkbox"
         id={checkBoxProps.id}
