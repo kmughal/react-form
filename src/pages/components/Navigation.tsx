@@ -14,6 +14,9 @@ export default () => {
         <li>
           <a href="/complex-form">Complex Form</a>
         </li>
+        <li>
+          <a href="/multi-docs-upload">Multiple Documents Upload</a>
+        </li>
       </ul>
     </nav>
   )

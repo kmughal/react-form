@@ -16,7 +16,8 @@ const RequiredValidator: React.FC<{
     const { _target, _setValidator, _fieldName, _validationMessage, _fieldId } = args
     let _isValid = false
     const _ele = _target.current
-    if (_ele.type === "checkbox") _isValid = (_ele as HTMLInputElement).checked
+    if (!_ele) _isValid = false
+    else if (_ele.type === "checkbox") _isValid = (_ele as HTMLInputElement).checked
     else _isValid = _ele.value.length > 0
     _setValidator(_isValid)
     return [_isValid, _fieldName, _validationMessage, _fieldId]

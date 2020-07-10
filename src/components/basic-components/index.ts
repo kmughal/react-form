@@ -8,6 +8,7 @@ export * from "./SelectBox"
 export * from "./SingleFileUpload"
 export * from "./MultiFileUpload"
 export * from "./Form"
+export * from "./MultiFileUpload"
 
 import type BaseComponentProps from "./BaseComponent.Propts"
 export type { BaseComponentProps } 
