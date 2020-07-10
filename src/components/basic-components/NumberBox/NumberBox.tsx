@@ -16,7 +16,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
     <div>
       <label htmlFor={numberProps.name}>{numberProps.label}</label>
       <input
-        type="text"
+        type="number"
         ref={refAsInputElement}
         id={numberProps.id}
         name={numberProps.name}
