@@ -10,7 +10,7 @@ describe("CheckBox tests", () => {
       placeholder: "Select",
       label: "CheckBox :",
     }
-    const { getById, typeElementText } = render(
+    const { getById } = render(
       <CheckBox checkBoxProps={props} />
     )
 
