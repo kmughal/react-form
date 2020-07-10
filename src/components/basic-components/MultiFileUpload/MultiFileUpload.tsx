@@ -18,7 +18,7 @@ const MultiFileUpload: React.FC<{
     width: "100%",
     height: "400px",
     border: "2px dashed gray",
-    textAlign: "center",
+    textAlign: "center" as const,
     lineHeight: "400px",
     fontSize: "18px",
   }
