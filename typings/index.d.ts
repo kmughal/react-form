@@ -5,6 +5,8 @@ declare global {
       mustHaveAnAttribute(actual: string): R;
       attributeValueMustBeSame(attributeName: string, attributeValue: string): R;
       valueMustBeEqual(value: string): R;
+      textContentEqual(value: string): R;
+      typeMustBe(value: string): R;
     }
   }
 }
