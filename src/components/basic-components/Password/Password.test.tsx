@@ -57,14 +57,14 @@ describe("Password tests", () => {
         placeholder: "Provide Password",
         label: "Password :",
         valid: false,
-        validationMessage: "Provided age is not valid",
+        validationMessage: "Provided password is not valid",
       }
       const { getByTagName } = render(<Password passwordProps={props} />)
 
       const validationParagraphMessage = getByTagName("p")
       expect(validationParagraphMessage).not.toBeNull()
       expect(validationParagraphMessage).textContentEqual(
-        "Provided age is not valid"
+        "Provided password is not valid"
       )
     })
   })
