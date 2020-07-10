@@ -54,6 +54,7 @@ const MultiFileUpload: React.FC<{
       fileList.forEach((file: any, index: number) => {
         formData.append(`file_${index}`, file, file.name)
       })
+      multiFileUploadProps.eleRef.current = null
     }
 
     multiFilesContainer.current.innerHTML = `<div style="display:flex;background-color: DodgerBlue">${markup.join(
