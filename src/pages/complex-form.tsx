@@ -94,10 +94,14 @@ const Index = () => {
 
   const plainMarkupProps: PlainMarkupProps = {
     id: "plain_markup_prop",
-    parentElementValue: (data) => { 
+    parentElementValue: (data) => {
       if (data) {
-        const value = data.data 
-        return <p>You have entered : {value} / Characters : {value.length}</p>
+        const value = data.data
+        return (
+          <p>
+            You have entered : {value} / Characters : {value.length}
+          </p>
+        )
       }
     },
   }
@@ -106,32 +110,90 @@ const Index = () => {
     <>
       <Navigation />
 
-      <Form formProps={formProps}>
-        <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
-          <MultilineTextBox multilineTextBoxProps={multilineTextBoxProps}>
-            <PlainMarkup plainMarkupProps={plainMarkupProps} />
-          </MultilineTextBox>
-        </RequiredValidator>
+      <div className="form-container">
+        <Form formProps={formProps}>
+          <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
+            <MultilineTextBox multilineTextBoxProps={multilineTextBoxProps}>
+              <PlainMarkup plainMarkupProps={plainMarkupProps} />
+            </MultilineTextBox>
+          </RequiredValidator>
 
-        <RadioButton radioButtonProps={radioButtonProps}>
-          <ShowIf showIfProps={showDetailsInputBox}>
-            <RequiredValidator requiredValidatorProps={requiredValidator}>
-              <TextBox textBoxProps={nameTextBoxProps} />
-            </RequiredValidator>
-            <TextBox textBoxProps={streetTextBoxProps} />
-          </ShowIf>
-        </RadioButton>
+          <RadioButton radioButtonProps={radioButtonProps}>
+            <ShowIf showIfProps={showDetailsInputBox}>
+              <RequiredValidator requiredValidatorProps={requiredValidator}>
+                <TextBox textBoxProps={nameTextBoxProps} />
+              </RequiredValidator>
+              <TextBox textBoxProps={streetTextBoxProps} />
+            </ShowIf>
+          </RadioButton>
 
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </Form>
-      {payload && (
-        <>
-          <h1>Pay load from server :</h1>
-          <pre>{JSON.stringify(payload, null, 2)}</pre>
-        </>
-      )}
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </Form>
+        {payload && (
+          <>
+            <h1>Pay load from server :</h1>
+            <pre>{JSON.stringify(payload, null, 2)}</pre>
+          </>
+        )}
+      </div>
+      <style jsx global>{`
+        nav {
+          text-align: right;
+        }
+        nav ul li {
+          display: inline-block;
+          margin: 5px 5px;
+        }
+        nav ul li a {
+          text-decoration: none;
+        }
+
+        nav ul li a :after {
+          content: " | ";
+        }
+
+        .form-container {
+          width: 50%;
+          margin: auto;
+        }
+        button {
+          padding: 15px 15px;
+          border-radius: 5px;
+          border: 2px solid rgb(226, 232, 240);
+          background: rgb(66, 153, 225);
+          color: white;
+          font-weight: bold;
+        }
+
+        .button-container {
+          text-align: right;
+          width: 475px;
+        }
+
+        div {
+          padding: 5px 5px;
+          margin: 0px 0px;
+        }
+        label {
+          position: relative;
+          width: 150px;
+          display: inline-block;
+          text-align: right;
+        }
+        select,
+        input[type="text"] {
+          padding: 5px 5px;
+          display: inline-block;
+          border: 2px solid rgb(226, 232, 240);
+          width: 300px;
+          border-radius: 5px;
+        }
+        select {
+          width: 321px !important;
+        }
+      `}</style>
     </>
   )
 }
