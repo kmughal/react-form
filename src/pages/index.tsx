@@ -133,6 +133,11 @@ const Index = () => {
   return (
     <>
       <Navigation />
+      <h2>Basic Form</h2>
+      <p>
+        This is a basic form created using react form. 
+        This page is using almost all controls.
+      </p>
       <div className="form-container">
       <Form formProps={formProps}>
         <Title titleProps={titleProps} />
@@ -194,6 +199,10 @@ const Index = () => {
           font-weight: bold;
         }
 
+        fieldset div label {
+          width: 55px;
+        }
+
         .button-container {
           text-align: right;
           width: 475px;
@@ -210,7 +219,8 @@ const Index = () => {
           text-align: right;
         }
         select,
-        input[type="text"] {
+        input[type="text"],
+        input[type="number"] {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);

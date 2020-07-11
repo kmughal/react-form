@@ -46,6 +46,10 @@ const LoginPage = () => {
   return (
     <>
       <Navigation />
+      <h2>Sign in</h2>
+      <p>
+        This is a simple login form created by react form.
+      </p>
 
       <Form formProps={formProps}>
         <RequiredValidator requiredValidatorProps={requiredValidator1}>

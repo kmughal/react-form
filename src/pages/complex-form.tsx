@@ -32,7 +32,7 @@ const Index = () => {
 
   const formProps: FormProps = {
     name: "test-form",
-    heading: "Complex Form Example",
+    heading: "",
     submitForm: (formData) => {
       fetch("/api/fake", {
         body: formData,
@@ -109,7 +109,11 @@ const Index = () => {
   return (
     <>
       <Navigation />
-
+      <h2>Complex Form</h2>
+      <p>
+        This is a complex form created using react form. 
+       
+      </p>
       <div className="form-container">
         <Form formProps={formProps}>
           <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
@@ -127,8 +131,8 @@ const Index = () => {
             </ShowIf>
           </RadioButton>
 
-          <div>
-            <input type="submit" value="Submit" />
+          <div className="button-container">
+           <button>Submit Form</button>
           </div>
         </Form>
         {payload && (
@@ -178,18 +182,20 @@ const Index = () => {
         }
         label {
           position: relative;
-          width: 150px;
+          
           display: inline-block;
           text-align: right;
+          vertical-align: top;
         }
         select,
-        input[type="text"] {
+        input[type="text"], textarea {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);
           width: 300px;
           border-radius: 5px;
         }
+        
         select {
           width: 321px !important;
         }
