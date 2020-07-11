@@ -28,6 +28,7 @@ const LoginPage = () => {
   }
 
   const formProps: FormProps = {
+    enableOffline: true,
     showValidationSummary: true,
     submitForm: (formData) => {
       fetch("/api/fake", {
@@ -47,9 +48,7 @@ const LoginPage = () => {
     <>
       <Navigation />
       <h2>Sign in</h2>
-      <p>
-        This is a simple login form created by react form.
-      </p>
+      <p>This is a simple login form created by react form.</p>
 
       <Form formProps={formProps}>
         <RequiredValidator requiredValidatorProps={requiredValidator1}>

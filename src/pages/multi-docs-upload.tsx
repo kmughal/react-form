@@ -24,10 +24,11 @@ const MultiDocsUploadPage = () => {
     name: "multi-docs",
     id: "multi-docs",
     placeholder: "Provie docs",
-    validationMessage: "Atleast select one file"
+    validationMessage: "Atleast select one file",
   }
 
   const formProps: FormProps = {
+    enableOffline: true,
     showValidationSummary: true,
     submitForm: (formData) => {
       fetch("/api/fake", {
@@ -47,9 +48,7 @@ const MultiDocsUploadPage = () => {
     <>
       <Navigation />
       <h2>Multiple file upload</h2>
-      <p>
-        This is an example of multiple upload file upload using react form.
-      </p>
+      <p>This is an example of multiple upload file upload using react form.</p>
       <Form formProps={formProps}>
         <RequiredValidator requiredValidatorProps={requiredValidator1}>
           <TextBox textBoxProps={textBoxProps} />
@@ -107,19 +106,20 @@ const MultiDocsUploadPage = () => {
         }
         label {
           position: relative;
-          
+
           display: inline-block;
           text-align: right;
         }
         select,
-        input[type="text"], textarea {
+        input[type="text"],
+        textarea {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);
           width: 300px;
           border-radius: 5px;
         }
-        
+
         select {
           width: 321px !important;
         }

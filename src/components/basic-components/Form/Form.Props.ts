@@ -12,7 +12,8 @@ interface FormProps {
   submitForm: (formData: FormData, plainJson: Record<string, string>) => void;
   validators?: Record<string, () => Array<string | boolean>>,
   formDataSetters?: Record<string, SetterFunc>;
-  pubsub?: PubSub
+  pubsub?: PubSub;
+  enableOffline?:boolean
 }
 
 export default FormProps
