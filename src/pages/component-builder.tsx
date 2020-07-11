@@ -1,4 +1,3 @@
-
 import {
   BaseComponentProps,
   Form,
@@ -72,6 +71,7 @@ const componentName: BaseComponentProps = {
   id: "component-name",
   name: "component-name",
   label: "Id / Name:",
+  placeholder: "Provide the name of the component",
   showIfCallback: ({ data }) => {
     if (!data) return false
     return (
@@ -87,6 +87,7 @@ const labelName: BaseComponentProps = {
   id: "label-name",
   name: "label-name",
   label: "Label Text:",
+  placeholder: "Provide the label of the component",
   showIfCallback: ({ data }) => {
     if (!data) return false
     return (
@@ -102,6 +103,7 @@ const placeholderText: BaseComponentProps = {
   id: "placeholder-text",
   name: "placeholder-text",
   label: "Placeholder Text:",
+  placeholder: "Provide the placeholder of the component",
   showIfCallback: ({ data }) => {
     if (!data) return false
     return (
@@ -180,50 +182,95 @@ const FormBUilderPage = () => {
 
   return (
     <div>
-     
       <Navigation />
-      {template && <pre>{template}</pre>}
-      <Form formProps={formBuilderProps}>
-        <SelectBox selectBoxProps={componentSelectBoxProps}>
-          <ShowIf showIfProps={showIfProps}>
-            <TextBox textBoxProps={componentName} />
-            <TextBox textBoxProps={labelName} />
-            <TextBox textBoxProps={placeholderText} />
-          </ShowIf>
-        </SelectBox>
+      <h2>Component Generation Page</h2>
+      <p>
+        This is a page which is build using the react-form. This page will
+        enable you to create react form code for any component
+      </p>
 
-        <SelectBox selectBoxProps={validatorSelectBoxProps}>
-          <ShowIf showIfProps={regexShowIf}>
-            <TextBox textBoxProps={regExTextBoxProps} />
-          </ShowIf>
-          <ShowIf showIfProps={rangeShowIf}>
-            <NumberBox numberProps={lowerBoundRangeProps} />
-            <NumberBox numberProps={upperBoundRangeProps} />
-          </ShowIf>
-        </SelectBox>
-        <div>
-          <button>Generate Code</button>
-        </div>
-      </Form>
+      {template && <pre>{template}</pre>}
+      <div className="form-container">
+        <Form formProps={formBuilderProps}>
+          <SelectBox selectBoxProps={componentSelectBoxProps}>
+            <ShowIf showIfProps={showIfProps}>
+              <TextBox textBoxProps={componentName} />
+              <TextBox textBoxProps={labelName} />
+              <TextBox textBoxProps={placeholderText} />
+            </ShowIf>
+          </SelectBox>
+
+          <SelectBox selectBoxProps={validatorSelectBoxProps}>
+            <ShowIf showIfProps={regexShowIf}>
+              <TextBox textBoxProps={regExTextBoxProps} />
+            </ShowIf>
+            <ShowIf showIfProps={rangeShowIf}>
+              <NumberBox numberProps={lowerBoundRangeProps} />
+              <NumberBox numberProps={upperBoundRangeProps} />
+            </ShowIf>
+          </SelectBox>
+          <div className="button-container">
+            <button>Generate Code</button>
+          </div>
+        </Form>
+      </div>
       <style jsx global>{`
-       div {
-         padding : 5px 5px;
-         margin: 0px 0px;
-       }
-       label {
-         position: relative;
-         width: 150px;
-         display:inline-block;
-       }
-       input[type=text] {
-       padding: 5px 5px;
-       display:inline-block;
-       border:2px solid rgb(226, 232, 240);
-       width: 300px
-       }
+        nav {
+          text-align: right;
+        }
+        nav ul li {
+          display: inline-block;
+          margin: 5px 5px;
+        }
+        nav ul li a {
+          text-decoration: none;
+        }
+
+        nav ul li a :after {
+          content: " | ";
+        }
+
+        .form-container {
+          width: 50%;
+          margin: auto;
+        }
+        button {
+          padding: 15px 15px;
+          border-radius: 5px;
+          border: 2px solid rgb(226, 232, 240);
+          background: rgb(66, 153, 225);
+          color: white;
+          font-weight: bold;
+        }
+
+        .button-container {
+          text-align: right;
+          width: 475px;
+        }
+
+        div {
+          padding: 5px 5px;
+          margin: 0px 0px;
+        }
+        label {
+          position: relative;
+          width: 150px;
+          display: inline-block;
+          text-align: right;
+        }
+        select,
+        input[type="text"] {
+          padding: 5px 5px;
+          display: inline-block;
+          border: 2px solid rgb(226, 232, 240);
+          width: 300px;
+          border-radius: 5px;
+        }
+        select {
+          width: 321px !important;
+        }
       `}</style>
     </div>
-    
   )
 }
 

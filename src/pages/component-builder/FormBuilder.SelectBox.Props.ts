@@ -21,6 +21,7 @@ const validatorSelectBoxProps: SelectBoxProps = {
   id: "form-buidler_validator-options",
   name: "form-buidler_validator-options",
   label: "Validators :",
+  placeholder : "Select a validator",
   options: [
     new SelectBoxOption("Select a validator", ""),
     new SelectBoxOption("Required Validator", "required"),
