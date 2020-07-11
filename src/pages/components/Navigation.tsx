@@ -2,7 +2,7 @@ export default () => {
   return (
     <nav>
       <h2 id="mainmenulabel" className="visuallyhidden">
-        Main Menu
+        React Form
       </h2>
       <ul>
         <li>
