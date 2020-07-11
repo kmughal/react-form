@@ -29,6 +29,7 @@ const addFormDataSetterCallback = (
   if (props.formDataSetters)
     props.formDataSetters[props.name] = (formData) => {
       formData.append(props.name, props.eleRef.current.value)
+      return { [props.name]: props.eleRef.current.value }
     }
 }
 
@@ -70,6 +71,7 @@ const setupShowIfPresent = props => {
   if (props.showIfValue) {
     if (props.showIfCallback) {
       const showIfResult = props.showIfCallback(props.showIfValue)
+      if (typeof showIfResult !== typeof true) return true
       if (!showIfResult) {
         if (props.formDataSetters[props.name])
           delete props.formDataSetters[props.name]
@@ -78,6 +80,7 @@ const setupShowIfPresent = props => {
 
         return true
       }
+
     }
   }
 }

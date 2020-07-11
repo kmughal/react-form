@@ -1,3 +1,4 @@
+import { SetterFunc } from "../../basic-components/Form/Form.Props";
 
 export default interface TitleProps {
   name: string,
@@ -8,7 +9,7 @@ export default interface TitleProps {
 
   eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
   valid?: boolean,
-  formDataSetters?: Record<string, ((formData: FormData) => void)>;
+  formDataSetters?: Record<string, SetterFunc>;
   validators?: Record<string, () => []>,
 }
 

@@ -1,11 +1,19 @@
 import * as React from "react"
 import BaseComponentProps from "../BaseComponent.Propts"
-import { addFormDataSetterCallback } from "../../../utils/helpers"
+import {
+  addFormDataSetterCallback,
+  cloneChildrenForShowIf,
+  setupShowIfPresent,
+} from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
 
 const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   numberProps,
+  children,
 }) => {
+  const isSetupShowIfPresent = setupShowIfPresent(numberProps)
+  if (isSetupShowIfPresent) return null
+
   const refAsInputElement = numberProps.eleRef as React.MutableRefObject<
     HTMLInputElement
   >
@@ -27,6 +35,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
         valid={numberProps.valid}
         message={numberProps.validationMessage}
       />
+      {cloneChildrenForShowIf(children, numberProps)}
     </div>
   )
 }

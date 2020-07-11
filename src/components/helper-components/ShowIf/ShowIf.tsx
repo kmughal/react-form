@@ -17,6 +17,7 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
     <>
       {React.Children.map(props.children, (child: any, index) => {
         let _props = child.props
+        if (child.props.className?.startsWith("jsx")) return child;
         overrideProperty(_props, "showIfValue", showIfValue)
         overrideProperty(_props, "eleRef", React.useRef(null))
         overrideProperty(_props, "validators", props.showIfProps.validators)

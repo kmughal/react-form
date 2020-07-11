@@ -17,6 +17,9 @@ export default () => {
         <li>
           <a href="/multi-docs-upload">Multiple Documents Upload</a>
         </li>
+        <li>
+          <a href="/component-builder">Component Builder</a>
+        </li>
       </ul>
     </nav>
   )

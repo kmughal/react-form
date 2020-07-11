@@ -9,6 +9,7 @@ const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
     <>
       {React.Children.map(props.children as any, (child, _) => {
         let _props = child.props
+        if (child.props.className?.startsWith("jsx")) return child;
         overrideProperty(_props, "eleRef", props.baseValidator.eleRef)
         overrideProperty(_props, "valid", props.baseValidator.valid)
         overrideProperty(_props, "pubsub", props.baseValidator.pubsub)

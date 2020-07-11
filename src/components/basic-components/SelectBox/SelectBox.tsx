@@ -54,13 +54,6 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
       />
 
       {cloneChildrenForShowIf(children, selectBoxProps)}
-      {/* {React.Children.map(children as any, (child, _) => {
-        let _props = child.props
-        overrideProperty(_props, "pubsub", selectBoxProps.pubsub)
-        overrideProperty(_props, "eventName", selectBoxProps.name)
-        overrideProperty(_props, "formDataSetters", selectBoxProps.formDataSetters)
-        return React.cloneElement(child, { ..._props })
-      })} */}
     </div>
   )
 }

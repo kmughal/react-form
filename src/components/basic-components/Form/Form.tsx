@@ -65,11 +65,14 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       console.log("check result!")
     } else {
       _formData = _formData ?? new FormData()
+     
+      let plainJson:Record<string,string>
       for (let index in formProps.formDataSetters) {
         let setter = formProps.formDataSetters[index]
-        setter(_formData)
+        let jsonResult = setter(_formData)
+        if (jsonResult)  plainJson = {... plainJson ,... jsonResult}
       }
-      formProps.submitForm(_formData)
+      formProps.submitForm(_formData, plainJson)
     }
     e.preventDefault()
     _formData = new FormData()
@@ -83,8 +86,9 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
           <ValidationSummary messages={validationSummary} />
         )}
         {React.Children.map(children as any, (child) => {
+          
           let _props = child.props
-
+          if (child.props.className?.startsWith("jsx")) return child;
           overrideProperty(_props, "eleRef", React.useRef(null))
           overrideProperty(_props, "validators", formProps.validators)
           overrideProperty(_props, "formDataSetters", formProps.formDataSetters)

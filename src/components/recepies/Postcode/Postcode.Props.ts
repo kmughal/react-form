@@ -1,5 +1,5 @@
 import BaseComponentProps from "../../basic-components/BaseComponent.Propts";
-import { PubSub } from "../../basic-components/Form/Form.Props";
+import { PubSub, SetterFunc } from "../../basic-components/Form/Form.Props";
 
 export default interface PostcodeProps {
   name: string,
@@ -10,7 +10,7 @@ export default interface PostcodeProps {
 
   eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
   valid?: boolean,
-  formDataSetters?: Record<string, ((formData: FormData) => void)>;
+  formDataSetters?: Record<string, SetterFunc>;
   validators?: Record<string, () => []>,
   
   showIfCallback?: (value: any) => boolean,

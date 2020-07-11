@@ -1,13 +1,17 @@
 
+
+
+export type SetterFunc = ((formData: FormData) => Record<string, string>);
+
 interface FormProps {
   heading?: string;
   enableOfflineFeature?: boolean;
   showValidationSummary?: boolean;
   name?: string;
   id?: string;
-  submitForm: (formData: FormData) => void;
+  submitForm: (formData: FormData, plainJson: Record<string, string>) => void;
   validators?: Record<string, () => Array<string | boolean>>,
-  formDataSetters?: Record<string, ((formData: FormData) => void)>;
+  formDataSetters?: Record<string, SetterFunc>;
   pubsub?: PubSub
 }
 
@@ -28,7 +32,7 @@ export class PubSub {
   }
 
   publish(eventName: string, data: any) {
-    
+
     const specific = this._list[eventName]
     if (specific) {
       specific.forEach(s => s(data))

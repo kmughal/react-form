@@ -24,6 +24,7 @@ const SingleFileUpload: React.FC<{
       file,
       singleFileUploadProps.eleRef.current.value
     )
+    return null
   }
 
   const refAsInputElement = singleFileUploadProps.eleRef as React.MutableRefObject<

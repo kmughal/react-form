@@ -1,4 +1,4 @@
-import { PubSub } from "./Form/Form.Props";
+import { PubSub, SetterFunc } from "./Form/Form.Props";
 
 export default interface BaseComponentProps {
 
@@ -10,7 +10,7 @@ export default interface BaseComponentProps {
   eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLTextAreaElement>
   valid?: boolean;
   validationMessage?: string;
-  formDataSetters?: Record<string, ((formData: FormData) => void)>;
+  formDataSetters?: Record<string, SetterFunc>;
   showIfCallback?: (value: any) => boolean,
   showIfValue?: any,
   pubsub?: PubSub,
