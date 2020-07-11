@@ -4,14 +4,13 @@ import {
   FormProps,
   NumberBox,
   SelectBox,
+  SelectBoxOption,
+  SelectBoxProps,
   TextBox,
 } from "../components/basic-components"
 import { ShowIf, ShowIfProps } from "../components/helper-components"
 import Navigation from "./components/Navigation"
-import {
-  componentSelectBoxProps,
-  validatorSelectBoxProps,
-} from "./component-builder/FormBuilder.SelectBox.Props"
+
 import React from "react"
 
 function generateTemplate(
@@ -148,6 +147,36 @@ const upperBoundRangeProps: BaseComponentProps = {
   showIfCallback: ({ data }) => {
     return data === "range"
   },
+}
+
+const componentSelectBoxProps: SelectBoxProps = {
+  id: "form-builder_component-options",
+  name: "form-builder_component-options",
+  placeholder: "Select a component",
+  label: "Component: ",
+  validationMessage: "Component selection is required",
+  options: [
+    new SelectBoxOption("Select a component", ""),
+    new SelectBoxOption("TextBox", "textbox"),
+    new SelectBoxOption("RadioButton", "radiobutton"),
+    new SelectBoxOption("CheckBox", "checkbox"),
+    new SelectBoxOption("Number", "number"),
+    new SelectBoxOption("Password", "password"),
+    new SelectBoxOption("SingleFileUpload", "singleFileUpload"),
+  ]
+}
+
+const validatorSelectBoxProps: SelectBoxProps = {
+  id: "form-buidler_validator-options",
+  name: "form-buidler_validator-options",
+  label: "Validators :",
+  placeholder : "Select a validator",
+  options: [
+    new SelectBoxOption("Select a validator", ""),
+    new SelectBoxOption("Required Validator", "required"),
+    new SelectBoxOption("Regular Expression Validator", "regex"),
+    new SelectBoxOption("Range Validator", "range")
+  ]
 }
 
 const FormBUilderPage = () => {
