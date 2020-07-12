@@ -9,10 +9,14 @@ const valueMustBeEqualWithTimeout = (ele, value: string, done: jest.DoneCallback
     })
 
     setTimeout(() => {
+      
       const pass = ele.value === value
       const result = pass ? { pass, message: () => "test passed" } :
         { pass, message: () => `Test failed : ${value} !== ${ele.value}` }
-      resolve(result)
+      if (result.pass)
+        resolve(result)
+      else
+        reject(result)
       done()
     }, timeout)
 
