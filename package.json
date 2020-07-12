@@ -9,7 +9,8 @@
     "dev": "next",
     "test": "jest",
     "test:watch": "jest --watch",
-    "docs" : "typedoc"
+    "docs" : "typedoc",
+    "test:coverage" : "jest --collectCoverage"
   },
   "cacheDirectories": [
     "node_modules/",
