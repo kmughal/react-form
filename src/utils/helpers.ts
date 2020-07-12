@@ -100,4 +100,18 @@ const cloneChildrenForShowIf = (children, props) => {
   })
 }
 
-export { overrideProperty, addFormDataSetterCallback, curry, setupShowIfPresent, cloneChildrenForShowIf }
+const setComponentValueIfProvided = (props: BaseComponentProps) => {
+  if (props.value !== undefined) {
+
+    const eleRef = props.eleRef
+    const value = props.value
+    React.useEffect(() => {
+      if (eleRef.current) eleRef.current.value = value
+      return () => {
+        // do nothing
+      }
+    }, [eleRef, value])
+  }
+}
+
+export { overrideProperty, addFormDataSetterCallback, curry, setupShowIfPresent, cloneChildrenForShowIf, setComponentValueIfProvided }

@@ -1,10 +1,10 @@
 import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
 import ValidationError from "../ValidationError"
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
+  setComponentValueIfProvided,
 } from "../../../utils/helpers"
 import MultilineTextBoxProps from "./MultilineTextBox.Props"
 import { MutableRefObject } from "react"
@@ -22,6 +22,7 @@ const MultilineTextBox: React.FC<{
     multilineTextBoxProps.eleRef ?? React.useRef(null)
   multilineTextBoxProps.valid = multilineTextBoxProps.valid ?? true
   addFormDataSetterCallback(multilineTextBoxProps)
+  setComponentValueIfProvided(multilineTextBoxProps)
 
   return (
     <div>

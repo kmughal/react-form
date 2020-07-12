@@ -4,11 +4,14 @@ import { mustHaveAnAttribute } from "./mustHaveAnAttribute"
 import { sameTextContents } from "./sameTextContents"
 import { textContentEqual } from "./textContentEqual"
 import { typeMustBe } from "./typeMustBe"
+import { valueMustBeEqualWithTimeout } from "./valueMustBeEqualWithTimeout"
+
 
 const extenders = {
   valueMustBeEqual, attributeValueMustBeSame,
   mustHaveAnAttribute, sameTextContents,
-  textContentEqual, typeMustBe
+  textContentEqual, typeMustBe,
+  valueMustBeEqualWithTimeout
 }
 
 

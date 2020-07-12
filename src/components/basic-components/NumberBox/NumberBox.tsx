@@ -3,6 +3,7 @@ import BaseComponentProps from "../BaseComponent.Propts"
 import {
   addFormDataSetterCallback,
   cloneChildrenForShowIf,
+  setComponentValueIfProvided,
   setupShowIfPresent,
 } from "../../../utils/helpers"
 import ValidationError from "../ValidationError"
@@ -19,6 +20,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   >
   numberProps.eleRef = numberProps.eleRef ?? React.useRef(null)
   addFormDataSetterCallback(numberProps)
+  setComponentValueIfProvided(numberProps)
 
   return (
     <div>

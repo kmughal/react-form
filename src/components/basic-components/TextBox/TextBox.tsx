@@ -5,6 +5,7 @@ import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
+  setComponentValueIfProvided,
 } from "../../../utils/helpers"
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
@@ -21,6 +22,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
 
   textBoxProps.valid = textBoxProps.valid ?? true
   addFormDataSetterCallback(textBoxProps)
+  setComponentValueIfProvided(textBoxProps)
 
   return (
     <div>

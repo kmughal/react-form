@@ -7,6 +7,7 @@ declare global {
       valueMustBeEqual(value: string): R;
       textContentEqual(value: string): R;
       typeMustBe(value: string): R;
+      valueMustBeEqualWithTimeout(value: string, done: jest.DoneCallback, timeout: number = 200): R;
     }
   }
 }

@@ -22,6 +22,21 @@ describe("TextBox tests", () => {
     expect(nameTextBox).valueMustBeEqual("khurram")
   })
 
+  it("when value prop is set then text box value property must be set", (done) => {
+    const textBoxProps: BaseComponentProps = {
+      id: "txt_name",
+      name: "name",
+      placeholder: "placeholder",
+      label: "Name :",
+      value: "Khurram"
+    }
+    const { getById,document } = render(
+      <TextBox textBoxProps={textBoxProps} />
+    )
+    const nameTextBox = getById("txt_name")
+    expect(nameTextBox).valueMustBeEqualWithTimeout("Khurram" , done)
+  })
+
   it("must have a label", () => {
     const textBoxProps: BaseComponentProps = {
       id: "txt_name",
@@ -43,12 +58,11 @@ describe("TextBox tests", () => {
         placeholder: "placeholder",
         label: "Name :",
         valid: true,
-        validationMessage: "Error message"
+        validationMessage: "Error message",
       }
       const { getByText } = render(<TextBox textBoxProps={textBoxProps} />)
       expect(getByText("Error Message")).toBeFalsy()
     })
-
 
     it("when set to false then we are expecting validation message", () => {
       const textBoxProps: BaseComponentProps = {
