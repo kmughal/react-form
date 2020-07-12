@@ -67,6 +67,10 @@ const MultiDocsUploadPage = () => {
         </>
       )}
       <style jsx global>{`
+        body {
+          font-family: "Arial";
+        }
+
         nav {
           text-align: right;
         }
@@ -93,11 +97,7 @@ const MultiDocsUploadPage = () => {
           background: rgb(66, 153, 225);
           color: white;
           font-weight: bold;
-        }
-
-        .button-container {
-          text-align: right;
-          width: 475px;
+          width: 100%;
         }
 
         div {

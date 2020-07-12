@@ -163,20 +163,20 @@ const componentSelectBoxProps: SelectBoxProps = {
     new SelectBoxOption("Number", "number"),
     new SelectBoxOption("Password", "password"),
     new SelectBoxOption("SingleFileUpload", "singleFileUpload"),
-  ]
+  ],
 }
 
 const validatorSelectBoxProps: SelectBoxProps = {
   id: "form-buidler_validator-options",
   name: "form-buidler_validator-options",
   label: "Validators :",
-  placeholder : "Select a validator",
+  placeholder: "Select a validator",
   options: [
     new SelectBoxOption("Select a validator", ""),
     new SelectBoxOption("Required Validator", "required"),
     new SelectBoxOption("Regular Expression Validator", "regex"),
-    new SelectBoxOption("Range Validator", "range")
-  ]
+    new SelectBoxOption("Range Validator", "range"),
+  ],
 }
 
 const FormBUilderPage = () => {
@@ -244,6 +244,10 @@ const FormBUilderPage = () => {
         </Form>
       </div>
       <style jsx global>{`
+        body {
+          font-family: "Arial";
+        }
+
         nav {
           text-align: right;
         }
@@ -270,11 +274,7 @@ const FormBUilderPage = () => {
           background: rgb(66, 153, 225);
           color: white;
           font-weight: bold;
-        }
-
-        .button-container {
-          text-align: right;
-          width: 475px;
+          width: 100%;
         }
 
         div {

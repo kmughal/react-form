@@ -68,6 +68,10 @@ const LoginPage = () => {
         </>
       )}
       <style jsx global>{`
+        body {
+          font-family: "Arial";
+        }
+
         nav {
           text-align: right;
         }
@@ -94,11 +98,7 @@ const LoginPage = () => {
           background: rgb(66, 153, 225);
           color: white;
           font-weight: bold;
-        }
-
-        .button-container {
-          text-align: right;
-          width: 475px;
+          width: 100%;
         }
 
         div {
@@ -123,6 +123,9 @@ const LoginPage = () => {
         }
         select {
           width: 321px !important;
+        }
+        form {
+          text-align: center;
         }
       `}</style>
     </>

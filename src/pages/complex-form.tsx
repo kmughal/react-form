@@ -143,6 +143,10 @@ const Index = () => {
         )}
       </div>
       <style jsx global>{`
+        body {
+          font-family: "Arial"
+        }
+        
         nav {
           text-align: right;
         }
@@ -154,6 +158,13 @@ const Index = () => {
           text-decoration: none;
         }
 
+        fieldset {
+          border: 2px solid rgb(226, 232, 240);
+          width: 287px;
+          left: 100ox;
+          position: relative;
+          left: 66px;
+        }
         nav ul li a :after {
           content: " | ";
         }
@@ -169,11 +180,7 @@ const Index = () => {
           background: rgb(66, 153, 225);
           color: white;
           font-weight: bold;
-        }
-
-        .button-container {
-          text-align: right;
-          width: 475px;
+          width: 100%;
         }
 
         div {
@@ -194,6 +201,7 @@ const Index = () => {
           border: 2px solid rgb(226, 232, 240);
           width: 300px;
           border-radius: 5px;
+          font-family: "Arial"
         }
         
         select {

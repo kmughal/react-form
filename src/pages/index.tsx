@@ -135,42 +135,46 @@ const Index = () => {
       <Navigation />
       <h2>Basic Form</h2>
       <p>
-        This is a basic form created using react form. 
-        This page is using almost all controls.
+        This is a basic form created using react form. This page is using almost
+        all controls.
       </p>
       <div className="form-container">
-      <Form formProps={formProps}>
-        <Title titleProps={titleProps} />
-        <RequiredValidator requiredValidatorProps={requiredValidator}>
-          <TextBox textBoxProps={textBoxProps} />
-        </RequiredValidator>
-        <Gender genderProps={genderProps} />
-        <RangeValidator rangeValidatorProps={ageRangeValidation}>
-          <NumberBox numberProps={ageProps} />
-        </RangeValidator>
-        <TextBox textBoxProps={streetTextBoxProps} />
-        <PostCode postCodeProps={postCodeProps} />
-        <RequiredValidator
-          requiredValidatorProps={countryRequiredValidatorProps}
-        >
-          <SelectBox selectBoxProps={countriesSelectBoxProps} />
-        </RequiredValidator>
-        <RequiredValidator requiredValidatorProps={requiredFileProps}>
-          <SingleFileUpload singleFileUploadProps={singleFileProps} />
-        </RequiredValidator>
-        <div className="button-container">
-          <button>Submit Form</button>
-        </div>
+        <Form formProps={formProps}>
+          <Title titleProps={titleProps} />
+          <RequiredValidator requiredValidatorProps={requiredValidator}>
+            <TextBox textBoxProps={textBoxProps} />
+          </RequiredValidator>
+          <Gender genderProps={genderProps} />
+          <RangeValidator rangeValidatorProps={ageRangeValidation}>
+            <NumberBox numberProps={ageProps} />
+          </RangeValidator>
+          <TextBox textBoxProps={streetTextBoxProps} />
+          <PostCode postCodeProps={postCodeProps} />
+          <RequiredValidator
+            requiredValidatorProps={countryRequiredValidatorProps}
+          >
+            <SelectBox selectBoxProps={countriesSelectBoxProps} />
+          </RequiredValidator>
+          <RequiredValidator requiredValidatorProps={requiredFileProps}>
+            <SingleFileUpload singleFileUploadProps={singleFileProps} />
+          </RequiredValidator>
+          <div className="button-container">
+            <button>Submit Form</button>
+          </div>
         </Form>
         {payload && (
-        <>
-          <h1>Pay load from server :</h1>
-          <pre>{JSON.stringify(payload, null, 2)}</pre>
-        </>
-      )}
-     </div>
-     
+          <>
+            <h1>Pay load from server :</h1>
+            <pre>{JSON.stringify(payload, null, 2)}</pre>
+          </>
+        )}
+      </div>
+
       <style jsx global>{`
+        body {
+          font-family: "Arial";
+        }
+
         nav {
           text-align: right;
         }
@@ -190,6 +194,13 @@ const Index = () => {
           width: 50%;
           margin: auto;
         }
+        fieldset {
+          border: 2px solid rgb(226, 232, 240);
+          width: 287px;
+          left: 100ox;
+          position: relative;
+          left: 148px;
+        }
         button {
           padding: 15px 15px;
           border-radius: 5px;
@@ -197,15 +208,11 @@ const Index = () => {
           background: rgb(66, 153, 225);
           color: white;
           font-weight: bold;
+          width: 100%;
         }
 
         fieldset div label {
           width: 55px;
-        }
-
-        .button-container {
-          text-align: right;
-          width: 475px;
         }
 
         div {

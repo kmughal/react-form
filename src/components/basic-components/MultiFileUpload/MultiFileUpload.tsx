@@ -15,7 +15,7 @@ const MultiFileUpload: React.FC<{
 
   const multiFilesContainer = React.useRef(null)
   const containerStyle = {
-    width: "100%",
+    width: "98%",
     height: "400px",
     border: "2px dashed gray",
     textAlign: "center" as const,
