@@ -43,12 +43,12 @@ describe("TextBox tests", () => {
         placeholder: "placeholder",
         label: "Name :",
         valid: true,
+        validationMessage: "Error message"
       }
-      const { getByTagName } = render(<TextBox textBoxProps={textBoxProps} />)
-
-      const validationParagraphMessage = getByTagName("p")
-      expect(validationParagraphMessage).toBeNull()
+      const { getByText } = render(<TextBox textBoxProps={textBoxProps} />)
+      expect(getByText("Error Message")).toBeFalsy()
     })
+
 
     it("when set to false then we are expecting validation message", () => {
       const textBoxProps: BaseComponentProps = {
@@ -59,11 +59,9 @@ describe("TextBox tests", () => {
         valid: false,
         validationMessage: "Name is not valid",
       }
-      const { getByTagName } = render(<TextBox textBoxProps={textBoxProps} />)
+      const { getByText } = render(<TextBox textBoxProps={textBoxProps} />)
 
-      const validationParagraphMessage = getByTagName("p")
-      expect(validationParagraphMessage).not.toBeNull()
-      expect(validationParagraphMessage).textContentEqual("Name is not valid")
+      expect(getByText("Name is not valid")).toBeTruthy()
     })
   })
 })

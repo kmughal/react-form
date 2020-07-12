@@ -36,6 +36,7 @@ export default (component, window = null) => {
     unCheck: id => document.getElementById(id).checked = false,
     getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName),
     typeElementText: (el, value) => el.value = value,
+    getByText: (text: string) => String(container.innerHTML).indexOf(text) > -1,
     triggerEvent
 
   }
