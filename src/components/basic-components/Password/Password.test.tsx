@@ -22,6 +22,20 @@ describe("Password tests", () => {
     expect(passwordBox).valueMustBeEqual("This_is_my_password")
   })
 
+  it("when value prop is set then text box value property must be set", (done) => {
+    const passwordProps: BaseComponentProps = {
+      id: "txt_password",
+      name: "txt_password",
+      placeholder: "placeholder",
+      label: "Password :",
+      value: "123",
+    }
+    const { getById } = render(<Password passwordProps={passwordProps} />)
+
+    const passwordBox = getById("txt_password")
+    expect(passwordBox).valueMustBeEqualWithTimeout("123", done)
+  })
+
   it("must have a label", () => {
     const props: BaseComponentProps = {
       id: "txt-password",
