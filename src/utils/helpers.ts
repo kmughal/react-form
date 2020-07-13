@@ -48,7 +48,7 @@ function getPropertyValueFromReactComponentProps(
   children: any,
   propertyName: string) {
 
-  const props = children.props
+  const props = children?.props
   for (let prop in props) {
     let item = props[prop]
     if (item[propertyName]) return item[propertyName]
