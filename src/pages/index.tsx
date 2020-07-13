@@ -197,9 +197,9 @@ const Index = () => {
         fieldset {
           border: 2px solid rgb(226, 232, 240);
           width: 287px;
-          left: 100ox;
+          left: 0ox;
           position: relative;
-          left: 148px;
+          left: 195px;
         }
         button {
           padding: 15px 15px;
@@ -212,7 +212,7 @@ const Index = () => {
         }
 
         fieldset div label {
-          width: 55px;
+          width: 80px;
         }
 
         div {
@@ -221,9 +221,9 @@ const Index = () => {
         }
         label {
           position: relative;
-          width: 150px;
+          width: 200px;
           display: inline-block;
-          text-align: right;
+          text-align:right;
         }
         select,
         input[type="text"],

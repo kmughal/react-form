@@ -6,8 +6,9 @@ import {
   setupShowIfPresent,
   cloneChildrenForShowIf,
 } from "../../../utils/helpers"
+import { CheckBoxProps } from "."
 
-const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
+const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
   checkBoxProps,
   children,
 }) => {
@@ -27,6 +28,7 @@ const CheckBox: React.FC<{ checkBoxProps: BaseComponentProps }> = ({
         name={checkBoxProps.name}
         value={checkBoxProps.value}
         aria-describedby={checkBoxProps.id + "_error"}
+        checked={checkBoxProps.checked}
         onChange={(e) => {
           if (checkBoxProps.pubsub)
             checkBoxProps.pubsub.publish(checkBoxProps.name, {

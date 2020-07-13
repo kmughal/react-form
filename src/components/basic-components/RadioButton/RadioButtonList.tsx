@@ -15,19 +15,35 @@ const RadioButtonList = (
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
     const _id = `${name.replace(" ", "_")}_${index}`
+    const markup = rd.checked ? (
+      <input
+        type="radio"
+        id={_id}
+        name={name}
+        value={rd.value}
+        onClick={markSelection}
+        aria-describedby={name + "_error"}
+        checked={true}
+        onChange={(e) => {
+          if (pubsub) pubsub.publish(name, { data: e.target.value })
+        }}
+      />
+    ) : (
+      <input
+        type="radio"
+        id={_id}
+        name={name}
+        value={rd.value}
+        onClick={markSelection}
+        aria-describedby={name + "_error"}
+        onChange={(e) => {
+          if (pubsub) pubsub.publish(name, { data: e.target.value })
+        }}
+      />
+    )
     return (
       <div key={index}>
-        <input
-          type="radio"
-          id={_id}
-          name={name}
-          value={rd.value}
-          onClick={markSelection}
-          aria-describedby={name + "_error"}
-          onChange={(e) => {
-            if (pubsub) pubsub.publish(name, { data: e.target.value })
-          }}
-        />
+        {markup}
         <label htmlFor={_id}>{rd.text}</label>
       </div>
     )

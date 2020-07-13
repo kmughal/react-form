@@ -2,7 +2,7 @@ import * as React from "react"
 import RadioButtonProps from "./RadioButton.Props"
 import ValidationError from "../ValidationError"
 import RadioButtonList from "./RadioButtonList"
-import { addFormDataSetterCallback, cloneChildrenForShowIf, setupShowIfPresent } from "../../../utils/helpers"
+import { addFormDataSetterCallback, cloneChildrenForShowIf, setComponentValueIfProvided, setupShowIfPresent } from "../../../utils/helpers"
 
 const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   children,
@@ -14,6 +14,11 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
 
   radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null)
   addFormDataSetterCallback(radioButtonProps)
+ 
+  const checkedOption = radioButtonProps.radioButtonOptions.filter(x => x.checked)
+  if (checkedOption.length > 0) radioButtonProps.value = checkedOption[0].value
+  
+  setComponentValueIfProvided(radioButtonProps)
   
   const readioButtonList = RadioButtonList(
     radioButtonProps.name,

@@ -21,7 +21,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
 
   const selectOptions = selectBoxProps.options.map(
     (option: SelectBoxOption, index: number) => (
-      <option key={index} value={option.value}>
+      <option key={index} value={option.value} selected={option.selected}>
         {option.text}
       </option>
     )
