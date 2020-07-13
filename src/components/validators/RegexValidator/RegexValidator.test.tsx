@@ -14,7 +14,7 @@ describe("RegEx Validator - ", () => {
     const formProps: FormProps = {
       submitForm: (formData) => {},
     }
-    const reexValidatorProps: RegexValidatorProps = {
+    const regExValidatorProps: RegexValidatorProps = {
       name: "required_props",
       regExp: new RegExp("/(.*[a-z]){3}/i"),
     }
@@ -27,7 +27,7 @@ describe("RegEx Validator - ", () => {
     }
     const dom = render(
       <Form formProps={formProps}>
-        <RegexValidator regexValidatorProps={reexValidatorProps}>
+        <RegexValidator regexValidatorProps={regExValidatorProps}>
           <TextBox textBoxProps={textBoxProps} />
         </RegexValidator>
         <button>Sumit</button>
