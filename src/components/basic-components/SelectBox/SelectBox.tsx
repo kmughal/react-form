@@ -21,18 +21,22 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
 
   const selectOptions = selectBoxProps.options.map(
     (option: SelectBoxOption, index: number) => (
-      <option key={index} value={option.value} selected={option.selected}>
+      <option key={index} value={option.value}>
         {option.text}
       </option>
     )
   )
+  
+  if (!selectBoxProps.value) {
+    const selectedItem = selectBoxProps.options.filter(x => x.selected);
+    if (selectedItem.length) selectBoxProps.value = selectedItem[0].value
+  }
 
   return (
     <div>
-      <label htmlFor={selectBoxProps.name}>
-        {selectBoxProps.label}
-      </label>
+      <label htmlFor={selectBoxProps.name}>{selectBoxProps.label}</label>
       <select
+        defaultValue={selectBoxProps.value ?? null}
         ref={selectBoxProps.eleRef as React.MutableRefObject<HTMLSelectElement>}
         name={selectBoxProps.name}
         id={selectBoxProps.id}
