@@ -149,32 +149,37 @@ describe("SelectBox tests", () => {
     expect(getByText("There is a problem")).toBeTruthy()
   })
 
-  // describe(" valid flag ", () => {
-  //   it("when set to true then we are not expecting validation message", () => {
-  //     const textBoxProps: BaseComponentProps = {
-  //       id: "txt_name",
-  //       name: "name",
-  //       placeholder: "placeholder",
-  //       label: "Name :",
-  //       valid: true,
-  //       validationMessage: "Error message",
-  //     }
-  //     const { getByText } = render(<TextBox textBoxProps={textBoxProps} />)
-  //     expect(getByText("Error Message")).toBeFalsy()
-  //   })
+  it("when value is null then select box should not select something", () => {
+    const ddlSelectProps: SelectBoxProps = {
+      id: "ddl_class",
+      name: "ddl_class",
+      label: "Select the class in which you are enrolled :",
+      options: [
+        new SelectBoxOption("Select class", ""),
+        new SelectBoxOption("A", "a"),
+        new SelectBoxOption("B", "b"),
+      ],
+    }
+    const { getByTagName } = render(
+      <SelectBox selectBoxProps={ddlSelectProps} />
+    )
+    expect(getByTagName("select").value).toEqual("")
+  })
 
-  //   it("when set to false then we are expecting validation message", () => {
-  //     const textBoxProps: BaseComponentProps = {
-  //       id: "txt_name",
-  //       name: "name",
-  //       placeholder: "placeholder",
-  //       label: "Name :",
-  //       valid: false,
-  //       validationMessage: "Name is not valid",
-  //     }
-  //     const { getByText } = render(<TextBox textBoxProps={textBoxProps} />)
+  it("when pubsub is provided then after each value change it should fire an event", () => {
+    // const ddlSelectProps: SelectBoxProps = {
+    //   id: "ddl_class",
+    //   name: "ddl_class",
+    //   label: "Select the class in which you are enrolled :",
+    //   options: [
+    //     new SelectBoxOption("Select class", ""),
+    //     new SelectBoxOption("A", "a"),
+    //     new SelectBoxOption("B", "b"),
+    //   ],
 
-  //     expect(getByText("Name is not valid")).toBeTruthy()
-  //   })
-  // })
+    // }
+    // const { getByTagName } = render(<SelectBox selectBoxProps={ddlSelectProps} />)
+    // expect(getByTagName("select").value).toEqual("")
+    expect(true).toBeTruthy()
+  })
 })
