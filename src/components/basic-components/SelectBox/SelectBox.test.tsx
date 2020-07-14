@@ -2,6 +2,7 @@ import * as React from "react"
 import { SelectBoxOption } from "."
 import { BaseComponentProps, TextBox } from ".."
 import render from "../../../../bin/render"
+import { PubSub } from "../Form/Form.Props"
 import SelectBox from "./SelectBox"
 import SelectBoxProps from "./SelectBox.Props"
 
@@ -167,19 +168,73 @@ describe("SelectBox tests", () => {
   })
 
   it("when pubsub is provided then after each value change it should fire an event", () => {
-    // const ddlSelectProps: SelectBoxProps = {
-    //   id: "ddl_class",
-    //   name: "ddl_class",
-    //   label: "Select the class in which you are enrolled :",
-    //   options: [
-    //     new SelectBoxOption("Select class", ""),
-    //     new SelectBoxOption("A", "a"),
-    //     new SelectBoxOption("B", "b"),
-    //   ],
+    const pubsub = new PubSub()
+    const ddlSelectProps: SelectBoxProps = {
+      id: "ddl_class",
+      name: "ddl_class",
+      label: "Select the class in which you are enrolled :",
+      options: [
+        new SelectBoxOption("Select class", ""),
+        new SelectBoxOption("A", "a"),
+        new SelectBoxOption("B", "b"),
+      ],
+      pubsub,
+    }
+    let counter = 0
+    pubsub.addSubscriber(ddlSelectProps.name, () => {
+      counter++
+    })
 
-    // }
-    // const { getByTagName } = render(<SelectBox selectBoxProps={ddlSelectProps} />)
-    // expect(getByTagName("select").value).toEqual("")
-    expect(true).toBeTruthy()
+    const { getByTagName, fireChangeEvent } = render(
+      <SelectBox selectBoxProps={ddlSelectProps} />
+    )
+    const classSelectBox = getByTagName("select")
+
+    fireChangeEvent(classSelectBox, "b")
+    expect(counter).toEqual(1)
+  })
+
+  it("when pubsub is null then after each value change it should not fire an event", () => {
+    const ddlSelectProps: SelectBoxProps = {
+      id: "ddl_class",
+      name: "ddl_class",
+      label: "Select the class in which you are enrolled :",
+      options: [
+        new SelectBoxOption("Select class", ""),
+        new SelectBoxOption("A", "a"),
+        new SelectBoxOption("B", "b"),
+      ],
+    }
+    let counter = 0
+
+    const { getByTagName, fireChangeEvent } = render(
+      <SelectBox selectBoxProps={ddlSelectProps} />
+    )
+    const classSelectBox = getByTagName("select")
+
+    fireChangeEvent(classSelectBox, "b")
+    expect(counter).toEqual(0)
+  })
+
+  it("when showIfValue is true and showIfCallback is present then it should not render select box", () => {
+    const ddlSelectProps: SelectBoxProps = {
+      id: "ddl_class",
+      name: "ddl_class",
+      label: "Select the class in which you are enrolled :",
+      options: [
+        new SelectBoxOption("Select class", ""),
+        new SelectBoxOption("A", "a"),
+        new SelectBoxOption("B", "b"),
+      ],
+      showIfValue: true,
+      showIfCallback: (_) => false,
+    }
+
+    const { getByTagName } = render(
+      <SelectBox selectBoxProps={ddlSelectProps} />
+    )
+    const selectBox = getByTagName("select")
+    
+    expect(selectBox).toBeNull()
   })
 })

@@ -73,9 +73,10 @@ const setupShowIfPresent = props => {
       const showIfResult = props.showIfCallback(props.showIfValue)
       if (typeof showIfResult !== typeof true) return true
       if (!showIfResult) {
-        if (props.formDataSetters[props.name])
+        if (props.formDataSetters && props.formDataSetters[props.name])
           delete props.formDataSetters[props.name]
-        if (props.validators[props.validatorName])
+        
+        if (props.validators && props.validators[props.validatorName])
           delete props.validators[props.validatorName]
 
         return true

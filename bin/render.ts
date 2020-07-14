@@ -37,7 +37,11 @@ export default (component, window = null) => {
     getAttribute: (id, attributeName) => document.getElementById(id).getAttribute(attributeName),
     typeElementText: (el, value) => el.value = value,
     getByText: (text: string) => String(container.innerHTML).indexOf(text) > -1,
-    triggerEvent
+    triggerEvent,
+    fireChangeEvent: (el, value) => {
+      el.value = value
+      triggerEvent("change", el)
+    }
 
   }
 }
