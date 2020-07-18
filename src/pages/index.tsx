@@ -191,15 +191,15 @@ const Index = () => {
         }
 
         .form-container {
-          width: 50%;
           margin: auto;
         }
         fieldset {
           border: 2px solid rgb(226, 232, 240);
-          width: 287px;
-          left: 0ox;
+          width: 99%;
+        }
+        legend {
+          margin-bottom: 5px;
           position: relative;
-          left: 195px;
         }
         button {
           padding: 15px 15px;
@@ -222,16 +222,15 @@ const Index = () => {
         label {
           position: relative;
           width: 200px;
-          display: inline-block;
-          text-align:right;
+          display: block;
         }
         select,
         input[type="text"],
         input[type="number"] {
           padding: 5px 5px;
-          display: inline-block;
+          display: block;
           border: 2px solid rgb(226, 232, 240);
-          width: 300px;
+          width: 99%;
           border-radius: 5px;
         }
         select {
