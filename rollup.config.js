@@ -14,10 +14,11 @@ export default {
     },
     {
       file: packageJson.module,
-      format: "esm",
+      format: "es",
       sourcemap: true,
     },
   ],
+  external: ['react'],
   plugins: [
     json(),
     typescript({ useTsconfigDeclarationDir: true }),
