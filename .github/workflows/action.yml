@@ -38,3 +38,7 @@ jobs:
     # Do a build
     - name: Build packages
       run: yarn build
+
+    # Build assets
+    - name: Build packages
+    run: yarn build:js
