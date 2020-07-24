@@ -1,8 +1,13 @@
 {
-  "name": "react-form",
-  "version": "1.0.0",
+  "name": "react-form-typescript",
+  "version": "1.0.2",
   "description": "React Form, React Form Typescript",
-  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "next build",
     "start": "next start -p $PORT",
@@ -11,30 +16,42 @@
     "test:watch": "jest --watch",
     "docs": "typedoc",
     "test:coverage": "jest --collectCoverage",
-    "build:js": "parcel build src/index.ts"
+    "build:js": "rollup -c"
   },
   "cacheDirectories": [
     "node_modules/",
     ".next/cache/"
   ],
-  "keywords": ["React Form", "React Form Typescript" , "Reactive React Form"],
+  "keywords": [
+    "React Form",
+    "React Form Typescript",
+    "Reactive React Form"
+  ],
   "author": "Khurram Mughal",
   "license": "MIT",
   "dependencies": {
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
     "@types/jest": "^26.0.3",
     "formidable": "^1.2.2",
     "jest": "^26.1.0",
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.2",
+    "rollup-plugin-typescript": "1.0.1",
+    "rollup-plugin-typescript2": "^0.27.1",
     "ts-jest": "^26.1.1",
     "window": "^4.2.7"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
-    "parcel-bundler": "^1.12.4",
+    "rollup": "2.23.0",
     "typedoc": "0.17.8",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   }
 }

@@ -4,8 +4,10 @@ import {
   SelectBoxOption,
   SelectBox,
 } from "../../basic-components"
-import { RequiredValidator } from "../../validators"
+
 import BaseValidatorProps from "../../validators/BaseValidator.Props"
+import React from "react"
+import { RequiredValidator } from "../../validators"
 
 const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
   let options = new Array<SelectBoxOption>(

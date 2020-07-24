@@ -1,8 +1,9 @@
 import { RadioButton } from "../../basic-components"
-import { BaseValidatorProps, RequiredValidator } from "../../validators"
 import { RadioButtonOption } from "../../basic-components/RadioButton/RadioButtonOption"
 import RadioButtonProps from "../../basic-components/RadioButton/RadioButton.Props"
 import GenderProps from "./Gender.Props"
+import { BaseValidatorProps, RequiredValidator } from "../../.."
+import React from "react"
 
 const Gender: React.FC<{ genderProps: GenderProps }> = (props) => {
   const genderProps = props.genderProps

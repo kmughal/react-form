@@ -81,7 +81,7 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       }
 
       if (formProps.enableOffline) {
-        if (navigator.onLine && process.browser) _submitForm()
+        if (navigator.onLine && process && process["browser"]) _submitForm()
       } else _submitForm()
     }
     e.preventDefault()
@@ -89,7 +89,7 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
   const [onlineMessage, setOnlineMessage] = React.useState(false)
   const [offLineMessage, setOfflineMessage] = React.useState(false)
 
-  if (formProps.enableOffline && process.browser) {
+  if (formProps.enableOffline && process && process["browser"]) {
     window.addEventListener("online", () => {
       setOnlineMessage(true)
       setOfflineMessage(false)

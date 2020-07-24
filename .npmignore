@@ -1,0 +1,17 @@
+.cache
+.github
+.next
+bin
+coverage
+docs
+node_modules
+src
+typings
+jest.config.js
+jest.setup.ts 
+package.json
+tsconfig.json
+tsconfig.test.json
+yarn.lock
+.gitignore
+next-env.d.ts

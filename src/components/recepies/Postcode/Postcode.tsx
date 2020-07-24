@@ -1,9 +1,8 @@
+import React from "react"
 import { PostCodeProps } from "."
-import {
-  RegexValidatorProps,
-  RegexValidator,
-} from "../../validators/RegexValidator"
+ 
 import { BaseComponentProps, TextBox } from "../../basic-components"
+import { RegexValidator, RegexValidatorProps } from "../../validators/RegexValidator"
 
 const PostCode: React.FC<{ postCodeProps: PostCodeProps }> = (props) => {
   const postCodeProps = props.postCodeProps
