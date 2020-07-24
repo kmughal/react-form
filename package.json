@@ -1,6 +1,6 @@
 {
   "name": "react-form-typescript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Form, React Form Typescript",
   "bin": "./dist/index.js",
   "main": "build/index.js",
