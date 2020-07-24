@@ -1,24 +1,25 @@
 {
   "name": "react-form",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "React Form, React Form Typescript",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "next build",
     "start": "next start -p $PORT",
     "dev": "next",
     "test": "jest",
     "test:watch": "jest --watch",
-    "docs" : "typedoc",
-    "test:coverage" : "jest --collectCoverage"
+    "docs": "typedoc",
+    "test:coverage": "jest --collectCoverage",
+    "build:js": "parcel build src/index.ts"
   },
   "cacheDirectories": [
     "node_modules/",
     ".next/cache/"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["React Form", "React Form Typescript" , "Reactive React Form"],
+  "author": "Khurram Mughal",
+  "license": "MIT",
   "dependencies": {
     "@types/jest": "^26.0.3",
     "formidable": "^1.2.2",
@@ -32,7 +33,8 @@
   "devDependencies": {
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
-    "typescript": "^3.9.5",
-    "typedoc" : "0.17.8"
+    "parcel-bundler": "^1.12.4",
+    "typedoc": "0.17.8",
+    "typescript": "^3.9.5"
   }
 }
