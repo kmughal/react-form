@@ -15,3 +15,4 @@ tsconfig.test.json
 yarn.lock
 .gitignore
 next-env.d.ts
+public
