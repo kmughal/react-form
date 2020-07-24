@@ -1,6 +1,7 @@
 # React Form
 
 This library provides an easy way to build forms independent of styling!
+There is no extra class added to any html element so you might have to apply styling on the native html controls.
 
 ## Base Components
 
@@ -19,9 +20,18 @@ Following controls are build in for first iteration.
 
 ## Validation Components
 
+You can create your own validation components as well
+
 - RangeValidation
 - RegexValidation
 - RequiredValidation
+
+
+## Utility Components
+
+- PlainMarkup
+- ShowIf
+
 
 ### How it works
 
