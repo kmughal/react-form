@@ -161,3 +161,67 @@ There are few properties on FormProps we need to understand
 | ------------- |-------------|
 | showValidationSummary | This property will display the validation message summary at the top of the form|
 | submitForm | This is the callback which executes when user submits form, it has only one parameter which is of FormData type. You can simply send this to your backend server. |
+
+
+
+### Complete Example 
+
+```tsx 
+
+import * as React from "react"
+import { render } from "react-dom"
+
+import {
+  Form,
+  TextBox,
+  RequiredValidator,
+  Password,
+} from "react-form-typescript"
+
+const App = () => {
+  const formProps = {
+    heading: "Login Form",
+    showValidationSummary: true,
+    submitForm: (formData) => {
+      console.log("login")
+    },
+  }
+  const userNameProps = {
+    label: "Username",
+    name: "user-name",
+    id: "user-name",
+    placeholder: "Provide Username",
+    validationMessage: "Username is required!",
+  }
+  const userNameRequiredValidator = { name: "userNameRequiredValidator" }
+
+  const passwordProps = {
+    label: "Password :",
+    name: "password",
+    id: "password",
+    placeholder: "Provide password",
+    validationMessage: "Password is required!",
+  }
+  const passwordRequiredValidator = { name: "passwordRequiredValidator" }
+
+  return (
+    <Form formProps={formProps}>
+      <RequiredValidator requiredValidatorProps={userNameRequiredValidator}>
+        <TextBox textBoxProps={userNameProps} />
+      </RequiredValidator>
+
+      <RequiredValidator requiredValidatorProps={passwordRequiredValidator}>
+        <Password passwordProps={passwordProps} />
+      </RequiredValidator>
+
+      <div className="button-container">
+        <input type="submit" />
+      </div>
+    </Form>
+  )
+}
+
+render(<App />, document.getElementById("app"))
+
+
+```
