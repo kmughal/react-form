@@ -1,5 +1,5 @@
-import RegexValidator from "./RegexValidator"
-import type RegexValidatorProps from "./RegexValidator.Props"
+import RegexValidator from "./RegexValidator";
+import type RegexValidatorProps from "./RegexValidator.Props";
 
-export { RegexValidator }
-export type { RegexValidatorProps }
+export { RegexValidator };
+export type { RegexValidatorProps };

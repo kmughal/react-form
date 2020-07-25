@@ -1,2 +1,2 @@
-import MultiFileUpload from "./MultiFileUpload"
-export { MultiFileUpload }
+import MultiFileUpload from "./MultiFileUpload";
+export { MultiFileUpload };

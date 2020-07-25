@@ -1,5 +1,4 @@
 import {
-  BaseComponentProps,
   Form,
   FormProps,
   TextBox,
@@ -8,14 +7,14 @@ import {
   SelectBoxOption,
   SelectBox,
   SingleFileUpload,
-} from "../components/basic-components"
+} from "../components/basic-components";
 
 import {
   RequiredValidator,
   BaseValidatorProps,
   RangeValidator,
   RangeValidatorProps,
-} from "../components/validators"
+} from "../components/validators";
 
 import {
   Title,
@@ -24,13 +23,14 @@ import {
   PostCode,
   Gender,
   GenderProps,
-} from "../components/recepies"
-import Navigation from "./components/Navigation"
-import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
-import React from "react"
+} from "../components/recepies";
+import Navigation from "./components/Navigation";
+import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props";
+import React from "react";
+import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
 
 const Index = () => {
-  const [payload, setPayload] = React.useState(null)
+  const [payload, setPayload] = React.useState(null);
 
   const formProps: FormProps = {
     name: "test-form",
@@ -41,10 +41,10 @@ const Index = () => {
       })
         .then((response) => response.json())
         .then(setPayload)
-        .catch(console.log)
+        .catch(console.log);
     },
     showValidationSummary: true,
-  }
+  };
 
   const textBoxProps: BaseComponentProps = {
     id: "name",
@@ -52,9 +52,9 @@ const Index = () => {
     label: "Name :",
     validationMessage: "Please provide the name.",
     placeholder: "enter name",
-  }
+  };
 
-  const requiredValidator: BaseValidatorProps = { name: "name_required" }
+  const requiredValidator: BaseValidatorProps = { name: "name_required" };
 
   const titleProps: TitleProps = {
     name: "title",
@@ -62,7 +62,7 @@ const Index = () => {
     label: "Title :",
     placeholder: "Please select title",
     validationMessage: "Title is required!",
-  }
+  };
 
   const ageProps: BaseComponentProps = {
     id: "age",
@@ -70,27 +70,27 @@ const Index = () => {
     label: "Age :",
     placeholder: "Provide age",
     validationMessage: "Age must be between 5 - 15",
-  }
+  };
 
   const ageRangeValidation: RangeValidatorProps = {
     name: "age_range_validation",
     max: 15,
     min: 5,
-  }
+  };
 
   const genderProps: GenderProps = {
     name: "gender",
     id: "rd_gender",
     label: "Select gender ",
     validationMessage: "Please select gender as it is required!",
-  }
+  };
 
   const streetTextBoxProps: BaseComponentProps = {
     id: "street",
     name: "street",
     label: "Street / House number",
     placeholder: "Street address",
-  }
+  };
 
   const postCodeProps: PostCodeProps = {
     id: "postcode",
@@ -98,7 +98,7 @@ const Index = () => {
     label: "PostCode:",
     validationMessage: "Invalid post code",
     placeholder: "Provide valid Postcode",
-  }
+  };
 
   const countriesSelectBoxProps: SelectBoxProps = {
     id: "ddl_countires",
@@ -112,15 +112,15 @@ const Index = () => {
       new SelectBoxOption("Pakistan", "pakistan"),
     ],
     validationMessage: "Country is a required field!",
-  }
+  };
 
   const countryRequiredValidatorProps: BaseValidatorProps = {
     name: "required_countries",
-  }
+  };
 
   const requiredFileProps: BaseValidatorProps = {
     name: "file_required",
-  }
+  };
   const singleFileProps: SingleFileUploadProps = {
     id: "user_doc",
     name: "user_doc",
@@ -128,7 +128,7 @@ const Index = () => {
     label: "Provide a document",
     placeholder: "Document",
     validationMessage: "A document is required!",
-  }
+  };
 
   return (
     <>
@@ -238,6 +238,6 @@ const Index = () => {
         }
       `}</style>
     </>
-  )
-}
-export default Index
+  );
+};
+export default Index;

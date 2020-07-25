@@ -1,23 +1,26 @@
 import {
-  BaseComponentProps,
   FormProps,
   Form,
   TextBox,
   MultiFileUpload,
-} from "../components/basic-components"
-import { BaseValidatorProps, RequiredValidator } from "../components/validators"
-import Navigation from "./components/Navigation"
-import React from "react"
+} from "../components/basic-components";
+import {
+  BaseValidatorProps,
+  RequiredValidator,
+} from "../components/validators";
+import Navigation from "./components/Navigation";
+import React from "react";
+import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
 
 const MultiDocsUploadPage = () => {
-  const [payload, setPayload] = React.useState(null)
+  const [payload, setPayload] = React.useState(null);
   const textBoxProps: BaseComponentProps = {
     label: "Name",
     name: "txt-name",
     id: "txt-name",
     placeholder: "Provide Name...",
     validationMessage: "Please provide name...",
-  }
+  };
 
   const multiDocsProps: BaseComponentProps = {
     label: "Please provide document(s)",
@@ -25,7 +28,7 @@ const MultiDocsUploadPage = () => {
     id: "multi-docs",
     placeholder: "Provie docs",
     validationMessage: "Atleast select one file",
-  }
+  };
 
   const formProps: FormProps = {
     enableOffline: true,
@@ -37,12 +40,12 @@ const MultiDocsUploadPage = () => {
       })
         .then((response) => response.json())
         .then(setPayload)
-        .catch(console.log)
-      console.log("login")
+        .catch(console.log);
+      console.log("login");
     },
-  }
-  const requiredValidator1: BaseValidatorProps = { name: "name_required" }
-  const requiredValidator2: BaseValidatorProps = { name: "file_required" }
+  };
+  const requiredValidator1: BaseValidatorProps = { name: "name_required" };
+  const requiredValidator2: BaseValidatorProps = { name: "file_required" };
 
   return (
     <>
@@ -125,7 +128,7 @@ const MultiDocsUploadPage = () => {
         }
       `}</style>
     </>
-  )
-}
+  );
+};
 
-export default MultiDocsUploadPage
+export default MultiDocsUploadPage;

@@ -1,22 +1,22 @@
-import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
-import ValidationError from "../ValidationError"
+import * as React from "react";
+import BaseComponentProps from "../BaseComponent.Props";
+import ValidationError from "../ValidationError";
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
-} from "../../../utils/helpers"
-import { CheckBoxProps } from "."
+} from "../../../utils/helpers";
+import { CheckBoxProps } from ".";
 
 const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
   checkBoxProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(checkBoxProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(checkBoxProps);
+  if (isSetupShowIfPresent) return null;
 
-  checkBoxProps.eleRef = checkBoxProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallback(checkBoxProps)
+  checkBoxProps.eleRef = checkBoxProps.eleRef ?? React.useRef(null);
+  addFormDataSetterCallback(checkBoxProps);
 
   return (
     <div>
@@ -33,7 +33,7 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
           if (checkBoxProps.pubsub)
             checkBoxProps.pubsub.publish(checkBoxProps.name, {
               data: e.target.value,
-            })
+            });
         }}
       />
       <ValidationError
@@ -42,7 +42,7 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
       />
       {cloneChildrenForShowIf(children, checkBoxProps)}
     </div>
-  )
-}
+  );
+};
 
-export default CheckBox
+export default CheckBox;

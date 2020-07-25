@@ -1,3 +1,3 @@
-import BaseValidator from "./BaseValidator"
+import BaseValidator from "./BaseValidator";
 
-export { BaseValidator }
+export { BaseValidator };

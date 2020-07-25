@@ -1,28 +1,28 @@
-import * as React from "react"
-import ValidationError from "../ValidationError"
+import * as React from "react";
+import ValidationError from "../ValidationError";
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
-} from "../../../utils/helpers"
-import MultilineTextBoxProps from "./MultilineTextBox.Props"
-import { MutableRefObject } from "react"
+} from "../../../utils/helpers";
+import MultilineTextBoxProps from "./MultilineTextBox.Props";
+import { MutableRefObject } from "react";
 
 const MultilineTextBox: React.FC<{
-  multilineTextBoxProps: MultilineTextBoxProps
+  multilineTextBoxProps: MultilineTextBoxProps;
 }> = ({ multilineTextBoxProps, children }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(multilineTextBoxProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(multilineTextBoxProps);
+  if (isSetupShowIfPresent) return null;
 
   multilineTextBoxProps.eleRef = multilineTextBoxProps.eleRef as React.MutableRefObject<
     HTMLTextAreaElement
-  >
+  >;
   multilineTextBoxProps.eleRef =
-    multilineTextBoxProps.eleRef ?? React.useRef(null)
-  multilineTextBoxProps.valid = multilineTextBoxProps.valid ?? true
-  addFormDataSetterCallback(multilineTextBoxProps)
-  setComponentValueIfProvided(multilineTextBoxProps)
+    multilineTextBoxProps.eleRef ?? React.useRef(null);
+  multilineTextBoxProps.valid = multilineTextBoxProps.valid ?? true;
+  addFormDataSetterCallback(multilineTextBoxProps);
+  setComponentValueIfProvided(multilineTextBoxProps);
 
   return (
     <div>
@@ -42,7 +42,7 @@ const MultilineTextBox: React.FC<{
           if (multilineTextBoxProps.pubsub)
             multilineTextBoxProps.pubsub.publish(multilineTextBoxProps.name, {
               data: e.target.value,
-            })
+            });
         }}
       />
       <ValidationError
@@ -51,7 +51,7 @@ const MultilineTextBox: React.FC<{
       />
       {cloneChildrenForShowIf(children, multilineTextBoxProps)}
     </div>
-  )
-}
+  );
+};
 
-export default MultilineTextBox
+export default MultilineTextBox;

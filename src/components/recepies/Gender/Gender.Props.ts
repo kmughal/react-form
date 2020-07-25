@@ -1,6 +1,5 @@
-
-import BaseComponentProps from "../../basic-components/BaseComponent.Propts";
+import BaseComponentProps from "../../basic-components/BaseComponent.Props";
 
 export default interface GenderProps extends BaseComponentProps {
-  validators?: Record<string, () => []>,
+  validators?: Record<string, () => []>;
 }

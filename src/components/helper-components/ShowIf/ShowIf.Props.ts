@@ -5,6 +5,11 @@ export default interface ShowIfProps {
   pubsub?: PubSub;
   eventName?: string;
   formDataSetters?: Record<string, SetterFunc>;
-  validators?: Record<string, () => Array<string | boolean>>,
-  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLTextAreaElement>
+  validators?: Record<string, () => Array<string | boolean>>;
+  eleRef?: React.MutableRefObject<
+    | HTMLInputElement
+    | HTMLSelectElement
+    | HTMLTextAreaElement
+    | HTMLTextAreaElement
+  >;
 }

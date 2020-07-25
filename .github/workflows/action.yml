@@ -6,9 +6,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,26 +19,26 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # install all the packages
-    - name: Install all packages
-      run: yarn install
+      # install all the packages
+      - name: Install all packages
+        run: yarn install
 
-    # Runs unit tests
-    - name: Run tests
-      run: yarn test
+      # Runs unit tests
+      - name: Run tests
+        run: yarn test
 
-    - uses: actions/cache@v1
-      with:
-        path: ${{ github.workspace }}/.next/cache
-        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
-      
-    # Do a build
-    - name: Build packages
-      run: yarn build
+      - uses: actions/cache@v1
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
 
-    # Build assets
-    - name: Build packages
+      # Do a build
+      - name: Build packages
+        run: yarn build
+
+      # Build assets
+      - name: Build packages
     run: yarn build:js

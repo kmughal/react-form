@@ -1,23 +1,23 @@
-import * as React from "react"
-import SelectBoxProps from "./SelectBox.Props"
-import SelectBoxOption from "./SelectBoxOption"
+import * as React from "react";
+import SelectBoxProps from "./SelectBox.Props";
+import SelectBoxOption from "./SelectBoxOption";
 import {
   addFormDataSetterCallback,
   overrideProperty,
   cloneChildrenForShowIf,
   setupShowIfPresent,
-} from "../../../utils/helpers"
-import ValidationError from "../ValidationError"
+} from "../../../utils/helpers";
+import ValidationError from "../ValidationError";
 
 const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
   children,
   selectBoxProps,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(selectBoxProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(selectBoxProps);
+  if (isSetupShowIfPresent) return null;
 
-  selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallback(selectBoxProps)
+  selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null);
+  addFormDataSetterCallback(selectBoxProps);
 
   const selectOptions = selectBoxProps.options.map(
     (option: SelectBoxOption, index: number) => (
@@ -25,11 +25,11 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         {option.text}
       </option>
     )
-  )
-  
+  );
+
   if (!selectBoxProps.value) {
-    const selectedItem = selectBoxProps.options.filter(x => x.selected);
-    if (selectedItem.length) selectBoxProps.value = selectedItem[0].value
+    const selectedItem = selectBoxProps.options.filter((x) => x.selected);
+    if (selectedItem.length) selectBoxProps.value = selectedItem[0].value;
   }
 
   return (
@@ -45,7 +45,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
           if (selectBoxProps.pubsub) {
             selectBoxProps.pubsub.publish(selectBoxProps.name, {
               data: e.target.value,
-            })
+            });
           }
         }}
       >
@@ -58,7 +58,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
 
       {cloneChildrenForShowIf(children, selectBoxProps)}
     </div>
-  )
-}
+  );
+};
 
-export default SelectBox
+export default SelectBox;

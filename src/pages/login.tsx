@@ -1,23 +1,26 @@
 import {
-  BaseComponentProps,
   FormProps,
   Form,
   TextBox,
   Password,
-} from "../components/basic-components"
-import { BaseValidatorProps, RequiredValidator } from "../components/validators"
-import Navigation from "./components/Navigation"
-import React from "react"
+} from "../components/basic-components";
+import {
+  BaseValidatorProps,
+  RequiredValidator,
+} from "../components/validators";
+import Navigation from "./components/Navigation";
+import React from "react";
+import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
 
 const LoginPage = () => {
-  const [payload, setPayload] = React.useState(null)
+  const [payload, setPayload] = React.useState(null);
   const textBoxProps: BaseComponentProps = {
     label: "Username",
     name: "user-name",
     id: "user-name",
     placeholder: "Provide Username",
     validationMessage: "Please provide username",
-  }
+  };
 
   const passwordProps: BaseComponentProps = {
     label: "Password",
@@ -25,7 +28,7 @@ const LoginPage = () => {
     id: "password",
     placeholder: "Provide Password",
     validationMessage: "Please provide password",
-  }
+  };
 
   const formProps: FormProps = {
     enableOffline: true,
@@ -37,12 +40,12 @@ const LoginPage = () => {
       })
         .then((response) => response.json())
         .then(setPayload)
-        .catch(console.log)
-      console.log("login")
+        .catch(console.log);
+      console.log("login");
     },
-  }
-  const requiredValidator1: BaseValidatorProps = { name: "username_required" }
-  const requiredValidator2: BaseValidatorProps = { name: "password_required" }
+  };
+  const requiredValidator1: BaseValidatorProps = { name: "username_required" };
+  const requiredValidator2: BaseValidatorProps = { name: "password_required" };
 
   return (
     <>
@@ -129,7 +132,7 @@ const LoginPage = () => {
         }
       `}</style>
     </>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

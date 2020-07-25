@@ -1,35 +1,39 @@
-import * as React from "react"
-import SingleFileUploadProps from "./SingleFileUpload.Props"
-import { addFormDataSetterCallback, setupShowIfPresent, cloneChildrenForShowIf } from "../../../utils/helpers"
-import ValidationError from "../ValidationError"
+import * as React from "react";
+import SingleFileUploadProps from "./SingleFileUpload.Props";
+import {
+  addFormDataSetterCallback,
+  setupShowIfPresent,
+  cloneChildrenForShowIf,
+} from "../../../utils/helpers";
+import ValidationError from "../ValidationError";
 
 const SingleFileUpload: React.FC<{
-  singleFileUploadProps: SingleFileUploadProps
+  singleFileUploadProps: SingleFileUploadProps;
 }> = ({ singleFileUploadProps, children }) => {
-
-  const isSetupShowIfPresent = setupShowIfPresent(singleFileUploadProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(singleFileUploadProps);
+  if (isSetupShowIfPresent) return null;
 
   singleFileUploadProps.eleRef =
-    singleFileUploadProps.eleRef ?? React.useRef(null)
+    singleFileUploadProps.eleRef ?? React.useRef(null);
 
   singleFileUploadProps.formDataSetters[singleFileUploadProps.name] = (
     formData
   ) => {
-    const fileControl = singleFileUploadProps.eleRef.current as HTMLInputElement
-    const file = fileControl.files[0]
+    const fileControl = singleFileUploadProps.eleRef
+      .current as HTMLInputElement;
+    const file = fileControl.files[0];
 
     formData.append(
       "single_file",
       file,
       singleFileUploadProps.eleRef.current.value
-    )
-    return null
-  }
+    );
+    return null;
+  };
 
   const refAsInputElement = singleFileUploadProps.eleRef as React.MutableRefObject<
     HTMLInputElement
-  >
+  >;
 
   return (
     <div>
@@ -40,11 +44,11 @@ const SingleFileUpload: React.FC<{
         id={singleFileUploadProps.id}
         name={singleFileUploadProps.name}
         accept={singleFileUploadProps.accept}
-        onChange={e => {
+        onChange={(e) => {
           if (singleFileUploadProps.pubsub)
-          singleFileUploadProps.pubsub.publish(singleFileUploadProps.name, {
-            data: e.target.value,
-          })
+            singleFileUploadProps.pubsub.publish(singleFileUploadProps.name, {
+              data: e.target.value,
+            });
         }}
       />
       <ValidationError
@@ -53,7 +57,7 @@ const SingleFileUpload: React.FC<{
       />
       {cloneChildrenForShowIf(children, singleFileUploadProps)}
     </div>
-  )
-}
+  );
+};
 
-export default SingleFileUpload
+export default SingleFileUpload;

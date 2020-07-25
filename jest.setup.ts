@@ -1,1 +1,1 @@
-import "./bin/jest.extends"
+import "./bin/jest.extends";

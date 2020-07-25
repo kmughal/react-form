@@ -1,5 +1,5 @@
-import Form from "./Form"
-import type FormProps from "./Form.Props"
+import Form from "./Form";
+import type FormProps from "./Form.Props";
 
-export { Form }
-export type { FormProps }
+export { Form };
+export type { FormProps };

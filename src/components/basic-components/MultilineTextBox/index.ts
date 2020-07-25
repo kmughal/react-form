@@ -1,6 +1,6 @@
-import MultilineTextBox from "./MultilineTextBox"
+import MultilineTextBox from "./MultilineTextBox";
 
-export { MultilineTextBox }
+export { MultilineTextBox };
 
-import type MultilineTextBoxProps from "./MultilineTextBox"
-export type { MultilineTextBoxProps }
+import type MultilineTextBoxProps from "./MultilineTextBox";
+export type { MultilineTextBoxProps };

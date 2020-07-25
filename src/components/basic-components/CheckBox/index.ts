@@ -1,6 +1,6 @@
-import CheckBox from "./CheckBox"
+import CheckBox from "./CheckBox";
 
-export { CheckBox }
+export { CheckBox };
 
-import type CheckBoxProps from "./CheckBox.Props"
-export type { CheckBoxProps }
+import type CheckBoxProps from "./CheckBox.Props";
+export type { CheckBoxProps };

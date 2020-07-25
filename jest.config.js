@@ -1,5 +1,4 @@
 module.exports = {
-  
   roots: ["./src"],
   setupFilesAfterEnv: ["./jest.setup.ts"],
   moduleFileExtensions: ["ts", "tsx", "js"],
@@ -15,8 +14,8 @@ module.exports = {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
   globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.test.json'
-    }
-  }
-}
+    "ts-jest": {
+      tsConfig: "tsconfig.test.json",
+    },
+  },
+};

@@ -5,7 +5,12 @@ export default interface PlainMarkupProps {
   pubsub?: PubSub;
   eventName?: string;
   formDataSetters?: Record<string, SetterFunc>;
-  validators?: Record<string, () => Array<string | boolean>>,
-  eleRef?: React.MutableRefObject<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLTextAreaElement>,
-  parentElementValue: (parentElementValue:any) => JSX.Element
+  validators?: Record<string, () => Array<string | boolean>>;
+  eleRef?: React.MutableRefObject<
+    | HTMLInputElement
+    | HTMLSelectElement
+    | HTMLTextAreaElement
+    | HTMLTextAreaElement
+  >;
+  parentElementValue: (parentElementValue: any) => JSX.Element;
 }

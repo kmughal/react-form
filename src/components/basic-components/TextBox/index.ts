@@ -1,3 +1,3 @@
-import TextBox from "./TextBox"
+import TextBox from "./TextBox";
 
-export { TextBox }
+export { TextBox };

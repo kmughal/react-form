@@ -1,23 +1,22 @@
-import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
+import * as React from "react";
+import BaseComponentProps from "../BaseComponent.Props";
 import {
   addFormDataSetterCallback,
   setComponentValueIfProvided,
-} from "../../../utils/helpers"
-import ValidationError from "../ValidationError"
+} from "../../../utils/helpers";
+import ValidationError from "../ValidationError";
 
 const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
   passwordProps,
 }) => {
-
-  passwordProps.eleRef = passwordProps.eleRef ?? React.useRef(null)
+  passwordProps.eleRef = passwordProps.eleRef ?? React.useRef(null);
   const refAsInputElement = passwordProps.eleRef as React.MutableRefObject<
     HTMLInputElement
-  >
+  >;
 
-  passwordProps.valid = passwordProps.valid ?? true
-  addFormDataSetterCallback(passwordProps)
-  setComponentValueIfProvided(passwordProps)
+  passwordProps.valid = passwordProps.valid ?? true;
+  addFormDataSetterCallback(passwordProps);
+  setComponentValueIfProvided(passwordProps);
 
   return (
     <div>
@@ -34,7 +33,7 @@ const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
         message={passwordProps.validationMessage}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Password
+export default Password;

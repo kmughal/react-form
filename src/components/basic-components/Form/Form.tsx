@@ -1,14 +1,14 @@
-import * as React from "react"
+import * as React from "react";
 
-import FormProps, { PubSub } from "./Form.Props"
-import { overrideProperty } from "../../../utils/helpers"
+import FormProps, { PubSub } from "./Form.Props";
+import { overrideProperty } from "../../../utils/helpers";
 
 const ValidationSummary = ({ messages }) => {
-  const markup = []
-  let key = 0
+  const markup = [];
+  let key = 0;
   for (let message of messages) {
-    let [fieldName, errorMessage] = Object.entries(message)[0]
-    let [_, fieldId] = Object.entries(message)[1]
+    let [fieldName, errorMessage] = Object.entries(message)[0];
+    let [_, fieldId] = Object.entries(message)[1];
 
     markup.push(
       <li key={key++}>
@@ -16,7 +16,7 @@ const ValidationSummary = ({ messages }) => {
           {fieldName + "   " + errorMessage}
         </a>
       </li>
-    )
+    );
   }
   return (
     <div role="alert">
@@ -24,86 +24,91 @@ const ValidationSummary = ({ messages }) => {
 
       <ul>{markup}</ul>
     </div>
-  )
-}
+  );
+};
 
+/**
+ * Create a form element
+ *
+ * @param formProps: FormProps
+ *
+ */
 const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
-  let _formData = null
-  formProps.validators = {}
-  formProps.formDataSetters = {}
-  formProps.pubsub = new PubSub()
-  let _formIsComplete = false
-  let _submitForm = () => {}
+  let _formData = null;
+  formProps.validators = {};
+  formProps.formDataSetters = {};
+  formProps.pubsub = new PubSub();
+  let _formIsComplete = false;
+  let _submitForm = () => {};
 
-  const [validationSummary, setValidationSummary] = React.useState([])
+  const [validationSummary, setValidationSummary] = React.useState([]);
 
   React.useEffect(() => {
-    _formData = new FormData()
+    _formData = new FormData();
     return () => {
       // _formData = null
-    }
-  }, [_formData])
+    };
+  }, [_formData]);
 
   const submitHandler = (e) => {
-    const validatorResult = new Array<boolean>()
+    const validatorResult = new Array<boolean>();
 
-    const validators = formProps.validators
-    const validationSummaryResult = []
+    const validators = formProps.validators;
+    const validationSummaryResult = [];
     for (let index in validators) {
-      let validator = validators[index]
-      const vResult = validator()
+      let validator = validators[index];
+      const vResult = validator();
       if (!vResult[0]) {
-        validatorResult.push(false)
+        validatorResult.push(false);
         validationSummaryResult.push({
           [vResult[1] as string]: vResult[2],
           fieldId: vResult[3],
-        })
+        });
       }
     }
 
-    setValidationSummary(validationSummaryResult)
-    const anyValidationFailed = validatorResult.some((c) => !c)
+    setValidationSummary(validationSummaryResult);
+    const anyValidationFailed = validatorResult.some((c) => !c);
     if (anyValidationFailed) {
-      console.log("check result!")
+      console.log("check result!");
     } else {
-      _formData = _formData ?? new FormData()
+      _formData = _formData ?? new FormData();
 
-      let plainJson: Record<string, string>
+      let plainJson: Record<string, string>;
       for (let index in formProps.formDataSetters) {
-        let setter = formProps.formDataSetters[index]
-        let jsonResult = setter(_formData)
-        if (jsonResult) plainJson = { ...plainJson, ...jsonResult }
+        let setter = formProps.formDataSetters[index];
+        let jsonResult = setter(_formData);
+        if (jsonResult) plainJson = { ...plainJson, ...jsonResult };
       }
-      _formIsComplete = true
+      _formIsComplete = true;
       _submitForm = () => {
-        formProps.submitForm(_formData, plainJson)
-        _formData = new FormData()
-      }
+        formProps.submitForm(_formData, plainJson);
+        _formData = new FormData();
+      };
 
       if (formProps.enableOffline) {
-        if (navigator.onLine && process && process["browser"]) _submitForm()
-      } else _submitForm()
+        if (navigator.onLine && process && process["browser"]) _submitForm();
+      } else _submitForm();
     }
-    e.preventDefault()
-  }
-  const [onlineMessage, setOnlineMessage] = React.useState(false)
-  const [offLineMessage, setOfflineMessage] = React.useState(false)
+    e.preventDefault();
+  };
+  const [onlineMessage, setOnlineMessage] = React.useState(false);
+  const [offLineMessage, setOfflineMessage] = React.useState(false);
 
   if (formProps.enableOffline && process && process["browser"]) {
     window.addEventListener("online", () => {
-      setOnlineMessage(true)
-      setOfflineMessage(false)
+      setOnlineMessage(true);
+      setOfflineMessage(false);
       if (_formIsComplete) {
-        _submitForm()
-        _formIsComplete = false
+        _submitForm();
+        _formIsComplete = false;
       }
-    })
+    });
     window.addEventListener("offline", () => {
-      setOnlineMessage(false)
-      setOfflineMessage(true)
-    })
+      setOnlineMessage(false);
+      setOfflineMessage(true);
+    });
   }
-
 
   return (
     <>
@@ -120,18 +125,22 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
           <ValidationSummary messages={validationSummary} />
         )}
         {React.Children.map(children as any, (child) => {
-          let _props = child.props
-          if (child.props.className?.startsWith("jsx")) return child
-          overrideProperty(_props, "eleRef", React.useRef(null))
-          overrideProperty(_props, "validators", formProps.validators)
-          overrideProperty(_props, "formDataSetters", formProps.formDataSetters)
-          overrideProperty(_props, "pubsub", formProps.pubsub)
+          let _props = child.props;
+          if (child.props.className?.startsWith("jsx")) return child;
+          overrideProperty(_props, "eleRef", React.useRef(null));
+          overrideProperty(_props, "validators", formProps.validators);
+          overrideProperty(
+            _props,
+            "formDataSetters",
+            formProps.formDataSetters
+          );
+          overrideProperty(_props, "pubsub", formProps.pubsub);
 
-          return React.cloneElement(child, { ..._props })
+          return React.cloneElement(child, { ..._props });
         })}
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

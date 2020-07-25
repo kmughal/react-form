@@ -1,28 +1,30 @@
-import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
-import ValidationError from "../ValidationError"
+import * as React from "react";
+import BaseComponentProps from "../BaseComponent.Props";
+import ValidationError from "../ValidationError";
+
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
-} from "../../../utils/helpers"
+} from "../../../utils/helpers";
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(textBoxProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(textBoxProps);
+  if (isSetupShowIfPresent) return null;
 
-  textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null)
+  textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null);
   const refAsInputElement = textBoxProps.eleRef as React.MutableRefObject<
     HTMLInputElement
-  >
+  >;
 
-  textBoxProps.valid = textBoxProps.valid ?? true
-  addFormDataSetterCallback(textBoxProps)
-  setComponentValueIfProvided(textBoxProps)
+  textBoxProps.valid = textBoxProps.valid ?? true;
+  addFormDataSetterCallback(textBoxProps);
+
+  setComponentValueIfProvided(textBoxProps);
 
   return (
     <div>
@@ -37,8 +39,8 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
           if (textBoxProps.pubsub)
             textBoxProps.pubsub.publish(textBoxProps.name, {
               data: e.target.value,
-            })
-          e.preventDefault()
+            });
+          e.preventDefault();
         }}
         aria-describedby={textBoxProps.id + "_error"}
       />
@@ -48,7 +50,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
       />
       {cloneChildrenForShowIf(children, textBoxProps)}
     </div>
-  )
-}
+  );
+};
 
-export default TextBox
+export default TextBox;

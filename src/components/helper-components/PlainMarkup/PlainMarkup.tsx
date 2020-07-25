@@ -1,16 +1,16 @@
-import { PlainMarkupProps } from "."
-import React from "react"
+import { PlainMarkupProps } from ".";
+import React from "react";
 
 const PlainMarkup: React.FC<{ plainMarkupProps: PlainMarkupProps }> = ({
   children,
   plainMarkupProps,
 }) => {
-  const [reactiveData, setReactiveData] = React.useState(null)
+  const [reactiveData, setReactiveData] = React.useState(null);
   plainMarkupProps.pubsub.addSubscriber(plainMarkupProps.eventName, (data) => {
-    setReactiveData(data)
-  })
+    setReactiveData(data);
+  });
 
-  return <>{plainMarkupProps.parentElementValue(reactiveData)}</>
-}
+  return <>{plainMarkupProps.parentElementValue(reactiveData)}</>;
+};
 
-export default PlainMarkup
+export default PlainMarkup;

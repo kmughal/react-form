@@ -1,34 +1,31 @@
 import {
-  BaseComponentProps,
   Form,
   FormProps,
   TextBox,
   MultilineTextBox,
   RadioButton,
-} from "../components/basic-components"
+} from "../components/basic-components";
 
 import {
   RequiredValidator,
   BaseValidatorProps,
-  RangeValidatorProps,
-} from "../components/validators"
+} from "../components/validators";
 
-import { TitleProps, PostCodeProps, GenderProps } from "../components/recepies"
-import Navigation from "./components/Navigation"
-import SingleFileUploadProps from "../components/basic-components/SingleFileUpload/SingleFileUpload.Props"
-import React from "react"
+import Navigation from "./components/Navigation";
+import React from "react";
 import {
   ShowIf,
   ShowIfProps,
   PlainMarkup,
   PlainMarkupProps,
-} from "../components/helper-components"
-import MultilineTextBoxProps from "../components/basic-components/MultilineTextBox/MultilineTextBox.Props"
-import RadioButtonProps from "../components/basic-components/RadioButton/RadioButton.Props"
-import { RadioButtonOption } from "../components/basic-components/RadioButton/RadioButtonOption"
+} from "../components/helper-components";
+import MultilineTextBoxProps from "../components/basic-components/MultilineTextBox/MultilineTextBox.Props";
+import RadioButtonProps from "../components/basic-components/RadioButton/RadioButton.Props";
+import { RadioButtonOption } from "../components/basic-components/RadioButton/RadioButtonOption";
+import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
 
 const Index = () => {
-  const [payload, setPayload] = React.useState(null)
+  const [payload, setPayload] = React.useState(null);
 
   const formProps: FormProps = {
     name: "test-form",
@@ -40,15 +37,15 @@ const Index = () => {
       })
         .then((response) => response.json())
         .then(setPayload)
-        .catch(console.log)
+        .catch(console.log);
     },
     showValidationSummary: true,
-  }
+  };
 
-  const requiredValidator: BaseValidatorProps = { name: "name_required" }
+  const requiredValidator: BaseValidatorProps = { name: "name_required" };
   const commentsRequiredValidator: BaseValidatorProps = {
     name: "comments_required",
-  }
+  };
 
   const streetTextBoxProps: BaseComponentProps = {
     id: "street",
@@ -56,11 +53,11 @@ const Index = () => {
     label: "Street / House number",
     placeholder: "Street address",
     showIfCallback: ({ data }) => data === "give_details",
-  }
+  };
 
   const showDetailsInputBox: ShowIfProps = {
     id: "user_decided_to_give_details",
-  }
+  };
 
   const nameTextBoxProps: BaseComponentProps = {
     id: "name",
@@ -69,7 +66,7 @@ const Index = () => {
     validationMessage: "Please provide the name",
     name: "name",
     showIfCallback: ({ data }) => data === "give_details",
-  }
+  };
 
   const multilineTextBoxProps: MultilineTextBoxProps = {
     id: "comments",
@@ -79,7 +76,7 @@ const Index = () => {
     rows: 10,
     columns: 20,
     validationMessage: "Please provide the comments",
-  }
+  };
 
   const radioButtonProps: RadioButtonProps = {
     legend: "About your personal information",
@@ -90,30 +87,27 @@ const Index = () => {
     ],
     label: "choice_deetail",
     id: "choice_detail",
-  }
+  };
 
   const plainMarkupProps: PlainMarkupProps = {
     id: "plain_markup_prop",
     parentElementValue: (data) => {
       if (data) {
-        const value = data.data
+        const value = data.data;
         return (
           <p>
             You have entered : {value} / Characters : {value.length}
           </p>
-        )
+        );
       }
     },
-  }
+  };
 
   return (
     <>
       <Navigation />
       <h2>Complex Form</h2>
-      <p>
-        This is a complex form created using react form. 
-       
-      </p>
+      <p>This is a complex form created using react form.</p>
       <div className="form-container">
         <Form formProps={formProps}>
           <RequiredValidator requiredValidatorProps={commentsRequiredValidator}>
@@ -132,7 +126,7 @@ const Index = () => {
           </RadioButton>
 
           <div className="button-container">
-           <button>Submit Form</button>
+            <button>Submit Form</button>
           </div>
         </Form>
         {payload && (
@@ -144,9 +138,9 @@ const Index = () => {
       </div>
       <style jsx global>{`
         body {
-          font-family: "Arial"
+          font-family: "Arial";
         }
-        
+
         nav {
           text-align: right;
         }
@@ -189,26 +183,27 @@ const Index = () => {
         }
         label {
           position: relative;
-          
+
           display: inline-block;
           text-align: right;
           vertical-align: top;
         }
         select,
-        input[type="text"], textarea {
+        input[type="text"],
+        textarea {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);
           width: 300px;
           border-radius: 5px;
-          font-family: "Arial"
+          font-family: "Arial";
         }
-        
+
         select {
           width: 321px !important;
         }
       `}</style>
     </>
-  )
-}
-export default Index
+  );
+};
+export default Index;

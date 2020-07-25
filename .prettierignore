@@ -1,0 +1,5 @@
+.next
+.cache
+coverage
+node_modules
+dist

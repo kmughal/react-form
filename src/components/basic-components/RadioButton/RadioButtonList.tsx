@@ -1,6 +1,6 @@
-import * as React from "react"
-import { RadioButtonOption } from "./RadioButtonOption"
-import { PubSub } from "../Form/Form.Props"
+import * as React from "react";
+import { RadioButtonOption } from "./RadioButtonOption";
+import { PubSub } from "../Form/Form.Props";
 
 const RadioButtonList = (
   name: string,
@@ -10,11 +10,11 @@ const RadioButtonList = (
   pubsub: PubSub
 ) => {
   const markSelection = (event: React.MouseEvent<HTMLInputElement>) => {
-    eleRef.current.value = (event.target as HTMLInputElement).value
-  }
+    eleRef.current.value = (event.target as HTMLInputElement).value;
+  };
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
-    const _id = `${name.replace(" ", "_")}_${index}`
+    const _id = `${name.replace(" ", "_")}_${index}`;
     const markup = rd.checked ? (
       <input
         type="radio"
@@ -25,7 +25,7 @@ const RadioButtonList = (
         aria-describedby={name + "_error"}
         checked={true}
         onChange={(e) => {
-          if (pubsub) pubsub.publish(name, { data: e.target.value })
+          if (pubsub) pubsub.publish(name, { data: e.target.value });
         }}
       />
     ) : (
@@ -37,24 +37,24 @@ const RadioButtonList = (
         onClick={markSelection}
         aria-describedby={name + "_error"}
         onChange={(e) => {
-          if (pubsub) pubsub.publish(name, { data: e.target.value })
+          if (pubsub) pubsub.publish(name, { data: e.target.value });
         }}
       />
-    )
+    );
     return (
       <div key={index}>
         {markup}
         <label htmlFor={_id}>{rd.text}</label>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <fieldset>
       <legend>{legend}</legend>
       {result}
     </fieldset>
-  )
-}
+  );
+};
 
-export default RadioButtonList
+export default RadioButtonList;

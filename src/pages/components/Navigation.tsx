@@ -1,4 +1,5 @@
-import Head from "next/head"
+import Head from "next/head";
+import React from "react";
 
 export default () => {
   return (
@@ -29,5 +30,5 @@ export default () => {
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};

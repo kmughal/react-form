@@ -1,32 +1,38 @@
-import * as React from "react"
-import RadioButtonProps from "./RadioButton.Props"
-import ValidationError from "../ValidationError"
-import RadioButtonList from "./RadioButtonList"
-import { addFormDataSetterCallback, cloneChildrenForShowIf, setComponentValueIfProvided, setupShowIfPresent } from "../../../utils/helpers"
+import * as React from "react";
+import RadioButtonProps from "./RadioButton.Props";
+import ValidationError from "../ValidationError";
+import RadioButtonList from "./RadioButtonList";
+import {
+  addFormDataSetterCallback,
+  cloneChildrenForShowIf,
+  setComponentValueIfProvided,
+  setupShowIfPresent,
+} from "../../../utils/helpers";
 
 const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   children,
   radioButtonProps,
 }) => {
+  const isSetupShowIfPresent = setupShowIfPresent(radioButtonProps);
+  if (isSetupShowIfPresent) return null;
 
-  const isSetupShowIfPresent = setupShowIfPresent(radioButtonProps)
-  if (isSetupShowIfPresent) return null
+  radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null);
+  addFormDataSetterCallback(radioButtonProps);
 
-  radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallback(radioButtonProps)
- 
-  const checkedOption = radioButtonProps.radioButtonOptions.filter(x => x.checked)
-  if (checkedOption.length > 0) radioButtonProps.value = checkedOption[0].value
-  
-  setComponentValueIfProvided(radioButtonProps)
-  
+  const checkedOption = radioButtonProps.radioButtonOptions.filter(
+    (x) => x.checked
+  );
+  if (checkedOption.length > 0) radioButtonProps.value = checkedOption[0].value;
+
+  setComponentValueIfProvided(radioButtonProps);
+
   const readioButtonList = RadioButtonList(
     radioButtonProps.name,
     radioButtonProps.legend,
     radioButtonProps.radioButtonOptions,
     radioButtonProps.eleRef as React.MutableRefObject<HTMLInputElement>,
     radioButtonProps.pubsub
-  )
+  );
 
   return (
     <div>
@@ -48,7 +54,7 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
       />
       {cloneChildrenForShowIf(children, radioButtonProps)}
     </div>
-  )
-}
+  );
+};
 
-export default RadioButton
+export default RadioButton;

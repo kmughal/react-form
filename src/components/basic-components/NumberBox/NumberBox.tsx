@@ -1,26 +1,26 @@
-import * as React from "react"
-import BaseComponentProps from "../BaseComponent.Propts"
+import * as React from "react";
+import BaseComponentProps from "../BaseComponent.Props";
 import {
   addFormDataSetterCallback,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   setupShowIfPresent,
-} from "../../../utils/helpers"
-import ValidationError from "../ValidationError"
+} from "../../../utils/helpers";
+import ValidationError from "../ValidationError";
 
 const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   numberProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(numberProps)
-  if (isSetupShowIfPresent) return null
+  const isSetupShowIfPresent = setupShowIfPresent(numberProps);
+  if (isSetupShowIfPresent) return null;
 
   const refAsInputElement = numberProps.eleRef as React.MutableRefObject<
     HTMLInputElement
-  >
-  numberProps.eleRef = numberProps.eleRef ?? React.useRef(null)
-  addFormDataSetterCallback(numberProps)
-  setComponentValueIfProvided(numberProps)
+  >;
+  numberProps.eleRef = numberProps.eleRef ?? React.useRef(null);
+  addFormDataSetterCallback(numberProps);
+  setComponentValueIfProvided(numberProps);
 
   return (
     <div>
@@ -39,7 +39,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
       />
       {cloneChildrenForShowIf(children, numberProps)}
     </div>
-  )
-}
+  );
+};
 
-export default NumberBox
+export default NumberBox;

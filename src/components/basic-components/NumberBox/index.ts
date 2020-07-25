@@ -1,2 +1,2 @@
-import NumberBox from "./NumberBox"
-export { NumberBox }
+import NumberBox from "./NumberBox";
+export { NumberBox };

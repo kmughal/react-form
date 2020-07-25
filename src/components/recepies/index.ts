@@ -1,3 +1,3 @@
-export * from "./Title"
-export * from "./Postcode"
-export * from "./Gender"
+export * from "./Title";
+export * from "./Postcode";
+export * from "./Gender";

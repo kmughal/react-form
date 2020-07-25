@@ -1,6 +1,6 @@
-import ShowIf from "./ShowIf"
+import ShowIf from "./ShowIf";
 
-export { ShowIf }
+export { ShowIf };
 
-import type ShowIfProps from "./ShowIf.Props"
-export type { ShowIfProps }
+import type ShowIfProps from "./ShowIf.Props";
+export type { ShowIfProps };

@@ -1,5 +1,5 @@
-import Gender from "./Gender"
-import type GenderProps from "./Gender.Props"
+import Gender from "./Gender";
+import type GenderProps from "./Gender.Props";
 
-export { Gender }
-export type { GenderProps }
+export { Gender };
+export type { GenderProps };

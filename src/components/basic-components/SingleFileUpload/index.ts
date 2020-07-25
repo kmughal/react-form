@@ -1,2 +1,2 @@
-import SingleFileUpload from "./SingleFileUpload"
-export { SingleFileUpload }
+import SingleFileUpload from "./SingleFileUpload";
+export { SingleFileUpload };
