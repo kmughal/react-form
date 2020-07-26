@@ -1,6 +1,7 @@
-import { PubSub, SetterFunc } from '../basic-components/Form/Form.Props';
+import { SetterFunc } from '../basic-components/Form/Form.Props';
+import PubSub from '../basic-components/Form/PubSub';
 
-interface BaseValidatorProps {
+export default interface BaseValidatorProps {
   name: string;
   eleRef?: React.MutableRefObject<
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -14,5 +15,3 @@ interface BaseValidatorProps {
   showIfCallback?: (value: any) => boolean;
   showIfValue?: any;
 }
-
-export default BaseValidatorProps;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { SelectBoxOption } from '.';
-import BaseComponentProps from '../BaseComponent.Props';
 import render from '../../../../bin/render';
-import { PubSub } from '../Form/Form.Props';
+import PubSub from '../Form/PubSub';
 import SelectBox from './SelectBox';
 import SelectBoxProps from './SelectBox.Props';
 

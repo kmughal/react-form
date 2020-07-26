@@ -1,5 +1,6 @@
 import BaseComponentProps from '../../basic-components/BaseComponent.Props';
-import { PubSub, SetterFunc } from '../../basic-components/Form/Form.Props';
+import { SetterFunc } from '../../basic-components/Form/Form.Props';
+import PubSub from '../../basic-components/Form/PubSub';
 
 export default interface PostcodeProps {
   name: string;
