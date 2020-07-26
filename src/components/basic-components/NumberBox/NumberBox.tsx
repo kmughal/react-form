@@ -1,12 +1,12 @@
-import * as React from "react";
-import BaseComponentProps from "../BaseComponent.Props";
+import * as React from 'react';
+import BaseComponentProps from '../BaseComponent.Props';
 import {
   addFormDataSetterCallback,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   setupShowIfPresent,
-} from "../../../utils/helpers";
-import ValidationError from "../ValidationError";
+} from '../../../utils/helpers';
+import ValidationError from '../ValidationError';
 
 const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   numberProps,
@@ -31,7 +31,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
         id={numberProps.id}
         name={numberProps.name}
         placeholder={numberProps.placeholder}
-        aria-describedby={numberProps.id + "_error"}
+        aria-describedby={numberProps.id + '_error'}
       />
       <ValidationError
         valid={numberProps.valid}

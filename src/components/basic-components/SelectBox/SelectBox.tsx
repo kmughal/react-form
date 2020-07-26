@@ -1,13 +1,13 @@
-import * as React from "react";
-import SelectBoxProps from "./SelectBox.Props";
-import SelectBoxOption from "./SelectBoxOption";
+import * as React from 'react';
+import SelectBoxProps from './SelectBox.Props';
+import SelectBoxOption from './SelectBoxOption';
 import {
   addFormDataSetterCallback,
   overrideProperty,
   cloneChildrenForShowIf,
   setupShowIfPresent,
-} from "../../../utils/helpers";
-import ValidationError from "../ValidationError";
+} from '../../../utils/helpers';
+import ValidationError from '../ValidationError';
 
 const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
   children,
@@ -40,7 +40,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         ref={selectBoxProps.eleRef as React.MutableRefObject<HTMLSelectElement>}
         name={selectBoxProps.name}
         id={selectBoxProps.id}
-        aria-describedby={selectBoxProps.id + "_error"}
+        aria-describedby={selectBoxProps.id + '_error'}
         onChange={(e) => {
           if (selectBoxProps.pubsub) {
             selectBoxProps.pubsub.publish(selectBoxProps.name, {

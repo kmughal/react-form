@@ -1,18 +1,18 @@
-import React from "react";
-import { render } from "react-dom";
-import { Form, FormProps, TextBox } from "./dist/cjs";
+import React from 'react';
+import { render } from 'react-dom';
+import { Form, FormProps, TextBox } from './dist/cjs';
 
 const App = () => {
   const formProps: FormProps = {
-    heading: "Typescript Form",
-    submitForm: (f) => console.log("good work"),
+    heading: 'Typescript Form',
+    submitForm: (f) => console.log('good work'),
     showValidationSummary: true,
   };
   const textBoxProps: any = {
-    label: "NAME",
-    name: "name",
-    id: "name",
-    placeholder: "placeholder",
+    label: 'NAME',
+    name: 'name',
+    id: 'name',
+    placeholder: 'placeholder',
   };
 
   return (
@@ -25,4 +25,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById('app'));

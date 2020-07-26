@@ -1,13 +1,13 @@
-import * as React from "react";
-import BaseComponentProps from "../BaseComponent.Props";
-import ValidationError from "../ValidationError";
+import * as React from 'react';
+import BaseComponentProps from '../BaseComponent.Props';
+import ValidationError from '../ValidationError';
 
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
-} from "../../../utils/helpers";
+} from '../../../utils/helpers';
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
@@ -42,7 +42,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
             });
           e.preventDefault();
         }}
-        aria-describedby={textBoxProps.id + "_error"}
+        aria-describedby={textBoxProps.id + '_error'}
       />
       <ValidationError
         valid={textBoxProps.valid}

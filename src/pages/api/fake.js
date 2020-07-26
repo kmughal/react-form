@@ -1,4 +1,4 @@
-import { IncomingForm } from "formidable";
+import { IncomingForm } from 'formidable';
 export default async (req, res) => {
   await new Promise((resolve) => {
     new IncomingForm().parse(req, (err, fields, files) => {

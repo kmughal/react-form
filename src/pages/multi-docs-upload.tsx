@@ -3,49 +3,49 @@ import {
   Form,
   TextBox,
   MultiFileUpload,
-} from "../components/basic-components";
+} from '../components/basic-components';
 import {
   BaseValidatorProps,
   RequiredValidator,
-} from "../components/validators";
-import Navigation from "./components/Navigation";
-import React from "react";
-import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
+} from '../components/validators';
+import Navigation from './components/Navigation';
+import React from 'react';
+import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
 
 const MultiDocsUploadPage = () => {
   const [payload, setPayload] = React.useState(null);
   const textBoxProps: BaseComponentProps = {
-    label: "Name",
-    name: "txt-name",
-    id: "txt-name",
-    placeholder: "Provide Name...",
-    validationMessage: "Please provide name...",
+    label: 'Name',
+    name: 'txt-name',
+    id: 'txt-name',
+    placeholder: 'Provide Name...',
+    validationMessage: 'Please provide name...',
   };
 
   const multiDocsProps: BaseComponentProps = {
-    label: "Please provide document(s)",
-    name: "multi-docs",
-    id: "multi-docs",
-    placeholder: "Provie docs",
-    validationMessage: "Atleast select one file",
+    label: 'Please provide document(s)',
+    name: 'multi-docs',
+    id: 'multi-docs',
+    placeholder: 'Provie docs',
+    validationMessage: 'Atleast select one file',
   };
 
   const formProps: FormProps = {
     enableOffline: true,
     showValidationSummary: true,
     submitForm: (formData) => {
-      fetch("/api/fake", {
+      fetch('/api/fake', {
         body: formData,
-        method: "POST",
+        method: 'POST',
       })
         .then((response) => response.json())
         .then(setPayload)
         .catch(console.log);
-      console.log("login");
+      console.log('login');
     },
   };
-  const requiredValidator1: BaseValidatorProps = { name: "name_required" };
-  const requiredValidator2: BaseValidatorProps = { name: "file_required" };
+  const requiredValidator1: BaseValidatorProps = { name: 'name_required' };
+  const requiredValidator2: BaseValidatorProps = { name: 'file_required' };
 
   return (
     <>
@@ -71,7 +71,7 @@ const MultiDocsUploadPage = () => {
       )}
       <style jsx global>{`
         body {
-          font-family: "Arial";
+          font-family: 'Arial';
         }
 
         nav {
@@ -86,7 +86,7 @@ const MultiDocsUploadPage = () => {
         }
 
         nav ul li a :after {
-          content: " | ";
+          content: ' | ';
         }
 
         .form-container {
@@ -114,7 +114,7 @@ const MultiDocsUploadPage = () => {
           text-align: right;
         }
         select,
-        input[type="text"],
+        input[type='text'],
         textarea {
           padding: 5px 5px;
           display: inline-block;

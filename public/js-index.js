@@ -1,6 +1,6 @@
-import React from "react";
-import { render } from "react-dom";
-import { Form, RequiredValidator, TextBox } from "./build";
+import React from 'react';
+import { render } from 'react-dom';
+import { Form, RequiredValidator, TextBox } from './build';
 
 const App = () => {
   return (
@@ -10,13 +10,13 @@ const App = () => {
         showValidationSummary: true,
       }}
     >
-      <RequiredValidator requiredValidatorProps={{ name: "name_required" }}>
+      <RequiredValidator requiredValidatorProps={{ name: 'name_required' }}>
         <TextBox
           textBoxProps={{
-            label: "username",
-            id: "username",
-            name: "username",
-            validationMessage: "give",
+            label: 'username',
+            id: 'username',
+            name: 'username',
+            validationMessage: 'give',
           }}
         />
       </RequiredValidator>
@@ -27,4 +27,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById('app'));

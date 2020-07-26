@@ -1,16 +1,16 @@
-import Window from "window";
-import { render } from "react-dom";
-import EventTypes from "./eventtypes";
+import Window from 'window';
+import { render } from 'react-dom';
+import EventTypes from './eventtypes';
 let _window = null;
 
 export default (component, window = null) => {
   _window = window || new Window();
   const document = _window.document;
 
-  const container = document.createElement("div");
-  container.id = "root";
+  const container = document.createElement('div');
+  container.id = 'root';
   document.body.appendChild(container);
-  render(component, document.getElementById("root"));
+  render(component, document.getElementById('root'));
 
   const triggerEvent = (eventName, element) => {
     const metaData = EventTypes[eventName];
@@ -31,7 +31,7 @@ export default (component, window = null) => {
     getByTagName: (tagName) =>
       document.getElementsByTagName(tagName)[0] || null,
     getAllByTagName: (tagName) => {
-      const inputs = ["radio", "checkbox", "text", "password", "number"];
+      const inputs = ['radio', 'checkbox', 'text', 'password', 'number'];
       if (inputs.includes(tagName))
         return document.querySelectorAll(`input[type="${tagName}"]`);
       return document.getElementsByTagName(tagName);
@@ -48,7 +48,7 @@ export default (component, window = null) => {
     triggerEvent,
     fireChangeEvent: (el, value) => {
       el.value = value;
-      triggerEvent("change", el);
+      triggerEvent('change', el);
     },
   };
 };

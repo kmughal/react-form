@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
 import {
   cloneChildrenForShowIf,
   setupShowIfPresent,
-} from "../../../utils/helpers";
-import BaseComponentProps from "../BaseComponent.Props";
-import ValidationError from "../ValidationError";
+} from '../../../utils/helpers';
+import BaseComponentProps from '../BaseComponent.Props';
+import ValidationError from '../ValidationError';
 
 const MultiFileUpload: React.FC<{
   multiFileUploadProps: BaseComponentProps;
@@ -18,12 +18,12 @@ const MultiFileUpload: React.FC<{
 
   const multiFilesContainer = React.useRef(null);
   const containerStyle = {
-    width: "98%",
-    height: "400px",
-    border: "2px dashed gray",
-    textAlign: "center" as const,
-    lineHeight: "400px",
-    fontSize: "18px",
+    width: '98%',
+    height: '400px',
+    border: '2px dashed gray',
+    textAlign: 'center' as const,
+    lineHeight: '400px',
+    fontSize: '18px',
   };
 
   const handleDragOver = (event) => {
@@ -34,15 +34,15 @@ const MultiFileUpload: React.FC<{
     event.preventDefault();
     const files = event.dataTransfer.files;
     if (files?.length === 0) {
-      throw new Error("No file attached");
+      throw new Error('No file attached');
     }
 
     multiFileUploadProps.eleRef.current = files[0];
     // For required validator!
     multiFileUploadProps.eleRef.current.value = files[0].name;
 
-    multiFilesContainer.current.innerHTML = "";
-    multiFilesContainer.current.style.lineHeight = "10px";
+    multiFilesContainer.current.innerHTML = '';
+    multiFilesContainer.current.style.lineHeight = '10px';
 
     const markup = [];
     const fileList = Array.from(files);
@@ -62,7 +62,7 @@ const MultiFileUpload: React.FC<{
     };
 
     multiFilesContainer.current.innerHTML = `<div style="display:flex;background-color: DodgerBlue">${markup.join(
-      ""
+      ''
     )}</div>`;
   };
 

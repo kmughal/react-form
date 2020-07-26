@@ -4,36 +4,36 @@ import {
   TextBox,
   MultilineTextBox,
   RadioButton,
-} from "../components/basic-components";
+} from '../components/basic-components';
 
 import {
   RequiredValidator,
   BaseValidatorProps,
-} from "../components/validators";
+} from '../components/validators';
 
-import Navigation from "./components/Navigation";
-import React from "react";
+import Navigation from './components/Navigation';
+import React from 'react';
 import {
   ShowIf,
   ShowIfProps,
   PlainMarkup,
   PlainMarkupProps,
-} from "../components/helper-components";
-import MultilineTextBoxProps from "../components/basic-components/MultilineTextBox/MultilineTextBox.Props";
-import RadioButtonProps from "../components/basic-components/RadioButton/RadioButton.Props";
-import { RadioButtonOption } from "../components/basic-components/RadioButton/RadioButtonOption";
-import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
+} from '../components/helper-components';
+import MultilineTextBoxProps from '../components/basic-components/MultilineTextBox/MultilineTextBox.Props';
+import RadioButtonProps from '../components/basic-components/RadioButton/RadioButton.Props';
+import { RadioButtonOption } from '../components/basic-components/RadioButton/RadioButtonOption';
+import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
 
 const Index = () => {
   const [payload, setPayload] = React.useState(null);
 
   const formProps: FormProps = {
-    name: "test-form",
-    heading: "",
+    name: 'test-form',
+    heading: '',
     submitForm: (formData) => {
-      fetch("/api/fake", {
+      fetch('/api/fake', {
         body: formData,
-        method: "POST",
+        method: 'POST',
       })
         .then((response) => response.json())
         .then(setPayload)
@@ -42,55 +42,55 @@ const Index = () => {
     showValidationSummary: true,
   };
 
-  const requiredValidator: BaseValidatorProps = { name: "name_required" };
+  const requiredValidator: BaseValidatorProps = { name: 'name_required' };
   const commentsRequiredValidator: BaseValidatorProps = {
-    name: "comments_required",
+    name: 'comments_required',
   };
 
   const streetTextBoxProps: BaseComponentProps = {
-    id: "street",
-    name: "street",
-    label: "Street / House number",
-    placeholder: "Street address",
-    showIfCallback: ({ data }) => data === "give_details",
+    id: 'street',
+    name: 'street',
+    label: 'Street / House number',
+    placeholder: 'Street address',
+    showIfCallback: ({ data }) => data === 'give_details',
   };
 
   const showDetailsInputBox: ShowIfProps = {
-    id: "user_decided_to_give_details",
+    id: 'user_decided_to_give_details',
   };
 
   const nameTextBoxProps: BaseComponentProps = {
-    id: "name",
-    label: "Name :",
-    placeholder: "Provide name ....",
-    validationMessage: "Please provide the name",
-    name: "name",
-    showIfCallback: ({ data }) => data === "give_details",
+    id: 'name',
+    label: 'Name :',
+    placeholder: 'Provide name ....',
+    validationMessage: 'Please provide the name',
+    name: 'name',
+    showIfCallback: ({ data }) => data === 'give_details',
   };
 
   const multilineTextBoxProps: MultilineTextBoxProps = {
-    id: "comments",
-    name: "comments",
-    label: "Comments",
-    placeholder: "Enter comments",
+    id: 'comments',
+    name: 'comments',
+    label: 'Comments',
+    placeholder: 'Enter comments',
     rows: 10,
     columns: 20,
-    validationMessage: "Please provide the comments",
+    validationMessage: 'Please provide the comments',
   };
 
   const radioButtonProps: RadioButtonProps = {
-    legend: "About your personal information",
-    name: "choice_deetail",
+    legend: 'About your personal information',
+    name: 'choice_deetail',
     radioButtonOptions: [
-      new RadioButtonOption("Provide your details", "give_details"),
-      new RadioButtonOption("No I dont want to give my details", "no_details"),
+      new RadioButtonOption('Provide your details', 'give_details'),
+      new RadioButtonOption('No I dont want to give my details', 'no_details'),
     ],
-    label: "choice_deetail",
-    id: "choice_detail",
+    label: 'choice_deetail',
+    id: 'choice_detail',
   };
 
   const plainMarkupProps: PlainMarkupProps = {
-    id: "plain_markup_prop",
+    id: 'plain_markup_prop',
     parentElementValue: (data) => {
       if (data) {
         const value = data.data;
@@ -138,7 +138,7 @@ const Index = () => {
       </div>
       <style jsx global>{`
         body {
-          font-family: "Arial";
+          font-family: 'Arial';
         }
 
         nav {
@@ -160,7 +160,7 @@ const Index = () => {
           left: 66px;
         }
         nav ul li a :after {
-          content: " | ";
+          content: ' | ';
         }
 
         .form-container {
@@ -189,14 +189,14 @@ const Index = () => {
           vertical-align: top;
         }
         select,
-        input[type="text"],
+        input[type='text'],
         textarea {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);
           width: 300px;
           border-radius: 5px;
-          font-family: "Arial";
+          font-family: 'Arial';
         }
 
         select {

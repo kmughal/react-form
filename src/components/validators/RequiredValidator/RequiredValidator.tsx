@@ -1,15 +1,15 @@
-import * as React from "react";
-import BaseValidatorProps from "../BaseValidator.Props";
+import * as React from 'react';
+import BaseValidatorProps from '../BaseValidator.Props';
 
-import { curry } from "../../../utils/helpers";
-import { BaseValidator } from "../BaseValidator";
+import { curry } from '../../../utils/helpers';
+import { BaseValidator } from '../BaseValidator';
 
 const RequiredValidator: React.FC<{
   requiredValidatorProps: BaseValidatorProps;
 }> = (props) => {
   const [valid, setValidator] = React.useState(true);
 
-  var callback = (args: Record<string, any>): Array<boolean | string> => {
+  const callback = (args: Record<string, any>): Array<boolean | string> => {
     const {
       _target,
       _setValidator,
@@ -20,7 +20,7 @@ const RequiredValidator: React.FC<{
     let _isValid = false;
     const _ele = _target.current;
     if (!_ele) _isValid = false;
-    else if (_ele.type === "checkbox")
+    else if (_ele.type === 'checkbox')
       _isValid = (_ele as HTMLInputElement).checked;
     else _isValid = _ele.value.length > 0;
     _setValidator(_isValid);
@@ -38,10 +38,9 @@ const RequiredValidator: React.FC<{
   props.requiredValidatorProps.valid = valid;
 
   return (
-    <BaseValidator
-      baseValidator={props.requiredValidatorProps}
-      children={props.children}
-    />
+    <BaseValidator baseValidator={props.requiredValidatorProps}>
+      {props.children}
+    </BaseValidator>
   );
 };
 

@@ -1,7 +1,7 @@
-import Head from "next/head";
-import React from "react";
+import Head from 'next/head';
+import React from 'react';
 
-export default () => {
+const Navigation = () => {
   return (
     <>
       <Head>
@@ -32,3 +32,6 @@ export default () => {
     </>
   );
 };
+
+Navigation.displayName = 'Navigation';
+export default Navigation;

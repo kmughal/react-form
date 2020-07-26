@@ -1,4 +1,4 @@
-import { SetterFunc } from "../../basic-components/Form/Form.Props";
+import { SetterFunc } from '../../basic-components/Form/Form.Props';
 
 export default interface TitleProps {
   name: string;

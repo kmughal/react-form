@@ -1,11 +1,11 @@
-import * as React from "react";
-import SingleFileUploadProps from "./SingleFileUpload.Props";
+import * as React from 'react';
+import SingleFileUploadProps from './SingleFileUpload.Props';
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
-} from "../../../utils/helpers";
-import ValidationError from "../ValidationError";
+} from '../../../utils/helpers';
+import ValidationError from '../ValidationError';
 
 const SingleFileUpload: React.FC<{
   singleFileUploadProps: SingleFileUploadProps;
@@ -24,7 +24,7 @@ const SingleFileUpload: React.FC<{
     const file = fileControl.files[0];
 
     formData.append(
-      "single_file",
+      'single_file',
       file,
       singleFileUploadProps.eleRef.current.value
     );

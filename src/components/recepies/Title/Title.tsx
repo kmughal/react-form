@@ -1,21 +1,21 @@
-import TitleProps from "./Title.Props";
+import TitleProps from './Title.Props';
 import {
   SelectBoxProps,
   SelectBoxOption,
   SelectBox,
-} from "../../basic-components";
+} from '../../basic-components';
 
-import BaseValidatorProps from "../../validators/BaseValidator.Props";
-import React from "react";
-import { RequiredValidator } from "../../validators";
+import BaseValidatorProps from '../../validators/BaseValidator.Props';
+import React from 'react';
+import { RequiredValidator } from '../../validators';
 
 const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
-  let options = new Array<SelectBoxOption>(
-    new SelectBoxOption(props.titleProps.placeholder, ""),
-    new SelectBoxOption("Mr.", "mr"),
-    new SelectBoxOption("Miss.", "miss"),
-    new SelectBoxOption("Sir", "sir"),
-    new SelectBoxOption("Dr.", "dr")
+  const options = new Array<SelectBoxOption>(
+    new SelectBoxOption(props.titleProps.placeholder, ''),
+    new SelectBoxOption('Mr.', 'mr'),
+    new SelectBoxOption('Miss.', 'miss'),
+    new SelectBoxOption('Sir', 'sir'),
+    new SelectBoxOption('Dr.', 'dr')
   );
 
   const titleSelectBoxProps: SelectBoxProps = {
@@ -28,7 +28,7 @@ const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
   };
 
   const titleRequiredProps: BaseValidatorProps = {
-    name: "required_title",
+    name: 'required_title',
     validators: props.titleProps.validators,
     eleRef: props.titleProps.eleRef,
     formDataSetters: props.titleProps.formDataSetters,

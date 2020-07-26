@@ -1,4 +1,4 @@
-import { PubSub, SetterFunc } from "../../basic-components/Form/Form.Props";
+import { PubSub, SetterFunc } from '../../basic-components/Form/Form.Props';
 
 export default interface ShowIfProps {
   id: string;

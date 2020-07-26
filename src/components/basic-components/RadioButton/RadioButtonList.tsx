@@ -1,6 +1,6 @@
-import * as React from "react";
-import { RadioButtonOption } from "./RadioButtonOption";
-import { PubSub } from "../Form/Form.Props";
+import * as React from 'react';
+import { RadioButtonOption } from './RadioButtonOption';
+import { PubSub } from '../Form/Form.Props';
 
 const RadioButtonList = (
   name: string,
@@ -14,7 +14,7 @@ const RadioButtonList = (
   };
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
-    const _id = `${name.replace(" ", "_")}_${index}`;
+    const _id = `${name.replace(' ', '_')}_${index}`;
     const markup = rd.checked ? (
       <input
         type="radio"
@@ -22,7 +22,7 @@ const RadioButtonList = (
         name={name}
         value={rd.value}
         onClick={markSelection}
-        aria-describedby={name + "_error"}
+        aria-describedby={name + '_error'}
         checked={true}
         onChange={(e) => {
           if (pubsub) pubsub.publish(name, { data: e.target.value });
@@ -35,7 +35,7 @@ const RadioButtonList = (
         name={name}
         value={rd.value}
         onClick={markSelection}
-        aria-describedby={name + "_error"}
+        aria-describedby={name + '_error'}
         onChange={(e) => {
           if (pubsub) pubsub.publish(name, { data: e.target.value });
         }}

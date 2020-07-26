@@ -1,16 +1,16 @@
-import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
-import React from "react";
+import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
+import React from 'react';
 
 function overrideProperty(
   props: any,
   propertyName: string,
   overrideValue: any
 ) {
-  let { children, ...rest } = props;
-  for (let i in rest) {
+  const { children, ...rest } = props;
+  for (const i in rest) {
     const item = rest[i];
     let propertyFound = false;
-    for (let z in item) {
+    for (const z in item) {
       if (z === propertyName) {
         item[z] = overrideValue;
         propertyFound = true;
@@ -31,16 +31,16 @@ const addFormDataSetterCallback = (props: BaseComponentProps) => {
 };
 
 const extractTheValidationMessageForSummary = (children) => {
-  const label = getPropertyValueFromReactComponentProps(children, "label");
+  const label = getPropertyValueFromReactComponentProps(children, 'label');
   const validationMessage = getPropertyValueFromReactComponentProps(
     children,
-    "validationMessage"
+    'validationMessage'
   );
   return [label, validationMessage];
 };
 
 const extractTheIdOfFailedField = (children) => {
-  const result = getPropertyValueFromReactComponentProps(children, "id");
+  const result = getPropertyValueFromReactComponentProps(children, 'id');
   return result;
 };
 
@@ -49,8 +49,8 @@ function getPropertyValueFromReactComponentProps(
   propertyName: string
 ) {
   const props = children?.props;
-  for (let prop in props) {
-    let item = props[prop];
+  for (const prop in props) {
+    const item = props[prop];
     if (item[propertyName]) return item[propertyName];
   }
   return null;
@@ -87,14 +87,14 @@ const setupShowIfPresent = (props) => {
 
 const cloneChildrenForShowIf = (children, props) => {
   return React.Children.map(children as any, (child, _) => {
-    let _props = child.props;
-    overrideProperty(_props, "pubsub", props.pubsub);
-    overrideProperty(_props, "eventName", props.name);
-    overrideProperty(_props, "formDataSetters", props.formDataSetters);
-    overrideProperty(_props, "showIfCallback", props.showIfCallback);
-    overrideProperty(_props, "showIfValue", props.showIfValue);
-    overrideProperty(_props, "validators", props.validators);
-    overrideProperty(_props, "eleRef", props.eleRef);
+    const _props = child.props;
+    overrideProperty(_props, 'pubsub', props.pubsub);
+    overrideProperty(_props, 'eventName', props.name);
+    overrideProperty(_props, 'formDataSetters', props.formDataSetters);
+    overrideProperty(_props, 'showIfCallback', props.showIfCallback);
+    overrideProperty(_props, 'showIfValue', props.showIfValue);
+    overrideProperty(_props, 'validators', props.validators);
+    overrideProperty(_props, 'eleRef', props.eleRef);
 
     return React.cloneElement(child, { ..._props });
   });

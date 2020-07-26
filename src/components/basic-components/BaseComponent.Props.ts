@@ -1,4 +1,4 @@
-import { PubSub, SetterFunc } from "./Form/Form.Props";
+import { PubSub, SetterFunc } from './Form/Form.Props';
 
 export default class BaseComponentProps {
   id: string;

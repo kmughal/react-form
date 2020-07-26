@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { curry } from "../../../utils/helpers";
-import { BaseValidator } from "../BaseValidator";
-import RangeValidatorProps from "./RangeValidator.Props";
+import { curry } from '../../../utils/helpers';
+import { BaseValidator } from '../BaseValidator';
+import RangeValidatorProps from './RangeValidator.Props';
 
 type validationCallback = (
   eleRef: React.MutableRefObject<HTMLInputElement | HTMLSelectElement>,
@@ -14,7 +14,7 @@ const RangeValidator: React.FC<{
 }> = (props) => {
   const [valid, setValidator] = React.useState(true);
 
-  var callback = (args: Record<string, any>): Array<boolean | string> => {
+  const callback = (args: Record<string, any>): Array<boolean | string> => {
     const {
       _setValidator,
       _target,
@@ -50,10 +50,9 @@ const RangeValidator: React.FC<{
   props.rangeValidatorProps.valid = valid;
 
   return (
-    <BaseValidator
-      baseValidator={props.rangeValidatorProps}
-      children={props.children}
-    />
+    <BaseValidator baseValidator={props.rangeValidatorProps}>
+      {props.children}
+    </BaseValidator>
   );
 };
 

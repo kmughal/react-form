@@ -1,4 +1,4 @@
-import BaseComponentProps from "../BaseComponent.Props";
+import BaseComponentProps from '../BaseComponent.Props';
 
 interface SingleFileUploadProps extends BaseComponentProps {
   /**

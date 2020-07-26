@@ -1,12 +1,11 @@
-import * as React from "react";
-import BaseComponentProps from "../BaseComponent.Props";
-import ValidationError from "../ValidationError";
+import * as React from 'react';
+import ValidationError from '../ValidationError';
 import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
-} from "../../../utils/helpers";
-import { CheckBoxProps } from ".";
+} from '../../../utils/helpers';
+import { CheckBoxProps } from '.';
 
 const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
   checkBoxProps,
@@ -20,14 +19,14 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
 
   return (
     <div>
-      <label htmlFor={checkBoxProps.name}>{checkBoxProps.label + " "}</label>
+      <label htmlFor={checkBoxProps.name}>{checkBoxProps.label + ' '}</label>
       <input
         type="checkbox"
         id={checkBoxProps.id}
         ref={checkBoxProps.eleRef as React.MutableRefObject<HTMLInputElement>}
         name={checkBoxProps.name}
         value={checkBoxProps.value}
-        aria-describedby={checkBoxProps.id + "_error"}
+        aria-describedby={checkBoxProps.id + '_error'}
         checked={checkBoxProps.checked}
         onChange={(e) => {
           if (checkBoxProps.pubsub)

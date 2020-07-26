@@ -1,4 +1,4 @@
-import { PubSub, SetterFunc } from "../basic-components/Form/Form.Props";
+import { PubSub, SetterFunc } from '../basic-components/Form/Form.Props';
 
 interface BaseValidatorProps {
   name: string;

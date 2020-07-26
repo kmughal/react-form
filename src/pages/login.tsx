@@ -3,49 +3,49 @@ import {
   Form,
   TextBox,
   Password,
-} from "../components/basic-components";
+} from '../components/basic-components';
 import {
   BaseValidatorProps,
   RequiredValidator,
-} from "../components/validators";
-import Navigation from "./components/Navigation";
-import React from "react";
-import BaseComponentProps from "../components/basic-components/BaseComponent.Props";
+} from '../components/validators';
+import Navigation from './components/Navigation';
+import React from 'react';
+import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
 
 const LoginPage = () => {
   const [payload, setPayload] = React.useState(null);
   const textBoxProps: BaseComponentProps = {
-    label: "Username",
-    name: "user-name",
-    id: "user-name",
-    placeholder: "Provide Username",
-    validationMessage: "Please provide username",
+    label: 'Username',
+    name: 'user-name',
+    id: 'user-name',
+    placeholder: 'Provide Username',
+    validationMessage: 'Please provide username',
   };
 
   const passwordProps: BaseComponentProps = {
-    label: "Password",
-    name: "password",
-    id: "password",
-    placeholder: "Provide Password",
-    validationMessage: "Please provide password",
+    label: 'Password',
+    name: 'password',
+    id: 'password',
+    placeholder: 'Provide Password',
+    validationMessage: 'Please provide password',
   };
 
   const formProps: FormProps = {
     enableOffline: true,
     showValidationSummary: true,
     submitForm: (formData) => {
-      fetch("/api/fake", {
+      fetch('/api/fake', {
         body: formData,
-        method: "POST",
+        method: 'POST',
       })
         .then((response) => response.json())
         .then(setPayload)
         .catch(console.log);
-      console.log("login");
+      console.log('login');
     },
   };
-  const requiredValidator1: BaseValidatorProps = { name: "username_required" };
-  const requiredValidator2: BaseValidatorProps = { name: "password_required" };
+  const requiredValidator1: BaseValidatorProps = { name: 'username_required' };
+  const requiredValidator2: BaseValidatorProps = { name: 'password_required' };
 
   return (
     <>
@@ -72,7 +72,7 @@ const LoginPage = () => {
       )}
       <style jsx global>{`
         body {
-          font-family: "Arial";
+          font-family: 'Arial';
         }
 
         nav {
@@ -87,7 +87,7 @@ const LoginPage = () => {
         }
 
         nav ul li a :after {
-          content: " | ";
+          content: ' | ';
         }
 
         .form-container {
@@ -115,9 +115,9 @@ const LoginPage = () => {
           text-align: right;
         }
         select,
-        input[type="text"],
-        input[type="password"],
-        input[type="number"] {
+        input[type='text'],
+        input[type='password'],
+        input[type='number'] {
           padding: 5px 5px;
           display: inline-block;
           border: 2px solid rgb(226, 232, 240);

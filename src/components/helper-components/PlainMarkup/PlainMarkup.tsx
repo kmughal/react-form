@@ -1,5 +1,5 @@
-import { PlainMarkupProps } from ".";
-import React from "react";
+import { PlainMarkupProps } from '.';
+import React from 'react';
 
 const PlainMarkup: React.FC<{ plainMarkupProps: PlainMarkupProps }> = ({
   children,

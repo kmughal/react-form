@@ -1,7 +1,7 @@
 const typeMustBe = (ele, value: string) => {
   if (!ele)
     return {
-      message: () => "ele is null check selector!",
+      message: () => 'ele is null check selector!',
       pass: false,
     };
 

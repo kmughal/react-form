@@ -1,10 +1,10 @@
-import * as React from "react";
-import BaseComponentProps from "../BaseComponent.Props";
+import * as React from 'react';
+import BaseComponentProps from '../BaseComponent.Props';
 import {
   addFormDataSetterCallback,
   setComponentValueIfProvided,
-} from "../../../utils/helpers";
-import ValidationError from "../ValidationError";
+} from '../../../utils/helpers';
+import ValidationError from '../ValidationError';
 
 const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
   passwordProps,

@@ -1,3 +1,3 @@
-import RequiredValidator from "./RequiredValidator";
+import RequiredValidator from './RequiredValidator';
 
 export { RequiredValidator };
