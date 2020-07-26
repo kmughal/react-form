@@ -14,13 +14,9 @@
     "jsx": "react",
     "declaration": true,
     "outDir": "dist",
-    "typeRoots": ["./node_modules/@types", "./typings"]
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "noEmit": true
   },
-  "exclude": [
-    "node_modules",
-    "src/components/**/*.test.tsx",
-    "bin",
-    "src/pages"
-  ],
+  "exclude": ["node_modules", "bin", "src/pages"],
   "include": ["src"]
 }
