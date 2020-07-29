@@ -22,9 +22,10 @@ Following controls are build in for first iteration.
 
 You can create your own validation components as well
 
-- RangeValidation
-- RegexValidation
-- RequiredValidation
+- Range Validator
+- Regex Validator
+- Required Validator
+- Custom Validator: this will enable you to write any kind of custom validation by providing a simple call back to the validate property of the validator
 
 ## Utility Components
 
