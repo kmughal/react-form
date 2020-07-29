@@ -12,6 +12,7 @@ import Navigation from './components/Navigation';
 
 import React from 'react';
 import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
+import typings from '../../typings';
 
 function generateTemplate(
   type: string,

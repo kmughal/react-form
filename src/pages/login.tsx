@@ -1,3 +1,4 @@
+/** <reference path="../../typings/index.d.ts" */
 import {
   FormProps,
   Form,
@@ -6,6 +7,8 @@ import {
 } from '../components/basic-components';
 import {
   BaseValidatorProps,
+  CustomValidator,
+  CustomValidatorProps,
   RequiredValidator,
 } from '../components/validators';
 import Navigation from './components/Navigation';
@@ -19,7 +22,7 @@ const LoginPage = () => {
     name: 'user-name',
     id: 'user-name',
     placeholder: 'Provide Username',
-    validationMessage: 'Please provide username',
+    validationMessage: 'Username must have more than 5 characters',
   };
 
   const passwordProps: BaseComponentProps = {
@@ -44,7 +47,16 @@ const LoginPage = () => {
       console.log('login');
     },
   };
-  const requiredValidator1: BaseValidatorProps = { name: 'username_required' };
+  const customValidator: CustomValidatorProps = {
+    name: 'username_required',
+    validate: (ele) => {
+      const value = String(ele.value)
+        .replace(' ', '')
+        .replace('\n', '')
+        .replace('\t', '');
+      return value.length > 5;
+    },
+  };
   const requiredValidator2: BaseValidatorProps = { name: 'password_required' };
 
   return (
@@ -54,9 +66,9 @@ const LoginPage = () => {
       <p>This is a simple login form created by react form.</p>
 
       <Form formProps={formProps}>
-        <RequiredValidator requiredValidatorProps={requiredValidator1}>
+        <CustomValidator customValidator={customValidator}>
           <TextBox textBoxProps={textBoxProps} />
-        </RequiredValidator>
+        </CustomValidator>
         <RequiredValidator requiredValidatorProps={requiredValidator2}>
           <Password passwordProps={passwordProps} />
         </RequiredValidator>
