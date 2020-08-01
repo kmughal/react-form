@@ -125,7 +125,7 @@ const Index = () => {
     id: 'user_doc',
     name: 'user_doc',
     accept: '.jpeg',
-    label: 'Provide a document',
+    label: 'Image:',
     placeholder: 'Document',
     validationMessage: 'A document is required!',
   };

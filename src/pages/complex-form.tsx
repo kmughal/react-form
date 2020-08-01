@@ -116,14 +116,18 @@ const Index = () => {
             </MultilineTextBox>
           </RequiredValidator>
 
-          <RadioButton radioButtonProps={radioButtonProps}>
-            <ShowIf showIfProps={showDetailsInputBox}>
-              <RequiredValidator requiredValidatorProps={requiredValidator}>
-                <TextBox textBoxProps={nameTextBoxProps} />
-              </RequiredValidator>
-              <TextBox textBoxProps={streetTextBoxProps} />
-            </ShowIf>
-          </RadioButton>
+          <RequiredValidator
+            requiredValidatorProps={{ name: 'options_required' }}
+          >
+            <RadioButton radioButtonProps={radioButtonProps}>
+              <ShowIf showIfProps={showDetailsInputBox}>
+                <RequiredValidator requiredValidatorProps={requiredValidator}>
+                  <TextBox textBoxProps={nameTextBoxProps} />
+                </RequiredValidator>
+                <TextBox textBoxProps={streetTextBoxProps} />
+              </ShowIf>
+            </RadioButton>
+          </RequiredValidator>
 
           <div className="button-container">
             <button>Submit Form</button>

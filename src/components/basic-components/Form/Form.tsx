@@ -1,6 +1,6 @@
 import * as React from 'react';
 import FormProps from './Form.Props';
-import { overrideProperty } from '../../../utils/helpers';
+import { setReferences } from '../../../utils/helpers';
 import ValidationSummary from './ValidateSummary';
 import PubSub from './PubSub';
 
@@ -98,14 +98,13 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
         {React.Children.map(children as any, (child) => {
           const _props = child.props;
           if (child.props.className?.startsWith('jsx')) return child;
-          overrideProperty(_props, 'eleRef', React.useRef(null));
-          overrideProperty(_props, 'validators', formProps.validators);
-          overrideProperty(
+
+          setReferences(
             _props,
-            'formDataSetters',
-            formProps.formDataSetters
+            formProps,
+            ['eleRef', 'validators', 'formDataSetters', 'pubsub'],
+            { eleRef: React.useRef(null) }
           );
-          overrideProperty(_props, 'pubsub', formProps.pubsub);
 
           return React.cloneElement(child, { ..._props });
         })}

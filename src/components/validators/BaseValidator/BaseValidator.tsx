@@ -1,6 +1,6 @@
 import * as React from 'react';
 import BaseValidatorProps from '../BaseValidator.Props';
-import { overrideProperty } from '../../../utils/helpers';
+import { setReferences } from '../../../utils/helpers';
 
 const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
   props
@@ -10,22 +10,22 @@ const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
       {React.Children.map(props.children as any, (child, _) => {
         const _props = child.props;
         if (child.props.className?.startsWith('jsx')) return child;
-        overrideProperty(_props, 'eleRef', props.baseValidator.eleRef);
-        overrideProperty(_props, 'valid', props.baseValidator.valid);
-        overrideProperty(_props, 'pubsub', props.baseValidator.pubsub);
-        overrideProperty(_props, 'eventName', props.baseValidator.eventName);
-        overrideProperty(
-          _props,
-          'showIfValue',
-          props.baseValidator.showIfValue
-        );
-        overrideProperty(_props, 'validators', props.baseValidator.validators);
-        overrideProperty(_props, 'validatorName', props.baseValidator.name);
 
-        overrideProperty(
+        setReferences(
           _props,
-          'formDataSetters',
-          props.baseValidator.formDataSetters
+          props.baseValidator,
+          [
+            'eleRef',
+            'valid',
+            'setValidator',
+            'pubsub',
+            'eventName',
+            'showIfValue',
+            'validators',
+            'validatorName',
+            'formDataSetters',
+          ],
+          { validatorName: props.baseValidator.name }
         );
 
         return React.cloneElement(child, { ..._props });
