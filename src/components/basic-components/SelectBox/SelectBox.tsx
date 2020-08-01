@@ -3,7 +3,6 @@ import SelectBoxProps from './SelectBox.Props';
 import SelectBoxOption from './SelectBoxOption';
 import {
   addFormDataSetterCallback,
-  overrideProperty,
   cloneChildrenForShowIf,
   setupShowIfPresent,
 } from '../../../utils/helpers';

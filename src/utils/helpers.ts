@@ -1,27 +1,6 @@
 import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
 import React from 'react';
 
-function overrideProperty(
-  props: any,
-  propertyName: string,
-  overrideValue: any
-) {
-  const { children, ...rest } = props;
-  for (const i in rest) {
-    const item = rest[i];
-    let propertyFound = false;
-    for (const z in item) {
-      if (z === propertyName) {
-        item[z] = overrideValue;
-        propertyFound = true;
-        break;
-      }
-    }
-    if (!propertyFound) item[propertyName] = overrideValue;
-  }
-  return { children, ...rest };
-}
-
 const addFormDataSetterCallback = (props: BaseComponentProps) => {
   if (props.formDataSetters)
     props.formDataSetters[props.name] = (formData) => {
@@ -88,14 +67,21 @@ const setupShowIfPresent = (props) => {
 const cloneChildrenForShowIf = (children, props) => {
   return React.Children.map(children as any, (child, _) => {
     const _props = child.props;
-    overrideProperty(_props, 'pubsub', props.pubsub);
-    overrideProperty(_props, 'eventName', props.name);
-    overrideProperty(_props, 'formDataSetters', props.formDataSetters);
-    overrideProperty(_props, 'showIfCallback', props.showIfCallback);
-    overrideProperty(_props, 'showIfValue', props.showIfValue);
-    overrideProperty(_props, 'validators', props.validators);
-    overrideProperty(_props, 'eleRef', props.eleRef);
 
+    setReferences(
+      _props,
+      props,
+      [
+        'pubsub',
+        'eventName',
+        'formDataSetters',
+        'showIfCallback',
+        'showIfValue',
+        'validators',
+        'eleRef',
+      ],
+      { eventName: props.name }
+    );
     return React.cloneElement(child, { ..._props });
   });
 };
@@ -113,11 +99,23 @@ const setComponentValueIfProvided = (props: BaseComponentProps) => {
   }
 };
 
+function setReferences(result, srcObject1, properties, srcObject2 = {}) {
+  const objectName = Object.keys(result).filter((x) => x !== 'children')[0];
+  if (!result[objectName]) return;
+  for (const property of properties) {
+    if (srcObject2.hasOwnProperty(property)) {
+      result[objectName][property] = srcObject2[property];
+    } else if (srcObject1.hasOwnProperty(property)) {
+      result[objectName][property] = srcObject1[property];
+    }
+  }
+}
+
 export {
-  overrideProperty,
   addFormDataSetterCallback,
   curry,
   setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
+  setReferences,
 };

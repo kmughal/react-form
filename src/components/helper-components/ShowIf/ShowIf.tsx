@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ShowIfProps } from '.';
-import { overrideProperty } from '../../../utils/helpers';
+import { setReferences } from '../../../utils/helpers';
 
 const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
   const [showIfValue, setShowIfValue] = React.useState({});
@@ -17,15 +17,16 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
       {React.Children.map(props.children, (child: any, index) => {
         const _props = child.props;
         if (child.props.className?.startsWith('jsx')) return child;
-        overrideProperty(_props, 'showIfValue', showIfValue);
-        overrideProperty(_props, 'eleRef', React.useRef(null));
-        overrideProperty(_props, 'validators', props.showIfProps.validators);
-        overrideProperty(
+
+        setReferences(
           _props,
-          'formDataSetters',
-          props.showIfProps.formDataSetters
+          props.showIfProps,
+          ['showIfValue', 'eleRef', 'validators', 'formDataSetters', 'pubsub'],
+          {
+            showIfValue,
+            eleRef: React.useRef(null),
+          }
         );
-        overrideProperty(_props, 'pubsub', props.showIfProps.pubsub);
 
         return React.cloneElement(child, { ..._props });
       })}
