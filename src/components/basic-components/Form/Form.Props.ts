@@ -4,7 +4,6 @@ export type SetterFunc = (formData: FormData) => Record<string, string>;
 
 interface FormProps {
   heading?: string;
-  enableOfflineFeature?: boolean;
   showValidationSummary?: boolean;
   name?: string;
   id?: string;

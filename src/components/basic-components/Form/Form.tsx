@@ -1,85 +1,78 @@
-import * as React from 'react';
-import FormProps from './Form.Props';
+import React from 'react';
+import FormProps, { SetterFunc } from './Form.Props';
 import { setReferences } from '../../../utils/helpers';
 import ValidationSummary from './ValidateSummary';
 import PubSub from './PubSub';
+import useValidators from './useValidate';
+import useEnableOfflineSubmit from './useEnableOfflineSubmit';
 
 const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
-  let _formData = null;
+  // init props
   formProps.validators = {};
   formProps.formDataSetters = {};
   formProps.pubsub = new PubSub();
-  let _formIsComplete = false;
-  let _submitForm = () => {};
 
-  const [validationSummary, setValidationSummary] = React.useState([]);
+  let _formIsSubmitted = false;
+  let _formData: FormData = null;
 
-  React.useEffect(() => {
-    _formData = new FormData();
-    return () => {
-      // _formData = null
-    };
-  }, [_formData]);
+  const _submitForm = (
+    formData: FormData,
+    plainJson: Record<string, string>
+  ) => {
+    formProps.submitForm(formData, plainJson);
+    formData = new FormData();
+    _formIsSubmitted = true;
+  };
+
+  const { validate, validationSummary } = useValidators();
+  const {
+    onlineMessage,
+    offLineMessage,
+    setFormIsComplete,
+    setFormSubmitData,
+  } = useEnableOfflineSubmit(formProps.enableOffline, _submitForm);
+
+  const getProvidedValuesInJson = (
+    formDataSetters: Record<string, SetterFunc>,
+    frmData: FormData
+  ) => {
+    let plainJson: Record<string, string>;
+    for (const index in formDataSetters) {
+      const setter = formDataSetters[index];
+      const jsonResult = setter(frmData);
+      if (jsonResult) plainJson = { ...plainJson, ...jsonResult };
+    }
+    return plainJson;
+  };
 
   const submitHandler = (e) => {
-    const validatorResult = new Array<boolean>();
-
+    localStorage.removeItem('formValidButNotSubmitted');
     const validators = formProps.validators;
-    const validationSummaryResult = [];
-    for (const index in validators) {
-      const validator = validators[index];
-      const vResult = validator();
-      if (!vResult[0]) {
-        validatorResult.push(false);
-        validationSummaryResult.push({
-          [vResult[1] as string]: vResult[2],
-          fieldId: vResult[3],
-        });
-      }
-    }
+    const anyValidationFailed = validate(validators);
 
-    setValidationSummary(validationSummaryResult);
-    const anyValidationFailed = validatorResult.some((c) => !c);
     if (anyValidationFailed) {
       console.log('check result!');
     } else {
       _formData = _formData ?? new FormData();
+      const plainJson = getProvidedValuesInJson(
+        formProps.formDataSetters,
+        _formData
+      );
 
-      let plainJson: Record<string, string>;
-      for (const index in formProps.formDataSetters) {
-        const setter = formProps.formDataSetters[index];
-        const jsonResult = setter(_formData);
-        if (jsonResult) plainJson = { ...plainJson, ...jsonResult };
-      }
-      _formIsComplete = true;
-      _submitForm = () => {
-        formProps.submitForm(_formData, plainJson);
-        _formData = new FormData();
-      };
+      // to be more obvious
+      setFormIsComplete(true);
+      setFormSubmitData(_formData, plainJson);
 
       if (formProps.enableOffline) {
-        if (navigator.onLine && process && process['browser']) _submitForm();
-      } else _submitForm();
+        if (navigator.onLine && process && process['browser'])
+          _submitForm(_formData, plainJson);
+      } else _submitForm(_formData, plainJson);
+    }
+    if (!_formIsSubmitted) {
+      localStorage.setItem('formValidButNotSubmitted', 'true');
     }
     e.preventDefault();
   };
-  const [onlineMessage, setOnlineMessage] = React.useState(false);
-  const [offLineMessage, setOfflineMessage] = React.useState(false);
-
-  if (formProps.enableOffline && process && process['browser']) {
-    window.addEventListener('online', () => {
-      setOnlineMessage(true);
-      setOfflineMessage(false);
-      if (_formIsComplete) {
-        _submitForm();
-        _formIsComplete = false;
-      }
-    });
-    window.addEventListener('offline', () => {
-      setOnlineMessage(false);
-      setOfflineMessage(true);
-    });
-  }
 
   return (
     <>
