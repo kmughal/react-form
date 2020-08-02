@@ -1,3 +1,5 @@
+![CI](https://github.com/kmughal/react-form/workflows/CI/badge.svg?branch=master)
+
 # React Form
 
 This library provides an easy way to build forms independent of styling!
