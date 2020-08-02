@@ -5,13 +5,13 @@ There is no extra class added to any html element so you might have to apply sty
 
 ### How to use it 
 
-I``` js 
+```
 npm i react-forms-typescript
 ```
 
 or 
 
-```js 
+```
 yarn add react-forms-typescript
 ```
 
