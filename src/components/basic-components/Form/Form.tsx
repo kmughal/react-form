@@ -19,9 +19,20 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
     formData: FormData,
     plainJson: Record<string, string>
   ) => {
-    formProps.submitForm(formData, plainJson);
-    formData = new FormData();
-    _formIsSubmitted = true;
+    const resetData = () => {
+      formData = new FormData();
+      _formIsSubmitted = true;
+    };
+
+    if (!formProps.enableOffline) {
+      formProps.submitForm(formData, plainJson);
+      resetData();
+    }
+
+    if (navigator.onLine && process && process['browser']) {
+      formProps.submitForm(formData, plainJson);
+      resetData();
+    }
   };
 
   const { validate, validationSummary } = useValidators();
@@ -47,6 +58,7 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
 
   const submitHandler = (e) => {
     localStorage.removeItem('formValidButNotSubmitted');
+
     const validators = formProps.validators;
     const anyValidationFailed = validate(validators);
 
@@ -62,11 +74,7 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
       // to be more obvious
       setFormIsComplete(true);
       setFormSubmitData(_formData, plainJson);
-
-      if (formProps.enableOffline) {
-        if (navigator.onLine && process && process['browser'])
-          _submitForm(_formData, plainJson);
-      } else _submitForm(_formData, plainJson);
+      _submitForm(_formData, plainJson);
     }
     if (!_formIsSubmitted) {
       localStorage.setItem('formValidButNotSubmitted', 'true');

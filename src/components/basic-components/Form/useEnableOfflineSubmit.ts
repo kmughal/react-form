@@ -46,7 +46,7 @@ const useEnableOfflineSubmit = (
         window.removeEventListener('online', onlineEventHandler);
         window.removeEventListener('offline', offlineEventHandler);
       };
-    }, [formData, plainJson, formIsComplete]);
+    }, [formData, plainJson, formIsComplete, setFormIsComplete]);
   }
 
   return {
