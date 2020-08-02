@@ -3,6 +3,18 @@
 This library provides an easy way to build forms independent of styling!
 There is no extra class added to any html element so you might have to apply styling on the native html controls.
 
+### How to use it 
+
+I``` js 
+npm i react-forms-typescript
+```
+
+or 
+
+```js 
+yarn add react-forms-typescript
+```
+
 ## Base Components
 
 Following controls are build in for first iteration.
@@ -31,6 +43,10 @@ You can create your own validation components as well
 
 - PlainMarkup
 - ShowIf
+
+## Extra
+
+Allows you to continue with form completion regardless of internet. It will notify user if there is no internet once internet is back if form is valid it will be submitted automatically!
 
 ### How it works
 
