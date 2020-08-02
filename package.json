@@ -1,12 +1,13 @@
 {
     "name": "react-forms-typescript",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "React Form, React Form typescript, React Form Javascript",
     "main": "./dist/cjs/index.js",
     "module": "./dist/es/index.js",
     "files": [
         "dist"
     ],
+    "repository": "https://github.com/kmughal/react-form",
     "scripts": {
         "build": "next build",
         "lint": "eslint './src/**/*.{ts,tsx}' --quiet --fix",
