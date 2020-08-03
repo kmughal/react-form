@@ -12,7 +12,7 @@ const PostCode: React.FC<{ postCodeProps: PostCodeProps }> = (props) => {
   const postCodeProps = props.postCodeProps;
   const regexValidatorProps: RegexValidatorProps = {
     name: 'required_postcode',
-
+    enableInlineValidation: postCodeProps.enableInlineValidation,
     validators: postCodeProps.validators,
     eleRef: postCodeProps.eleRef,
     formDataSetters: postCodeProps.formDataSetters,

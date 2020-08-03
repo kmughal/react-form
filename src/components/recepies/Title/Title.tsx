@@ -1,12 +1,11 @@
+import React from 'react';
 import TitleProps from './Title.Props';
 import {
   SelectBoxProps,
   SelectBoxOption,
   SelectBox,
 } from '../../basic-components';
-
 import BaseValidatorProps from '../../validators/BaseValidator.Props';
-import React from 'react';
 import { RequiredValidator } from '../../validators';
 
 const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
@@ -33,6 +32,7 @@ const Title: React.FC<{ titleProps: TitleProps }> = (props) => {
     eleRef: props.titleProps.eleRef,
     formDataSetters: props.titleProps.formDataSetters,
     valid: props.titleProps.valid,
+    enableInlineValidation: props.titleProps.enableInlineValidation,
   };
 
   return (

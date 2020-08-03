@@ -12,26 +12,19 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
   formProps.formDataSetters = {};
   formProps.pubsub = new PubSub();
 
-  let _formIsSubmitted = false;
+  const _formIsSubmitted = false;
   let _formData: FormData = null;
 
   const _submitForm = (
     formData: FormData,
     plainJson: Record<string, string>
   ) => {
-    const resetData = () => {
-      formData = new FormData();
-      _formIsSubmitted = true;
-    };
-
     if (!formProps.enableOffline) {
       formProps.submitForm(formData, plainJson);
-      resetData();
     }
 
     if (navigator.onLine && process && process['browser']) {
       formProps.submitForm(formData, plainJson);
-      resetData();
     }
   };
 
@@ -103,7 +96,13 @@ const Form: React.FC<{ formProps: FormProps }> = ({ formProps, children }) => {
           setReferences(
             _props,
             formProps,
-            ['eleRef', 'validators', 'formDataSetters', 'pubsub'],
+            [
+              'eleRef',
+              'validators',
+              'formDataSetters',
+              'pubsub',
+              'enableInlineValidation',
+            ],
             { eleRef: React.useRef(null) }
           );
 

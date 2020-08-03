@@ -22,6 +22,11 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   addFormDataSetterCallback(numberProps);
   setComponentValueIfProvided(numberProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (numberProps.enableInlineValidation && numberProps.runValidator)
+      numberProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label htmlFor={numberProps.name}>{numberProps.label}</label>
@@ -32,6 +37,7 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
         name={numberProps.name}
         placeholder={numberProps.placeholder}
         aria-describedby={numberProps.id + '_error'}
+        onBlur={onBlurHandler}
       />
       <ValidationError
         valid={numberProps.valid}

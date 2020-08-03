@@ -21,7 +21,14 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
         setReferences(
           _props,
           props.showIfProps,
-          ['showIfValue', 'eleRef', 'validators', 'formDataSetters', 'pubsub'],
+          [
+            'showIfValue',
+            'eleRef',
+            'validators',
+            'formDataSetters',
+            'pubsub',
+            'enableInlineValidation',
+          ],
           {
             showIfValue,
             eleRef: React.useRef(null),

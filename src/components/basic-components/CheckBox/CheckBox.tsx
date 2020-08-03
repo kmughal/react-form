@@ -17,6 +17,11 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
   checkBoxProps.eleRef = checkBoxProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(checkBoxProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (checkBoxProps.enableInlineValidation && checkBoxProps.runValidator)
+      checkBoxProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label htmlFor={checkBoxProps.name}>{checkBoxProps.label + ' '}</label>
@@ -28,6 +33,7 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
         value={checkBoxProps.value}
         aria-describedby={checkBoxProps.id + '_error'}
         checked={checkBoxProps.checked}
+        onBlur={onBlurHandler}
         onChange={(e) => {
           if (checkBoxProps.pubsub)
             checkBoxProps.pubsub.publish(checkBoxProps.name, {

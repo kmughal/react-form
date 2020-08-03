@@ -13,4 +13,5 @@ export default interface ShowIfProps {
     | HTMLTextAreaElement
     | HTMLTextAreaElement
   >;
+  enableInlineValidation?: boolean;
 }

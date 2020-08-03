@@ -12,6 +12,7 @@ interface FormProps {
   formDataSetters?: Record<string, SetterFunc>;
   pubsub?: PubSub;
   enableOffline?: boolean;
+  enableInlineValidation?: boolean;
 }
 
 export default FormProps;

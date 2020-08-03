@@ -1,16 +1,6 @@
+import BaseComponentProps from '../../basic-components/BaseComponent.Props';
 import { SetterFunc } from '../../basic-components/Form/Form.Props';
 
-export default interface TitleProps {
-  name: string;
-  id: string;
-  label: string;
-  placeholder: string;
-  validationMessage: string;
-
-  eleRef?: React.MutableRefObject<
-    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-  >;
-  valid?: boolean;
-  formDataSetters?: Record<string, SetterFunc>;
+export default interface TitleProps extends BaseComponentProps {
   validators?: Record<string, () => []>;
 }

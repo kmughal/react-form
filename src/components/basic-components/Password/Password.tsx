@@ -18,6 +18,11 @@ const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
   addFormDataSetterCallback(passwordProps);
   setComponentValueIfProvided(passwordProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (passwordProps.enableInlineValidation && passwordProps.runValidator)
+      passwordProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label htmlFor={passwordProps.name}>{passwordProps.label}</label>
@@ -27,6 +32,7 @@ const Password: React.FC<{ passwordProps: BaseComponentProps }> = ({
         placeholder={passwordProps.placeholder}
         name={passwordProps.name}
         id={passwordProps.id}
+        onBlur={onBlurHandler}
       />
       <ValidationError
         valid={passwordProps.valid}
