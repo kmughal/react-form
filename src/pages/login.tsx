@@ -35,6 +35,7 @@ const LoginPage = () => {
 
   const formProps: FormProps = {
     enableOffline: true,
+    enableInlineValidation: true,
     showValidationSummary: true,
     submitForm: (formData) => {
       fetch('/api/fake', {

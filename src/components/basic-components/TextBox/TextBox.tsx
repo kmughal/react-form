@@ -26,6 +26,11 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
 
   setComponentValueIfProvided(textBoxProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (textBoxProps.enableInlineValidation && textBoxProps.runValidator)
+      textBoxProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label htmlFor={textBoxProps.name}>{textBoxProps.label}</label>
@@ -42,6 +47,7 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
             });
           e.preventDefault();
         }}
+        onBlur={onBlurHandler}
         aria-describedby={textBoxProps.id + '_error'}
       />
       <ValidationError

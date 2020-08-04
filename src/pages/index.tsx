@@ -34,6 +34,7 @@ const Index = () => {
 
   const formProps: FormProps = {
     name: 'test-form',
+    enableInlineValidation: true,
     submitForm: (formData) => {
       fetch('/api/fake', {
         body: formData,
@@ -212,7 +213,7 @@ const Index = () => {
         }
 
         fieldset div label {
-          width: 80px;
+          display: inline-block;
         }
 
         div {

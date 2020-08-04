@@ -5,6 +5,9 @@ import { setReferences } from '../../../utils/helpers';
 const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
   props
 ) => {
+  const runValidator = () =>
+    props.baseValidator.validators[props.baseValidator.name]();
+
   return (
     <>
       {React.Children.map(props.children as any, (child, _) => {
@@ -15,6 +18,7 @@ const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
           _props,
           props.baseValidator,
           [
+            'runValidator',
             'eleRef',
             'valid',
             'setValidator',
@@ -24,8 +28,9 @@ const BaseValidator: React.FC<{ baseValidator: BaseValidatorProps }> = (
             'validators',
             'validatorName',
             'formDataSetters',
+            'enableInlineValidation',
           ],
-          { validatorName: props.baseValidator.name }
+          { validatorName: props.baseValidator.name, runValidator }
         );
 
         return React.cloneElement(child, { ..._props });

@@ -18,6 +18,10 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
   selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(selectBoxProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (selectBoxProps.enableInlineValidation) selectBoxProps.runValidator();
+  }, []);
+
   const selectOptions = selectBoxProps.options.map(
     (option: SelectBoxOption, index: number) => (
       <option key={index} value={option.value}>
@@ -40,6 +44,7 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
         name={selectBoxProps.name}
         id={selectBoxProps.id}
         aria-describedby={selectBoxProps.id + '_error'}
+        onBlur={onBlurHandler}
         onChange={(e) => {
           if (selectBoxProps.pubsub) {
             selectBoxProps.pubsub.publish(selectBoxProps.name, {

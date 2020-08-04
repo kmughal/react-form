@@ -24,6 +24,14 @@ const MultilineTextBox: React.FC<{
   addFormDataSetterCallback(multilineTextBoxProps);
   setComponentValueIfProvided(multilineTextBoxProps);
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (
+      multilineTextBoxProps.enableInlineValidation &&
+      multilineTextBoxProps.runValidator
+    )
+      multilineTextBoxProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label htmlFor={multilineTextBoxProps.name}>
@@ -38,6 +46,7 @@ const MultilineTextBox: React.FC<{
           multilineTextBoxProps.eleRef as MutableRefObject<HTMLTextAreaElement>
         }
         placeholder={multilineTextBoxProps.placeholder}
+        onBlur={onBlurHandler}
         onChange={(e) => {
           if (multilineTextBoxProps.pubsub)
             multilineTextBoxProps.pubsub.publish(multilineTextBoxProps.name, {

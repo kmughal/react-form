@@ -66,6 +66,14 @@ const MultiFileUpload: React.FC<{
     )}</div>`;
   };
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (
+      multiFileUploadProps.enableInlineValidation &&
+      multiFileUploadProps.runValidator
+    )
+      multiFileUploadProps.runValidator();
+  }, []);
+
   return (
     <>
       <div
@@ -73,6 +81,7 @@ const MultiFileUpload: React.FC<{
         ref={multiFilesContainer}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        onBlur={onBlurHandler}
       >
         Area to drop file(s)
       </div>

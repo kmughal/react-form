@@ -7,11 +7,17 @@ const RadioButtonList = (
   legend: string,
   radioButtonList: Array<RadioButtonOption>,
   eleRef: React.MutableRefObject<HTMLInputElement>,
-  pubsub: PubSub
+  pubsub: PubSub,
+  enableInlineValidation: boolean,
+  runValidator: () => void
 ) => {
   const markSelection = (event: React.MouseEvent<HTMLInputElement>) => {
     eleRef.current.value = (event.target as HTMLInputElement).value;
   };
+
+  const onBlurHandler = React.useCallback((e) => {
+    if (enableInlineValidation && runValidator) runValidator();
+  }, []);
 
   const result = radioButtonList.map((rd: RadioButtonOption, index: number) => {
     const _id = `${name.replace(' ', '_')}_${index}`;
@@ -22,6 +28,7 @@ const RadioButtonList = (
         name={name}
         value={rd.value}
         onClick={markSelection}
+        onBlur={onBlurHandler}
         aria-describedby={name + '_error'}
         checked={true}
         onChange={(e) => {
@@ -35,6 +42,7 @@ const RadioButtonList = (
         name={name}
         value={rd.value}
         onClick={markSelection}
+        onBlur={onBlurHandler}
         aria-describedby={name + '_error'}
         onChange={(e) => {
           if (pubsub) pubsub.publish(name, { data: e.target.value });

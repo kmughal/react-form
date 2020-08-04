@@ -29,6 +29,7 @@ const Index = () => {
 
   const formProps: FormProps = {
     name: 'test-form',
+    enableInlineValidation: true,
     heading: '',
     submitForm: (formData) => {
       fetch('/api/fake', {

@@ -14,4 +14,5 @@ export default interface BaseValidatorProps {
   eventName?: string;
   showIfCallback?: (value: any) => boolean;
   showIfValue?: any;
+  enableInlineValidation?: boolean;
 }

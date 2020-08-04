@@ -35,6 +35,14 @@ const SingleFileUpload: React.FC<{
     HTMLInputElement
   >;
 
+  const onBlurHandler = React.useCallback((e) => {
+    if (
+      singleFileUploadProps.enableInlineValidation &&
+      singleFileUploadProps.runValidator
+    )
+      singleFileUploadProps.runValidator();
+  }, []);
+
   return (
     <div>
       <label>{singleFileUploadProps.label}</label>
@@ -44,6 +52,7 @@ const SingleFileUpload: React.FC<{
         id={singleFileUploadProps.id}
         name={singleFileUploadProps.name}
         accept={singleFileUploadProps.accept}
+        onBlur={onBlurHandler}
         onChange={(e) => {
           if (singleFileUploadProps.pubsub)
             singleFileUploadProps.pubsub.publish(singleFileUploadProps.name, {

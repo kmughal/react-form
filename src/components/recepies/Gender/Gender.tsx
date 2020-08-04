@@ -16,6 +16,7 @@ const Gender: React.FC<{ genderProps: GenderProps }> = (props) => {
     eleRef: genderProps.eleRef,
     formDataSetters: genderProps.formDataSetters,
     valid: genderProps.valid,
+    enableInlineValidation: genderProps.enableInlineValidation,
   };
 
   const genderRadioButtonOpts: RadioButtonProps = {
@@ -26,7 +27,7 @@ const Gender: React.FC<{ genderProps: GenderProps }> = (props) => {
     validationMessage: genderProps.validationMessage,
     radioButtonOptions: [
       new RadioButtonOption('Male', 'male'),
-      new RadioButtonOption('Fe-male', 'femail'),
+      new RadioButtonOption('Fe-male', 'female'),
     ],
   };
 

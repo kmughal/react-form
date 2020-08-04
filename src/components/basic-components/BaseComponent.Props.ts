@@ -20,4 +20,6 @@ export default class BaseComponentProps {
   showIfValue?: any;
   pubsub?: PubSub;
   validatorName?: string;
+  runValidator?: () => void;
+  enableInlineValidation?: boolean;
 }
