@@ -44,7 +44,8 @@
     ]
   },
   "dependencies": {
-    "next": "^9.4.4"
+    "next": "^9.4.4",
+    "formidable": "^1.2.2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
@@ -59,7 +60,6 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
-    "formidable": "^1.2.2",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lint-staged": ">=10",
