@@ -5,7 +5,7 @@
 This library provides an easy way to build forms independent of styling!
 There is no extra class added to any html element so you might have to apply styling on the native html controls.
 
-### How to use it 
+### How to use it
 
 ```
 npm i react-forms-typescript
