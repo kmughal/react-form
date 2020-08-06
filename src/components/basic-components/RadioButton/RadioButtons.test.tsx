@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { RadioButton } from '..';
+import { RadioButton, RadioButtonOption, RadioButtonProps } from '..';
 import render from '../../../../bin/render';
-import RadioButtonProps from './RadioButton.Props';
-import { RadioButtonOption } from './RadioButtonOption';
 
 describe('RadioButton tests', () => {
   it('when title,id,name,legend are set then radio button list must have those props.', () => {

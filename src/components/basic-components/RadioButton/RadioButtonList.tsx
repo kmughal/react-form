@@ -1,6 +1,6 @@
 import React from 'react';
 import PubSub from '../Form/PubSub';
-import { RadioButtonOption } from './RadioButtonOption';
+import RadioButtonOption from './RadioButtonOption';
 
 const RadioButtonList = (
   name: string,

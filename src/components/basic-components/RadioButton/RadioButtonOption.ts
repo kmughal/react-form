@@ -1,4 +1,4 @@
-export class RadioButtonOption {
+export default class RadioButtonOption {
   constructor(
     public text: string,
     public value: string,

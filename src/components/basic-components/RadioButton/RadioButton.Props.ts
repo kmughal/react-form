@@ -1,5 +1,5 @@
 import BaseComponentProps from '../BaseComponent.Props';
-import { RadioButtonOption } from './RadioButtonOption';
+import RadioButtonOption from './RadioButtonOption';
 
 interface RadioButtonProps extends BaseComponentProps {
   legend: string;

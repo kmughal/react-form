@@ -1,29 +1,22 @@
-import {
-  Form,
-  FormProps,
-  TextBox,
-  MultilineTextBox,
-  RadioButton,
-} from '../components/basic-components';
-
-import {
-  RequiredValidator,
-  BaseValidatorProps,
-} from '../components/validators';
-
-import Navigation from './components/Navigation';
 import React from 'react';
 import {
-  ShowIf,
-  ShowIfProps,
+  BaseValidatorProps,
+  Form,
+  FormProps,
+  MultilineTextBox,
+  MultilineTextBoxProps,
   PlainMarkup,
   PlainMarkupProps,
-} from '../components/helper-components';
-import MultilineTextBoxProps from '../components/basic-components/MultilineTextBox/MultilineTextBox.Props';
-import RadioButtonProps from '../components/basic-components/RadioButton/RadioButton.Props';
-import { RadioButtonOption } from '../components/basic-components/RadioButton/RadioButtonOption';
+  RadioButton,
+  RadioButtonOption,
+  RadioButtonProps,
+  RequiredValidator,
+  ShowIf,
+  ShowIfProps,
+  TextBox,
+} from '..';
 import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
-
+import Navigation from './components/Navigation';
 const Index = () => {
   const [payload, setPayload] = React.useState(null);
 
