@@ -1,6 +1,6 @@
 {
   "name": "react-forms-typescript",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React Form, React Form typescript, React Form Javascript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/es/index.js",
@@ -43,6 +43,10 @@
       "eslint --fix"
     ]
   },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "next": "^9.4.4",
     "formidable": "^1.2.2"
@@ -65,8 +69,6 @@
     "lint-staged": ">=10",
     "parcel-bundler": "1.12.4",
     "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "rollup": "2.23.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
