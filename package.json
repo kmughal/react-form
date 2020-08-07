@@ -52,6 +52,8 @@
     "formidable": "^1.2.2"
   },
   "devDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@types/jest": "^26.0.3",
