@@ -2,6 +2,7 @@ import * as React from 'react';
 import BaseComponentProps from '../BaseComponent.Props';
 import {
   addFormDataSetterCallback,
+  bindValuePropertyIfProvided,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   setupShowIfPresent,
@@ -26,6 +27,13 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
     if (numberProps.enableInlineValidation && numberProps.runValidator)
       numberProps.runValidator();
   }, []);
+
+  bindValuePropertyIfProvided(
+    numberProps.value,
+    numberProps.pubsub,
+    numberProps.name,
+    numberProps.eleRef as React.MutableRefObject<HTMLInputElement>
+  );
 
   return (
     <div>

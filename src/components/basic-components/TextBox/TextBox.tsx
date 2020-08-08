@@ -7,6 +7,7 @@ import {
   setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
+  bindValuePropertyIfProvided,
 } from '../../../utils/helpers';
 
 const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
@@ -30,6 +31,13 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
     if (textBoxProps.enableInlineValidation && textBoxProps.runValidator)
       textBoxProps.runValidator();
   }, []);
+
+  bindValuePropertyIfProvided(
+    textBoxProps.value,
+    textBoxProps.pubsub,
+    textBoxProps.name,
+    textBoxProps.eleRef as React.MutableRefObject<HTMLInputElement>
+  );
 
   return (
     <div>

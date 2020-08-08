@@ -76,7 +76,7 @@ const Index = () => {
     legend: 'About your personal information',
     name: 'choice_deetail',
     radioButtonOptions: [
-      new RadioButtonOption('Provide your details', 'give_details'),
+      new RadioButtonOption('Provide your details', 'give_details', true),
       new RadioButtonOption('No I dont want to give my details', 'no_details'),
     ],
     label: 'choice_deetail',

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RadioButton, RadioButtonOption, RadioButtonProps } from '..';
 import render from '../../../../bin/render';
+import PubSub from '../Form/PubSub';
 
 describe('RadioButton tests', () => {
   it('when title,id,name,legend are set then radio button list must have those props.', () => {
@@ -40,7 +41,7 @@ describe('RadioButton tests', () => {
       name: 'opt_types',
       placeholder: 'Select',
       label: 'RadioButton :',
-
+      pubsub: new PubSub(),
       radioButtonOptions: [
         new RadioButtonOption('Uk', 'uk'),
         new RadioButtonOption('USA', 'usa', true),
@@ -51,12 +52,12 @@ describe('RadioButton tests', () => {
       <RadioButton radioButtonProps={props} />
     );
 
-    const opts = getAllByTagName('radio');
-    const opt2 = opts[1];
-    expect(opt2.checked).toBeTruthy();
-    expect(opt2).attributeValueMustBeSame('name', 'opt_types');
-    expect(opt2).attributeValueMustBeSame('id', 'opt_types_1');
     setTimeout(() => {
+      const opts = getAllByTagName('radio');
+      const opt2 = opts[1];
+      expect(opt2.checked).toBeTruthy();
+      expect(opt2).attributeValueMustBeSame('name', 'opt_types');
+      expect(opt2).attributeValueMustBeSame('id', 'opt_types_1');
       expect(props.eleRef.current.value).toEqual('usa');
       triggerEvent('click', opts[0]);
       expect(props.eleRef.current.value).toEqual('uk');
