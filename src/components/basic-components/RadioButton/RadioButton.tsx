@@ -19,11 +19,6 @@ const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(radioButtonProps);
 
-  const onBlurHandler = React.useCallback((e) => {
-    if (radioButtonProps.enableInlineValidation)
-      radioButtonProps.runValidator();
-  }, []);
-
   const checkedOption = radioButtonProps.radioButtonOptions.filter(
     (x) => x.checked
   );

@@ -3,6 +3,7 @@ import SelectBoxProps from './SelectBox.Props';
 import SelectBoxOption from './SelectBoxOption';
 import {
   addFormDataSetterCallback,
+  bindValuePropertyIfProvided,
   cloneChildrenForShowIf,
   setupShowIfPresent,
 } from '../../../utils/helpers';
@@ -34,6 +35,13 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
     const selectedItem = selectBoxProps.options.filter((x) => x.selected);
     if (selectedItem.length) selectBoxProps.value = selectedItem[0].value;
   }
+
+  bindValuePropertyIfProvided(
+    selectBoxProps.value,
+    selectBoxProps.pubsub,
+    selectBoxProps.name,
+    selectBoxProps.eleRef as React.MutableRefObject<HTMLSelectElement>
+  );
 
   return (
     <div>

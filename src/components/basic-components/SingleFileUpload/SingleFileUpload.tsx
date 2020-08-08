@@ -1,9 +1,9 @@
 import * as React from 'react';
 import SingleFileUploadProps from './SingleFileUpload.Props';
 import {
-  addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
+  bindValuePropertyIfProvided,
 } from '../../../utils/helpers';
 import ValidationError from '../ValidationError';
 
@@ -42,6 +42,13 @@ const SingleFileUpload: React.FC<{
     )
       singleFileUploadProps.runValidator();
   }, []);
+
+  bindValuePropertyIfProvided(
+    singleFileUploadProps.value,
+    singleFileUploadProps.pubsub,
+    singleFileUploadProps.name,
+    singleFileUploadProps.eleRef as React.MutableRefObject<HTMLInputElement>
+  );
 
   return (
     <div>

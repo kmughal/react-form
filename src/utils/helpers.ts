@@ -1,5 +1,6 @@
 import BaseComponentProps from '../components/basic-components/BaseComponent.Props';
 import React from 'react';
+import PubSub from '../components/basic-components/Form/PubSub';
 
 const addFormDataSetterCallback = (props: BaseComponentProps) => {
   if (props.formDataSetters)
@@ -112,6 +113,30 @@ function setReferences(result, srcObject1, properties, srcObject2 = {}) {
   }
 }
 
+const bindValuePropertyIfProvided = (
+  data: string | boolean,
+  pubsub: PubSub,
+  name: string,
+  eleRef: React.MutableRefObject<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  >
+) => {
+  React.useEffect(() => {
+    if (data) {
+      if (pubsub) {
+        pubsub.publish(name, {
+          data,
+        });
+        if ('checked' in (eleRef.current as HTMLInputElement)) {
+          (eleRef.current as HTMLInputElement).checked = data as boolean;
+        } else {
+          eleRef.current.value = data as string;
+        }
+      }
+    }
+  });
+};
+
 export {
   addFormDataSetterCallback,
   curry,
@@ -119,4 +144,5 @@ export {
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   setReferences,
+  bindValuePropertyIfProvided,
 };

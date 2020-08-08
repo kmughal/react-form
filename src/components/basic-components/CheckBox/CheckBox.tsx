@@ -4,6 +4,7 @@ import {
   addFormDataSetterCallback,
   setupShowIfPresent,
   cloneChildrenForShowIf,
+  bindValuePropertyIfProvided,
 } from '../../../utils/helpers';
 import { CheckBoxProps } from '.';
 
@@ -21,6 +22,13 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
     if (checkBoxProps.enableInlineValidation && checkBoxProps.runValidator)
       checkBoxProps.runValidator();
   }, []);
+
+  bindValuePropertyIfProvided(
+    checkBoxProps.value,
+    checkBoxProps.pubsub,
+    checkBoxProps.name,
+    checkBoxProps.eleRef as React.MutableRefObject<HTMLInputElement>
+  );
 
   return (
     <div>
