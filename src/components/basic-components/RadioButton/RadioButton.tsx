@@ -6,16 +6,12 @@ import {
   addFormDataSetterCallback,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
-  setupShowIfPresent,
 } from '../../../utils/helpers';
 
 const RadioButton: React.FC<{ radioButtonProps: RadioButtonProps }> = ({
   children,
   radioButtonProps,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(radioButtonProps);
-  if (isSetupShowIfPresent) return null;
-
   radioButtonProps.eleRef = radioButtonProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(radioButtonProps);
 

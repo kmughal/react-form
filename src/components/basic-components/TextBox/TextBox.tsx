@@ -4,7 +4,6 @@ import ValidationError from '../ValidationError';
 
 import {
   addFormDataSetterCallback,
-  setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   bindValuePropertyIfProvided,
@@ -14,9 +13,6 @@ const TextBox: React.FC<{ textBoxProps: BaseComponentProps }> = ({
   textBoxProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(textBoxProps);
-  if (isSetupShowIfPresent) return null;
-
   textBoxProps.eleRef = textBoxProps.eleRef ?? React.useRef(null);
   const refAsInputElement = textBoxProps.eleRef as React.MutableRefObject<
     HTMLInputElement

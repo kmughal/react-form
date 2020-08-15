@@ -236,3 +236,42 @@ const App = () => {
 
 render(<App />, document.getElementById("app"));
 ```
+
+
+### Conditional rendering example 
+
+You can use ShowIf component for this purpose. See below a very simple example.
+
+```jsx
+
+ const formProps: FormProps = {
+      submitForm: (data) => {},
+      pubsub: new PubSub(),
+    };
+    const showIfProps: ShowIfProps = {
+      id: 'dummy_show_if',
+      eventName: 'hello',
+      showIfCallback: (data) => false,
+    };
+
+    const { getByText, getById, triggerEvent } = render(
+      <Form formProps={formProps}>
+        <ShowIf showIfProps={showIfProps}>
+          <div>this is a test</div>
+        </ShowIf>
+        <div>
+          <button
+            id="btn"
+            onClick={(e) => {
+              formProps.pubsub.publish('hello', null);
+            }}
+          >
+            Click
+          </button>
+        </div>
+      </Form>
+    );
+
+```
+
+Show If component uses a PubSub model.

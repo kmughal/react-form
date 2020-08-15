@@ -2,7 +2,6 @@ import * as React from 'react';
 import ValidationError from '../ValidationError';
 import {
   addFormDataSetterCallback,
-  setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
 } from '../../../utils/helpers';
@@ -12,9 +11,6 @@ import { MutableRefObject } from 'react';
 const MultilineTextBox: React.FC<{
   multilineTextBoxProps: MultilineTextBoxProps;
 }> = ({ multilineTextBoxProps, children }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(multilineTextBoxProps);
-  if (isSetupShowIfPresent) return null;
-
   multilineTextBoxProps.eleRef = multilineTextBoxProps.eleRef as React.MutableRefObject<
     HTMLTextAreaElement
   >;

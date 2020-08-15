@@ -5,7 +5,6 @@ import {
   addFormDataSetterCallback,
   bindValuePropertyIfProvided,
   cloneChildrenForShowIf,
-  setupShowIfPresent,
 } from '../../../utils/helpers';
 import ValidationError from '../ValidationError';
 
@@ -13,9 +12,6 @@ const SelectBox: React.FC<{ selectBoxProps: SelectBoxProps }> = ({
   children,
   selectBoxProps,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(selectBoxProps);
-  if (isSetupShowIfPresent) return null;
-
   selectBoxProps.eleRef = selectBoxProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(selectBoxProps);
 

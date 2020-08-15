@@ -28,8 +28,6 @@ const PostCode: React.FC<{ postCodeProps: PostCodeProps }> = (props) => {
     label: postCodeProps.label,
     placeholder: postCodeProps.placeholder,
     validationMessage: postCodeProps.validationMessage,
-    showIfCallback: postCodeProps.showIfCallback,
-    showIfValue: postCodeProps.showIfValue,
   };
 
   return (

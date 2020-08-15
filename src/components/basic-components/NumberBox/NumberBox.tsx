@@ -5,7 +5,6 @@ import {
   bindValuePropertyIfProvided,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
-  setupShowIfPresent,
 } from '../../../utils/helpers';
 import ValidationError from '../ValidationError';
 
@@ -13,9 +12,6 @@ const NumberBox: React.FC<{ numberProps: BaseComponentProps }> = ({
   numberProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(numberProps);
-  if (isSetupShowIfPresent) return null;
-
   const refAsInputElement = numberProps.eleRef as React.MutableRefObject<
     HTMLInputElement
   >;

@@ -12,7 +12,6 @@ export default interface BaseValidatorProps {
 
   pubsub?: PubSub;
   eventName?: string;
-  showIfCallback?: (value: any) => boolean;
   showIfValue?: any;
   enableInlineValidation?: boolean;
 }

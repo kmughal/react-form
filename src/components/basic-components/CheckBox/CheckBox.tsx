@@ -2,7 +2,6 @@ import * as React from 'react';
 import ValidationError from '../ValidationError';
 import {
   addFormDataSetterCallback,
-  setupShowIfPresent,
   cloneChildrenForShowIf,
   bindValuePropertyIfProvided,
 } from '../../../utils/helpers';
@@ -12,9 +11,6 @@ const CheckBox: React.FC<{ checkBoxProps: CheckBoxProps }> = ({
   checkBoxProps,
   children,
 }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(checkBoxProps);
-  if (isSetupShowIfPresent) return null;
-
   checkBoxProps.eleRef = checkBoxProps.eleRef ?? React.useRef(null);
   addFormDataSetterCallback(checkBoxProps);
 
