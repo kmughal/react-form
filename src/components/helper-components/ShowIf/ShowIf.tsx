@@ -2,16 +2,7 @@ import * as React from 'react';
 import { ShowIfProps } from '.';
 import { setReferences } from '../../../utils/helpers';
 
-const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
-  const [showIfValue, setShowIfValue] = React.useState({});
-
-  props.showIfProps.pubsub.addSubscriber(
-    props.showIfProps.eventName,
-    (data: any) => {
-      setShowIfValue(data);
-    }
-  );
-
+const ShowIfComponent = ({ props }) => {
   return (
     <>
       {React.Children.map(props.children, (child: any, index) => {
@@ -30,7 +21,6 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
             'enableInlineValidation',
           ],
           {
-            showIfValue,
             eleRef: React.useRef(null),
           }
         );
@@ -39,6 +29,20 @@ const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
       })}
     </>
   );
+};
+
+const ShowIf: React.FC<{ showIfProps: ShowIfProps }> = (props) => {
+  const [showIfValue, setShowIfValue] = React.useState(false);
+
+  props.showIfProps.pubsub.addSubscriber(
+    props.showIfProps.eventName,
+    (data: any) => {
+      const showIfResult = props.showIfProps.showIfCallback(data);
+      setShowIfValue(showIfResult);
+    }
+  );
+  const children = props.children;
+  return showIfValue && <ShowIfComponent props={props} />;
 };
 
 export default ShowIf;

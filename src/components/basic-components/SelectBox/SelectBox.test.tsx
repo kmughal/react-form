@@ -214,26 +214,4 @@ describe('SelectBox tests', () => {
     fireChangeEvent(classSelectBox, 'b');
     expect(counter).toEqual(0);
   });
-
-  it('when showIfValue is true and showIfCallback is present then it should not render select box', () => {
-    const ddlSelectProps: SelectBoxProps = {
-      id: 'ddl_class',
-      name: 'ddl_class',
-      label: 'Select the class in which you are enrolled :',
-      options: [
-        new SelectBoxOption('Select class', ''),
-        new SelectBoxOption('A', 'a'),
-        new SelectBoxOption('B', 'b'),
-      ],
-      showIfValue: true,
-      showIfCallback: (_) => false,
-    };
-
-    const { getByTagName } = render(
-      <SelectBox selectBoxProps={ddlSelectProps} />
-    );
-    const selectBox = getByTagName('select');
-
-    expect(selectBox).toBeNull();
-  });
 });

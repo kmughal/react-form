@@ -16,7 +16,6 @@ export default class BaseComponentProps {
   valid?: boolean;
   validationMessage?: string;
   formDataSetters?: Record<string, SetterFunc>;
-  showIfCallback?: (value: any) => boolean;
   showIfValue?: any;
   pubsub?: PubSub;
   validatorName?: string;

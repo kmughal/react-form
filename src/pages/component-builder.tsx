@@ -65,13 +65,8 @@ const props:${typeProps} : {
   return templateParts.join('\n');
 }
 
-const showIfProps: ShowIfProps = { id: 'component_selection' };
-
-const componentName: BaseComponentProps = {
-  id: 'component-name',
-  name: 'component-name',
-  label: 'Id / Name:',
-  placeholder: 'Provide the name of the component',
+const showIfProps: ShowIfProps = {
+  id: 'component_selection',
   showIfCallback: ({ data }) => {
     if (!data) return false;
     return (
@@ -81,6 +76,13 @@ const componentName: BaseComponentProps = {
       data === 'radio'
     );
   },
+};
+
+const componentName: BaseComponentProps = {
+  id: 'component-name',
+  name: 'component-name',
+  label: 'Id / Name:',
+  placeholder: 'Provide the name of the component',
 };
 
 const labelName: BaseComponentProps = {
@@ -88,15 +90,6 @@ const labelName: BaseComponentProps = {
   name: 'label-name',
   label: 'Label Text:',
   placeholder: 'Provide the label of the component',
-  showIfCallback: ({ data }) => {
-    if (!data) return false;
-    return (
-      data === 'textbox' ||
-      data === 'password' ||
-      data === 'checkbox' ||
-      data === 'radio'
-    );
-  },
 };
 
 const placeholderText: BaseComponentProps = {
@@ -104,28 +97,26 @@ const placeholderText: BaseComponentProps = {
   name: 'placeholder-text',
   label: 'Placeholder Text:',
   placeholder: 'Provide the placeholder of the component',
-  showIfCallback: ({ data }) => {
-    if (!data) return false;
-    return (
-      data === 'textbox' ||
-      data === 'password' ||
-      data === 'checkbox' ||
-      data === 'radio'
-    );
-  },
 };
 
-const regexShowIf: ShowIfProps = { id: 'regex-show-if' };
-const rangeShowIf: ShowIfProps = { id: 'range-show-if' };
+const regexShowIf: ShowIfProps = {
+  id: 'regex-show-if',
+  showIfCallback: ({ data }) => {
+    return data && data === 'regex';
+  },
+};
+const rangeShowIf: ShowIfProps = {
+  id: 'range-show-if',
+  showIfCallback: ({ data }) => {
+    return data && data === 'range';
+  },
+};
 
 const regExTextBoxProps: BaseComponentProps = {
   id: 'regular-express-input',
   name: 'regular-express-input',
   label: 'Regular express :',
   placeholder: 'Please provide a regular expression ...',
-  showIfCallback: ({ data }) => {
-    return data && data === 'regex';
-  },
 };
 
 const lowerBoundRangeProps: BaseComponentProps = {
@@ -134,9 +125,6 @@ const lowerBoundRangeProps: BaseComponentProps = {
   label: 'Lower Bound / Min :',
   placeholder:
     'Please provide the lower bound / max number to apply range validator',
-  showIfCallback: ({ data }) => {
-    return data === 'range';
-  },
 };
 
 const upperBoundRangeProps: BaseComponentProps = {
@@ -145,9 +133,6 @@ const upperBoundRangeProps: BaseComponentProps = {
   label: 'Upper Bound / Max :',
   placeholder:
     'Please provide the upper bound / max number to apply range validator',
-  showIfCallback: ({ data }) => {
-    return data === 'range';
-  },
 };
 
 const componentSelectBoxProps: SelectBoxProps = {

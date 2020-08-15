@@ -47,24 +47,6 @@ const curry = (callback: curryCallback, args: Record<string, any>) => {
   return () => callback(args);
 };
 
-const setupShowIfPresent = (props) => {
-  if (props.showIfValue) {
-    if (props.showIfCallback) {
-      const showIfResult = props.showIfCallback(props.showIfValue);
-      if (typeof showIfResult !== typeof true) return true;
-      if (!showIfResult) {
-        if (props.formDataSetters && props.formDataSetters[props.name])
-          delete props.formDataSetters[props.name];
-
-        if (props.validators && props.validators[props.validatorName])
-          delete props.validators[props.validatorName];
-
-        return true;
-      }
-    }
-  }
-};
-
 const cloneChildrenForShowIf = (children, props) => {
   return React.Children.map(children as any, (child, _) => {
     const _props = child.props;
@@ -140,7 +122,6 @@ const bindValuePropertyIfProvided = (
 export {
   addFormDataSetterCallback,
   curry,
-  setupShowIfPresent,
   cloneChildrenForShowIf,
   setComponentValueIfProvided,
   setReferences,

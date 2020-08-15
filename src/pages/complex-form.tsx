@@ -46,11 +46,13 @@ const Index = () => {
     name: 'street',
     label: 'Street / House number',
     placeholder: 'Street address',
-    showIfCallback: ({ data }) => data === 'give_details',
   };
 
   const showDetailsInputBox: ShowIfProps = {
     id: 'user_decided_to_give_details',
+    showIfCallback: ({ data }) => {
+      return data === 'give_details';
+    },
   };
 
   const nameTextBoxProps: BaseComponentProps = {
@@ -76,7 +78,7 @@ const Index = () => {
     legend: 'About your personal information',
     name: 'choice_deetail',
     radioButtonOptions: [
-      new RadioButtonOption('Provide your details', 'give_details', true),
+      new RadioButtonOption('Provide your details', 'give_details'),
       new RadioButtonOption('No I dont want to give my details', 'no_details'),
     ],
     label: 'choice_deetail',

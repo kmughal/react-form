@@ -1,18 +1,12 @@
 import * as React from 'react';
 
-import {
-  cloneChildrenForShowIf,
-  setupShowIfPresent,
-} from '../../../utils/helpers';
+import { cloneChildrenForShowIf } from '../../../utils/helpers';
 import BaseComponentProps from '../BaseComponent.Props';
 import ValidationError from '../ValidationError';
 
 const MultiFileUpload: React.FC<{
   multiFileUploadProps: BaseComponentProps;
 }> = ({ children, multiFileUploadProps }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(multiFileUploadProps);
-  if (isSetupShowIfPresent) return null;
-
   multiFileUploadProps.eleRef =
     multiFileUploadProps.eleRef ?? React.useRef(null);
 

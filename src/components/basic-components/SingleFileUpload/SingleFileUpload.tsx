@@ -1,7 +1,6 @@
 import * as React from 'react';
 import SingleFileUploadProps from './SingleFileUpload.Props';
 import {
-  setupShowIfPresent,
   cloneChildrenForShowIf,
   bindValuePropertyIfProvided,
 } from '../../../utils/helpers';
@@ -10,9 +9,6 @@ import ValidationError from '../ValidationError';
 const SingleFileUpload: React.FC<{
   singleFileUploadProps: SingleFileUploadProps;
 }> = ({ singleFileUploadProps, children }) => {
-  const isSetupShowIfPresent = setupShowIfPresent(singleFileUploadProps);
-  if (isSetupShowIfPresent) return null;
-
   singleFileUploadProps.eleRef =
     singleFileUploadProps.eleRef ?? React.useRef(null);
 
