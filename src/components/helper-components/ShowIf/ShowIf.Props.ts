@@ -14,5 +14,5 @@ export default interface ShowIfProps {
     | HTMLTextAreaElement
   >;
   enableInlineValidation?: boolean;
-  showIfCallback?: (data: any) => boolean;
+  showIfCallback: (data: any) => boolean;
 }
