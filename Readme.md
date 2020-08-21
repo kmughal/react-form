@@ -5,6 +5,12 @@
 This library provides an easy way to build forms independent of styling!
 There is no extra class added to any html element so you might have to apply styling on the native html controls.
 
+## Use Cli to create form
+
+I have a created a cli that will allow you to create form and save in your local drive.
+
+![Create form](in.gif)
+
 ### How to use it
 
 ```

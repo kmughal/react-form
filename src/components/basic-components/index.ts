@@ -9,4 +9,6 @@ export * from './SingleFileUpload';
 export * from './MultiFileUpload';
 export * from './Form';
 export * from './MultiFileUpload';
-export * from './BaseComponent.Props';
+
+import type BaseComponentProps from './BaseComponent.Props';
+export type { BaseComponentProps };
