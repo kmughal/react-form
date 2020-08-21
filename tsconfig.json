@@ -30,6 +30,7 @@
     "src/pages"
   ],
   "include": [
-    "src"
+    "src",
+    "cli"
   ]
 }
