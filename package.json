@@ -1,6 +1,6 @@
 {
   "name": "react-forms-typescript",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "React Form, React Form typescript, React Form Javascript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/es/index.js",
@@ -50,8 +50,8 @@
   },
   "dependencies": {
     "formidable": "^1.2.2",
-    "inquirer": "^7.3.3",
     "next": "^9.4.4",
+    "inquirer": "^7.3.3",
     "prettier": "^2.0.5"
   },
   "devDependencies": {
