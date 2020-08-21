@@ -1,12 +1,18 @@
 {
   "name": "react-forms-typescript",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "React Form, React Form typescript, React Form Javascript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/es/index.js",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin" : {
+    "createForm" : "dist/cli/index.js"
+  },
   "repository": "https://github.com/kmughal/react-form",
   "scripts": {
     "build": "next build",

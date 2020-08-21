@@ -7,6 +7,9 @@ There is no extra class added to any html element so you might have to apply sty
 
 ## Use Cli to create form
 
+If you install this package globally then you can use ``` createForm ``` or using npx! 
+This will start this cli.
+
 I have a created a cli that will allow you to create form and save in your local drive.
 
 ![Create form](in.gif)
